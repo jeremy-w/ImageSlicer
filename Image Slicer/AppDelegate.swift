@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import ImageSlicing
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {

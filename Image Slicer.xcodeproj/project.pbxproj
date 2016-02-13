@@ -13,6 +13,22 @@
 		3F70EAAE1C6F9C9500972CEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F70EAAD1C6F9C9500972CEB /* Assets.xcassets */; };
 		3F70EAB11C6F9C9500972CEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F70EAAF1C6F9C9500972CEB /* Main.storyboard */; };
 		3F70EABC1C6F9C9600972CEB /* Image_SlicerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EABB1C6F9C9600972CEB /* Image_SlicerTests.swift */; };
+		3F70EADA1C6FB56E00972CEB /* ImageSlicing.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F70EAD91C6FB56E00972CEB /* ImageSlicing.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3F70EAE11C6FB56E00972CEB /* ImageSlicing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F70EAD71C6FB56E00972CEB /* ImageSlicing.framework */; };
+		3F70EAE81C6FB56E00972CEB /* ImageSlicingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EAE71C6FB56E00972CEB /* ImageSlicingTests.swift */; };
+		3F70EAEC1C6FB56E00972CEB /* ImageSlicing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F70EAD71C6FB56E00972CEB /* ImageSlicing.framework */; };
+		3F70EAED1C6FB56E00972CEB /* ImageSlicing.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3F70EAD71C6FB56E00972CEB /* ImageSlicing.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3F70EAFA1C6FB5F300972CEB /* ExportSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EAF51C6FB5F300972CEB /* ExportSelection.swift */; };
+		3F70EAFB1C6FB5F300972CEB /* Cut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EAF61C6FB5F300972CEB /* Cut.swift */; };
+		3F70EAFC1C6FB5F300972CEB /* Subimage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EAF71C6FB5F300972CEB /* Subimage.swift */; };
+		3F70EAFD1C6FB5F300972CEB /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EAF81C6FB5F300972CEB /* Job.swift */; };
+		3F70EAFE1C6FB5F300972CEB /* Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EAF91C6FB5F300972CEB /* Orientation.swift */; };
+		3F70EAFF1C6FB74000972CEB /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EAF81C6FB5F300972CEB /* Job.swift */; };
+		3F70EB001C6FB74000972CEB /* Cut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EAF61C6FB5F300972CEB /* Cut.swift */; };
+		3F70EB011C6FB74000972CEB /* Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EAF91C6FB5F300972CEB /* Orientation.swift */; };
+		3F70EB021C6FB74000972CEB /* Subimage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EAF71C6FB5F300972CEB /* Subimage.swift */; };
+		3F70EB031C6FB74000972CEB /* ExportSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EAF51C6FB5F300972CEB /* ExportSelection.swift */; };
+		3F70EB051C6FB76600972CEB /* JobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EB041C6FB76600972CEB /* JobView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,7 +39,42 @@
 			remoteGlobalIDString = 3F70EAA31C6F9C9500972CEB;
 			remoteInfo = "Image Slicer";
 		};
+		3F70EAE21C6FB56E00972CEB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3F70EA9C1C6F9C9500972CEB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3F70EAD61C6FB56E00972CEB;
+			remoteInfo = ImageSlicing;
+		};
+		3F70EAE41C6FB56E00972CEB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3F70EA9C1C6F9C9500972CEB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3F70EAA31C6F9C9500972CEB;
+			remoteInfo = "Image Slicer";
+		};
+		3F70EAEA1C6FB56E00972CEB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3F70EA9C1C6F9C9500972CEB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3F70EAD61C6FB56E00972CEB;
+			remoteInfo = ImageSlicing;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3F70EAF11C6FB56E00972CEB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3F70EAED1C6FB56E00972CEB /* ImageSlicing.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3F70EAA41C6F9C9500972CEB /* Image Slicer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Image Slicer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -36,6 +87,19 @@
 		3F70EAB71C6F9C9600972CEB /* Image SlicerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Image SlicerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F70EABB1C6F9C9600972CEB /* Image_SlicerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image_SlicerTests.swift; sourceTree = "<group>"; };
 		3F70EABD1C6F9C9600972CEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F70EAC61C6F9D0700972CEB /* Image Slicer.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Image Slicer.playground"; sourceTree = "<group>"; };
+		3F70EAD71C6FB56E00972CEB /* ImageSlicing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ImageSlicing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F70EAD91C6FB56E00972CEB /* ImageSlicing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageSlicing.h; sourceTree = "<group>"; };
+		3F70EADB1C6FB56E00972CEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F70EAE01C6FB56E00972CEB /* ImageSlicingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImageSlicingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F70EAE71C6FB56E00972CEB /* ImageSlicingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSlicingTests.swift; sourceTree = "<group>"; };
+		3F70EAE91C6FB56E00972CEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F70EAF51C6FB5F300972CEB /* ExportSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportSelection.swift; sourceTree = "<group>"; };
+		3F70EAF61C6FB5F300972CEB /* Cut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cut.swift; sourceTree = "<group>"; };
+		3F70EAF71C6FB5F300972CEB /* Subimage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subimage.swift; sourceTree = "<group>"; };
+		3F70EAF81C6FB5F300972CEB /* Job.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
+		3F70EAF91C6FB5F300972CEB /* Orientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Orientation.swift; sourceTree = "<group>"; };
+		3F70EB041C6FB76600972CEB /* JobView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F70EAEC1C6FB56E00972CEB /* ImageSlicing.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,14 +118,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3F70EAD31C6FB56E00972CEB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F70EADD1C6FB56E00972CEB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F70EAE11C6FB56E00972CEB /* ImageSlicing.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		3F70EA9B1C6F9C9500972CEB = {
 			isa = PBXGroup;
 			children = (
+				3F70EAC61C6F9D0700972CEB /* Image Slicer.playground */,
 				3F70EAA61C6F9C9500972CEB /* Image Slicer */,
 				3F70EABA1C6F9C9600972CEB /* Image SlicerTests */,
+				3F70EAD81C6FB56E00972CEB /* ImageSlicing */,
+				3F70EAE61C6FB56E00972CEB /* ImageSlicingTests */,
 				3F70EAA51C6F9C9500972CEB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -70,6 +153,8 @@
 			children = (
 				3F70EAA41C6F9C9500972CEB /* Image Slicer.app */,
 				3F70EAB71C6F9C9600972CEB /* Image SlicerTests.xctest */,
+				3F70EAD71C6FB56E00972CEB /* ImageSlicing.framework */,
+				3F70EAE01C6FB56E00972CEB /* ImageSlicingTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -80,6 +165,7 @@
 				3F70EAA71C6F9C9500972CEB /* AppDelegate.swift */,
 				3F70EAA91C6F9C9500972CEB /* ViewController.swift */,
 				3F70EAAB1C6F9C9500972CEB /* Document.swift */,
+				3F70EB041C6FB76600972CEB /* JobView.swift */,
 				3F70EAAD1C6F9C9500972CEB /* Assets.xcassets */,
 				3F70EAAF1C6F9C9500972CEB /* Main.storyboard */,
 				3F70EAB21C6F9C9500972CEB /* Info.plist */,
@@ -96,7 +182,41 @@
 			path = "Image SlicerTests";
 			sourceTree = "<group>";
 		};
+		3F70EAD81C6FB56E00972CEB /* ImageSlicing */ = {
+			isa = PBXGroup;
+			children = (
+				3F70EAD91C6FB56E00972CEB /* ImageSlicing.h */,
+				3F70EADB1C6FB56E00972CEB /* Info.plist */,
+				3F70EAF81C6FB5F300972CEB /* Job.swift */,
+				3F70EAF61C6FB5F300972CEB /* Cut.swift */,
+				3F70EAF91C6FB5F300972CEB /* Orientation.swift */,
+				3F70EAF71C6FB5F300972CEB /* Subimage.swift */,
+				3F70EAF51C6FB5F300972CEB /* ExportSelection.swift */,
+			);
+			path = ImageSlicing;
+			sourceTree = "<group>";
+		};
+		3F70EAE61C6FB56E00972CEB /* ImageSlicingTests */ = {
+			isa = PBXGroup;
+			children = (
+				3F70EAE71C6FB56E00972CEB /* ImageSlicingTests.swift */,
+				3F70EAE91C6FB56E00972CEB /* Info.plist */,
+			);
+			path = ImageSlicingTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		3F70EAD41C6FB56E00972CEB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F70EADA1C6FB56E00972CEB /* ImageSlicing.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		3F70EAA31C6F9C9500972CEB /* Image Slicer */ = {
@@ -106,10 +226,12 @@
 				3F70EAA01C6F9C9500972CEB /* Sources */,
 				3F70EAA11C6F9C9500972CEB /* Frameworks */,
 				3F70EAA21C6F9C9500972CEB /* Resources */,
+				3F70EAF11C6FB56E00972CEB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3F70EAEB1C6FB56E00972CEB /* PBXTargetDependency */,
 			);
 			name = "Image Slicer";
 			productName = "Image Slicer";
@@ -134,6 +256,43 @@
 			productReference = 3F70EAB71C6F9C9600972CEB /* Image SlicerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		3F70EAD61C6FB56E00972CEB /* ImageSlicing */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F70EAEE1C6FB56E00972CEB /* Build configuration list for PBXNativeTarget "ImageSlicing" */;
+			buildPhases = (
+				3F70EAD21C6FB56E00972CEB /* Sources */,
+				3F70EAD31C6FB56E00972CEB /* Frameworks */,
+				3F70EAD41C6FB56E00972CEB /* Headers */,
+				3F70EAD51C6FB56E00972CEB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ImageSlicing;
+			productName = ImageSlicing;
+			productReference = 3F70EAD71C6FB56E00972CEB /* ImageSlicing.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		3F70EADF1C6FB56E00972CEB /* ImageSlicingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F70EAF21C6FB56E00972CEB /* Build configuration list for PBXNativeTarget "ImageSlicingTests" */;
+			buildPhases = (
+				3F70EADC1C6FB56E00972CEB /* Sources */,
+				3F70EADD1C6FB56E00972CEB /* Frameworks */,
+				3F70EADE1C6FB56E00972CEB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3F70EAE31C6FB56E00972CEB /* PBXTargetDependency */,
+				3F70EAE51C6FB56E00972CEB /* PBXTargetDependency */,
+			);
+			name = ImageSlicingTests;
+			productName = ImageSlicingTests;
+			productReference = 3F70EAE01C6FB56E00972CEB /* ImageSlicingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -148,6 +307,13 @@
 						CreatedOnToolsVersion = 7.2.1;
 					};
 					3F70EAB61C6F9C9600972CEB = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = 3F70EAA31C6F9C9500972CEB;
+					};
+					3F70EAD61C6FB56E00972CEB = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					3F70EADF1C6FB56E00972CEB = {
 						CreatedOnToolsVersion = 7.2.1;
 						TestTargetID = 3F70EAA31C6F9C9500972CEB;
 					};
@@ -168,6 +334,8 @@
 			targets = (
 				3F70EAA31C6F9C9500972CEB /* Image Slicer */,
 				3F70EAB61C6F9C9600972CEB /* Image SlicerTests */,
+				3F70EAD61C6FB56E00972CEB /* ImageSlicing */,
+				3F70EADF1C6FB56E00972CEB /* ImageSlicingTests */,
 			);
 		};
 /* End PBXProject section */
@@ -189,6 +357,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3F70EAD51C6FB56E00972CEB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F70EADE1C6FB56E00972CEB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -196,9 +378,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F70EB031C6FB74000972CEB /* ExportSelection.swift in Sources */,
 				3F70EAAA1C6F9C9500972CEB /* ViewController.swift in Sources */,
+				3F70EB001C6FB74000972CEB /* Cut.swift in Sources */,
 				3F70EAA81C6F9C9500972CEB /* AppDelegate.swift in Sources */,
+				3F70EB021C6FB74000972CEB /* Subimage.swift in Sources */,
 				3F70EAAC1C6F9C9500972CEB /* Document.swift in Sources */,
+				3F70EB051C6FB76600972CEB /* JobView.swift in Sources */,
+				3F70EB011C6FB74000972CEB /* Orientation.swift in Sources */,
+				3F70EAFF1C6FB74000972CEB /* Job.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,6 +398,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3F70EAD21C6FB56E00972CEB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F70EAFB1C6FB5F300972CEB /* Cut.swift in Sources */,
+				3F70EAFE1C6FB5F300972CEB /* Orientation.swift in Sources */,
+				3F70EAFA1C6FB5F300972CEB /* ExportSelection.swift in Sources */,
+				3F70EAFC1C6FB5F300972CEB /* Subimage.swift in Sources */,
+				3F70EAFD1C6FB5F300972CEB /* Job.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F70EADC1C6FB56E00972CEB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F70EAE81C6FB56E00972CEB /* ImageSlicingTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -217,6 +425,21 @@
 			isa = PBXTargetDependency;
 			target = 3F70EAA31C6F9C9500972CEB /* Image Slicer */;
 			targetProxy = 3F70EAB81C6F9C9600972CEB /* PBXContainerItemProxy */;
+		};
+		3F70EAE31C6FB56E00972CEB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3F70EAD61C6FB56E00972CEB /* ImageSlicing */;
+			targetProxy = 3F70EAE21C6FB56E00972CEB /* PBXContainerItemProxy */;
+		};
+		3F70EAE51C6FB56E00972CEB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3F70EAA31C6F9C9500972CEB /* Image Slicer */;
+			targetProxy = 3F70EAE41C6FB56E00972CEB /* PBXContainerItemProxy */;
+		};
+		3F70EAEB1C6FB56E00972CEB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3F70EAD61C6FB56E00972CEB /* ImageSlicing */;
+			targetProxy = 3F70EAEA1C6FB56E00972CEB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -317,6 +540,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "Image Slicer/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jeremywsherman.Image-Slicer";
@@ -329,6 +553,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "Image Slicer/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jeremywsherman.Image-Slicer";
@@ -362,6 +587,75 @@
 			};
 			name = Release;
 		};
+		3F70EAEF1C6FB56E00972CEB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = ImageSlicing/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jeremywsherman.ImageSlicing;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3F70EAF01C6FB56E00972CEB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = ImageSlicing/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jeremywsherman.ImageSlicing;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		3F70EAF31C6FB56E00972CEB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ImageSlicingTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jeremywsherman.ImageSlicingTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Image Slicer.app/Contents/MacOS/Image Slicer";
+			};
+			name = Debug;
+		};
+		3F70EAF41C6FB56E00972CEB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ImageSlicingTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jeremywsherman.ImageSlicingTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Image Slicer.app/Contents/MacOS/Image Slicer";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -381,6 +675,7 @@
 				3F70EAC21C6F9C9600972CEB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3F70EAC31C6F9C9600972CEB /* Build configuration list for PBXNativeTarget "Image SlicerTests" */ = {
 			isa = XCConfigurationList;
@@ -389,6 +684,25 @@
 				3F70EAC51C6F9C9600972CEB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3F70EAEE1C6FB56E00972CEB /* Build configuration list for PBXNativeTarget "ImageSlicing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F70EAEF1C6FB56E00972CEB /* Debug */,
+				3F70EAF01C6FB56E00972CEB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3F70EAF21C6FB56E00972CEB /* Build configuration list for PBXNativeTarget "ImageSlicingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F70EAF31C6FB56E00972CEB /* Debug */,
+				3F70EAF41C6FB56E00972CEB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
