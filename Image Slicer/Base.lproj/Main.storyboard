@@ -672,12 +672,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="626" height="474"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hdW-vN-cp5" customClass="JobView" customModule="Image_Slicer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="123" width="626" height="351"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="9j1-Ju-fWU"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="626" placeholder="YES" id="E5W-5X-fYt"/>
-                                </constraints>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hdW-vN-cp5" customClass="JobView" customModule="Image_Slicer" customModuleProvider="target">
+                                <rect key="frame" x="20" y="123" width="586" height="331"/>
+                                <imageCell key="cell" selectable="YES" editable="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="groove" id="9j1-Ju-fWU"/>
                             </imageView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="U7y-Iy-Gsu">
                                 <rect key="frame" x="14" y="75" width="158" height="32"/>
@@ -723,9 +720,10 @@
                             </button>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="hdW-vN-cp5" firstAttribute="top" secondItem="ERx-hH-rdd" secondAttribute="top" constant="20" id="2bd-76-IDH"/>
                             <constraint firstItem="1G0-xE-c4n" firstAttribute="top" secondItem="hdW-vN-cp5" secondAttribute="bottom" constant="20" id="5VC-JF-lCp"/>
                             <constraint firstItem="1G0-xE-c4n" firstAttribute="baseline" secondItem="U7y-Iy-Gsu" secondAttribute="baseline" id="5fQ-A4-7gF"/>
-                            <constraint firstItem="hdW-vN-cp5" firstAttribute="centerX" secondItem="ERx-hH-rdd" secondAttribute="centerX" id="7e1-iC-SHl"/>
+                            <constraint firstItem="hdW-vN-cp5" firstAttribute="leading" secondItem="ERx-hH-rdd" secondAttribute="leading" constant="20" id="8M0-v8-7XI"/>
                             <constraint firstItem="1G0-xE-c4n" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="U7y-Iy-Gsu" secondAttribute="trailing" constant="20" id="BwQ-15-pYm"/>
                             <constraint firstItem="6vF-mZ-gB2" firstAttribute="baseline" secondItem="aKa-wE-iPg" secondAttribute="baseline" id="DO2-el-0yQ"/>
                             <constraint firstItem="aKa-wE-iPg" firstAttribute="top" secondItem="9b4-ja-W6m" secondAttribute="bottom" constant="8" id="HdU-kS-2yF"/>
@@ -734,12 +732,12 @@
                             <constraint firstItem="Rwd-sG-G0B" firstAttribute="trailing" secondItem="1G0-xE-c4n" secondAttribute="trailing" id="ccU-MU-Kws"/>
                             <constraint firstAttribute="trailing" secondItem="6vF-mZ-gB2" secondAttribute="trailing" constant="20" id="dbs-VB-Ytm"/>
                             <constraint firstAttribute="bottom" secondItem="aKa-wE-iPg" secondAttribute="bottom" constant="20" symbolic="YES" id="eji-vP-ROt"/>
-                            <constraint firstItem="hdW-vN-cp5" firstAttribute="top" secondItem="ERx-hH-rdd" secondAttribute="top" id="gnI-Na-Ni2"/>
                             <constraint firstItem="6vF-mZ-gB2" firstAttribute="trailing" secondItem="1G0-xE-c4n" secondAttribute="trailing" id="jfc-j1-0hN"/>
                             <constraint firstItem="6vF-mZ-gB2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aKa-wE-iPg" secondAttribute="trailing" constant="20" id="jmb-Nr-w6T"/>
                             <constraint firstItem="Rwd-sG-G0B" firstAttribute="baseline" secondItem="9b4-ja-W6m" secondAttribute="baseline" id="jvh-kn-JJv"/>
                             <constraint firstItem="Rwd-sG-G0B" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="9b4-ja-W6m" secondAttribute="trailing" constant="20" id="pCv-Ep-joe"/>
                             <constraint firstItem="aKa-wE-iPg" firstAttribute="leading" secondItem="ERx-hH-rdd" secondAttribute="leading" constant="20" symbolic="YES" id="t1T-wD-ygk"/>
+                            <constraint firstAttribute="trailing" secondItem="hdW-vN-cp5" secondAttribute="trailing" constant="20" id="yFd-ZX-ScW"/>
                             <constraint firstItem="aKa-wE-iPg" firstAttribute="leading" secondItem="U7y-Iy-Gsu" secondAttribute="leading" id="zrd-NC-Rud"/>
                         </constraints>
                     </view>
