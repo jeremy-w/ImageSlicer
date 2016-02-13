@@ -1,4 +1,4 @@
-enum Orientation {
-    case Horizontally
-    case Vertically
+enum Orientation: String {
+    case Horizontally = "H"
+    case Vertically = "V"
 }

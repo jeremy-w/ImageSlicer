@@ -23,3 +23,25 @@ struct Cut {
         return [subrect, otherSubrect].map(Subimage.init)
     }
 }
+
+extension Cut {
+    var asDictionary: [String: AnyObject] {
+        var dictionary: [String: AnyObject] = [:]
+        dictionary["at"] = NSValue(point: at)
+        dictionary["oriented"] = oriented.rawValue
+        return dictionary
+    }
+
+    init?(dictionary: [String: AnyObject]) {
+        guard let value = dictionary["at"] as? NSValue else {
+                return nil
+        }
+        at = value.pointValue
+
+        guard let rawValue = dictionary["oriented"] as? String,
+            orientation = Orientation(rawValue: rawValue) else {
+                return nil
+        }
+        oriented = orientation
+    }
+}

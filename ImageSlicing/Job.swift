@@ -1,7 +1,7 @@
 import Cocoa
 
 struct Job {
-    let image: NSImage
+    var image: NSImage?
     var cuts: [Cut]
     var selections: [ExportSelection]
 
@@ -10,6 +10,10 @@ struct Job {
     }
 
     var subimages: [Subimage] {
+        guard let image = image else {
+            return []
+        }
+
         var subimages = [Subimage(
             rect: CGRect(origin: CGPointZero, size: image.size))]
 
@@ -63,6 +67,10 @@ struct Job {
 
 
     func bitmapFor(subregion: Subimage) -> NSBitmapImageRep? {
+        guard let image = image else {
+            return nil
+        }
+
         let subregion = CGRectIntegral(subregion.rect)
         let size = subregion.size
         guard let bitmap = NSBitmapImageRep(
@@ -94,5 +102,53 @@ struct Job {
         NSGraphicsContext.restoreGraphicsState()
         
         return bitmap
+    }
+}
+
+
+extension Job {
+    class Keys {
+        static let Image = "image"
+        static let Cuts = "cuts"
+        static let Selections = "selections"
+    }
+
+    var asDictionary: [String: AnyObject] {
+        var dictionary: [String: AnyObject] = [:]
+        if let image = image {
+            dictionary[Keys.Image] = image
+        }
+
+        dictionary[Keys.Cuts] = cuts.map { $0.asDictionary }
+        dictionary[Keys.Selections] = selections.map { $0.asDictionary }
+        return dictionary
+    }
+
+    init?(dictionary: [String: AnyObject]) {
+        let maybeValue = dictionary[Keys.Image]
+        if let value = maybeValue {
+            guard let image = value as? NSImage else {
+                return nil
+            }
+
+            self.image = image
+        }
+
+        guard let cutDicts = dictionary[Keys.Cuts] as? [[String: AnyObject]] else {
+            return nil
+        }
+        cuts = cutDicts.flatMap { Cut(dictionary: $0) }
+        guard cuts.count == cutDicts.count else {
+            return nil
+        }
+
+
+        guard let selectionDicts = dictionary[Keys.Selections] as? [[String: AnyObject]] else {
+            return nil
+        }
+        selections = selectionDicts.flatMap { ExportSelection(dictionary: $0) }
+        guard selections.count == selectionDicts.count else {
+            return nil
+        }
     }
 }
