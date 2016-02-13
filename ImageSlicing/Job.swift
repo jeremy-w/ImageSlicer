@@ -1,11 +1,17 @@
 import Cocoa
 
-struct Job {
+class Job {
     var image: NSImage?
     var cuts: [Cut]
     var selections: [ExportSelection]
 
-    mutating func add(cut: Cut) {
+    init(image: NSImage?, cuts: [Cut] = [], selections: [ExportSelection] = []) {
+        self.image = image
+        self.cuts = cuts
+        self.selections = selections
+    }
+
+    func add(cut: Cut) {
         cuts.append(cut)
     }
 
@@ -124,20 +130,22 @@ extension Job {
         return dictionary
     }
 
-    init?(dictionary: [String: AnyObject]) {
+    convenience init?(dictionary: [String: AnyObject]) {
+        var actualImage: NSImage?
+
         let maybeValue = dictionary[Keys.Image]
         if let value = maybeValue {
             guard let image = value as? NSImage else {
                 return nil
             }
 
-            self.image = image
+            actualImage = image
         }
 
         guard let cutDicts = dictionary[Keys.Cuts] as? [[String: AnyObject]] else {
             return nil
         }
-        cuts = cutDicts.flatMap { Cut(dictionary: $0) }
+        let cuts = cutDicts.flatMap { Cut(dictionary: $0) }
         guard cuts.count == cutDicts.count else {
             return nil
         }
@@ -146,9 +154,11 @@ extension Job {
         guard let selectionDicts = dictionary[Keys.Selections] as? [[String: AnyObject]] else {
             return nil
         }
-        selections = selectionDicts.flatMap { ExportSelection(dictionary: $0) }
+        let selections = selectionDicts.flatMap { ExportSelection(dictionary: $0) }
         guard selections.count == selectionDicts.count else {
             return nil
         }
+
+        self.init(image: actualImage, cuts: cuts, selections: selections)
     }
 }
