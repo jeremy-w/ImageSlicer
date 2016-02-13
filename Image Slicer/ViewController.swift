@@ -10,6 +10,8 @@ import Cocoa
 
 class ViewController: NSViewController {
 
+    @IBOutlet var jobView: JobView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,7 +20,16 @@ class ViewController: NSViewController {
 
     override var representedObject: AnyObject? {
         didSet {
-        // Update the view, if already loaded.
+            // Update the view, if already loaded.
+        }
+    }
+
+
+    var job: Job? {
+        didSet {
+            if let job = job {
+                jobView.job = job
+            }
         }
     }
 
