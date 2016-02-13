@@ -672,12 +672,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="626" height="474"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="hdW-vN-cp5" customClass="JobView" customModule="Image_Slicer" customModuleProvider="target">
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hdW-vN-cp5" customClass="JobView" customModule="Image_Slicer" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="123" width="626" height="351"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="9j1-Ju-fWU"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="626" placeholder="YES" id="E5W-5X-fYt"/>
                                 </constraints>
-                            </customView>
+                            </imageView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="U7y-Iy-Gsu">
                                 <rect key="frame" x="14" y="75" width="158" height="32"/>
                                 <buttonCell key="cell" type="push" title="Add Horizontal Cut" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="M3k-9t-gMi">
