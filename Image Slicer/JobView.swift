@@ -1,19 +1,37 @@
 import Cocoa
 
-class ImageSliceJobView: NSView {
-    var job: Job
-    init(job: Job) {
+class JobView: NSImageView {
+    var job = Job(image: nil, cuts: [], selections: [])
+
+    override var image: NSImage? {
+        didSet {
+            self.job.image = image
+        }
+    }
+
+    init?(job: Job) {
         self.job = job
-        let frame = CGRect(origin: CGPointZero, size: job.image.size)
+
+        guard let image = job.image else {
+            super.init(frame: CGRectZero)
+            return nil
+        }
+
+        let frame = CGRect(origin: CGPointZero, size: image.size)
         super.init(frame: frame)
+        self.image = image
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
     }
+}
 
+
+// MARK: - Drawing
+extension JobView {
     override func drawRect(dirtyRect: NSRect) {
-        job.image.drawInRect(self.bounds)
+        super.drawRect(dirtyRect)
 
         NSColor.greenColor().set()
         outlineSubimages()
