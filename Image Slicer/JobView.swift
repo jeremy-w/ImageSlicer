@@ -144,7 +144,7 @@ extension JobView {
             return .NotEditing
 
         case .AddingMark:
-            let name = "Subimage \(job.selections.count + 1)"
+            let name = "mark \(job.selections.count + 1)"
             job.selections.append(ExportSelection(around: point, name: name))
             return .NotEditing
 
