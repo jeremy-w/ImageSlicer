@@ -14,10 +14,12 @@ class JobView: NSImageView {
     var editingMode = EditingMode.NotEditing {
         didSet {
             guard self.editable else {
+                NSLog("\(__FUNCTION__): \(self): not editable, so refusing change to mode \(editingMode)")
                 editingMode = .NotEditing
                 return
             }
 
+            NSLog("\(__FUNCTION__): \(self): \(editingMode)")
             if case .NotEditing = editingMode {
                 didFinishEditing(self)
             }
@@ -25,11 +27,20 @@ class JobView: NSImageView {
     }
 
     var didFinishEditing: (JobView) -> Void = { _ in
-        return
+        NSLog("\(__FUNCTION__)")
     }
 
     override var image: NSImage? {
-        didSet {
+        get {
+            return super.image
+        }
+
+        set {
+            guard image == nil else {
+                return
+            }
+
+            super.image = newValue
             imageDidChange(image)
         }
     }
@@ -39,7 +50,6 @@ class JobView: NSImageView {
         NSLog("\(__FUNCTION__): \(image)")
         self.job.image = image
         invalidateIntrinsicContentSize()
-        editable = (nil == image)
     }
 
 
