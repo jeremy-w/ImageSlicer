@@ -694,6 +694,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="addCutHorizontalAction:" target="5gI-5U-AMq" id="00Z-Er-Aey"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9b4-ja-W6m">
                                 <rect key="frame" x="14" y="42" width="140" height="32"/>
