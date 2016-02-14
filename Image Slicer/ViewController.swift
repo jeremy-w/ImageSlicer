@@ -36,3 +36,35 @@ class ViewController: NSViewController {
 
 }
 
+
+
+// MARK: - Cut Management
+extension ViewController {
+    @IBAction func addCutHorizontalAction(sender: NSButton) {
+        jobView.editingMode = .AddingCut(.Horizontally)
+    }
+
+
+    @IBAction func addCutVerticalAction(sender: NSButton) {
+        jobView.editingMode = .AddingCut(.Vertically)
+    }
+
+
+    @IBAction func deleteCutAction(sender: NSButton) {
+        jobView.editingMode = .DeletingCut
+    }
+}
+
+
+
+// MARK: - Mark Management
+extension ViewController {
+
+}
+
+
+
+// MARK: - Export
+extension ViewController {
+
+}
