@@ -75,6 +75,11 @@ class Document: NSDocument {
     }
 
 
+    override func defaultDraftName() -> String {
+        return NSLocalizedString("Sliced Image", comment: "default draft document name")
+    }
+
+
 //    override func restoreDocumentWindowWithIdentifier(identifier: String, state: NSCoder, completionHandler: (NSWindow?, NSError?) -> Void) {
 //        NSLog("DEBUG: state restoration disabled")
 //        completionHandler(nil, nil)
