@@ -149,21 +149,37 @@ extension JobView {
             return .NotEditing
 
         case .DeletingCut:
-            if let hitPoint = nearest(point, amongst: job.cuts.map { $0.at }),
-                index = job.cuts.indexOf({ $0.at == hitPoint }) {
+            if let (_, index) = cutNearest(point) {
                     job.cuts.removeAtIndex(index)
                     return .NotEditing
             }
 
         case .DeletingMark:
-            if let hitPoint = nearest(point, amongst: job.selections.map { $0.around }),
-                index = job.selections.indexOf({ $0.around == hitPoint }) {
+            if let (_, index) = markNearest(point) {
                     job.selections.removeAtIndex(index)
                     return .NotEditing
             }
         }
 
         fatalError("somehow made it past an exhaustive switch-case with editingMode: \(editingMode)")
+    }
+
+
+    func cutNearest(point: CGPoint) -> (Cut, Int)? {
+        if let hitPoint = nearest(point, amongst: job.cuts.map { $0.at }),
+            index = job.cuts.indexOf({ $0.at == hitPoint }) {
+                return (job.cuts[index], index)
+        }
+        return nil
+    }
+
+
+    func markNearest(point: CGPoint) -> (ExportSelection, Int)? {
+        if let hitPoint = nearest(point, amongst: job.selections.map { $0.around }),
+            index = job.selections.indexOf({ $0.around == hitPoint }) {
+                return (job.selections[index], index)
+        }
+        return nil
     }
 
 
