@@ -133,6 +133,19 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="WRV-NI-Exz"/>
+                                        <menuItem title="Delete All Marks" id="N54-AU-GCr">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="deleteAllMarksAction:" target="Ady-hI-5gd" id="7dr-h1-1dX"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Delete All Cuts and Marks" id="hRn-zR-KYq">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="deleteAllCutsAndMarksAction:" target="Ady-hI-5gd" id="Ivi-GI-w9p"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="lXz-yW-RMV"/>
                                         <menuItem title="Cut" keyEquivalent="x" id="uRl-iY-unG">
                                             <connections>
                                                 <action selector="cut:" target="Ady-hI-5gd" id="YJe-68-I9s"/>
@@ -673,7 +686,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="54m-Tk-FGj">
-                                <rect key="frame" x="259" y="140" width="109" height="17"/>
+                                <rect key="frame" x="259" y="138" width="109" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Drop Image Here" id="FLw-Io-NBE">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -681,7 +694,7 @@
                                 </textFieldCell>
                             </textField>
                             <imageView focusRingType="none" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="hdW-vN-cp5" customClass="JobView" customModule="Image_Slicer" customModuleProvider="target">
-                                <rect key="frame" x="20" y="123" width="586" height="50"/>
+                                <rect key="frame" x="20" y="119" width="586" height="54"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="WJL-jp-JP4"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="eDZ-Ao-0bs"/>
@@ -689,7 +702,7 @@
                                 <imageCell key="cell" selectable="YES" editable="YES" focusRingType="none" alignment="left" imageAlignment="bottomLeft" id="9j1-Ju-fWU"/>
                             </imageView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="U7y-Iy-Gsu">
-                                <rect key="frame" x="14" y="75" width="158" height="32"/>
+                                <rect key="frame" x="14" y="71" width="158" height="32"/>
                                 <buttonCell key="cell" type="push" title="Add Horizontal Cut" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="M3k-9t-gMi">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -719,11 +732,14 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1G0-xE-c4n">
-                                <rect key="frame" x="442" y="75" width="170" height="32"/>
+                                <rect key="frame" x="442" y="71" width="170" height="32"/>
                                 <buttonCell key="cell" type="push" title="Mark Slice for Export" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7cr-G0-fkn">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="markSliceForExportAction:" target="5gI-5U-AMq" id="38e-qt-ROz"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rwd-sG-G0B">
                                 <rect key="frame" x="426" y="42" width="186" height="32"/>
@@ -731,6 +747,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="exportMarkedSlicesAction:" target="5gI-5U-AMq" id="4Mu-HR-rPc"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6vF-mZ-gB2">
                                 <rect key="frame" x="497" y="13" width="115" height="32"/>
@@ -738,6 +757,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="deleteMarkAction:" target="5gI-5U-AMq" id="q4r-z9-VX6"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -749,7 +771,7 @@
                             <constraint firstItem="6vF-mZ-gB2" firstAttribute="baseline" secondItem="aKa-wE-iPg" secondAttribute="baseline" id="DO2-el-0yQ"/>
                             <constraint firstItem="aKa-wE-iPg" firstAttribute="top" secondItem="9b4-ja-W6m" secondAttribute="bottom" constant="8" id="HdU-kS-2yF"/>
                             <constraint firstItem="54m-Tk-FGj" firstAttribute="centerX" secondItem="hdW-vN-cp5" secondAttribute="centerX" id="VnL-Pj-iNX"/>
-                            <constraint firstItem="9b4-ja-W6m" firstAttribute="top" secondItem="U7y-Iy-Gsu" secondAttribute="bottom" constant="12" id="WBn-Hm-1yh"/>
+                            <constraint firstItem="9b4-ja-W6m" firstAttribute="top" secondItem="U7y-Iy-Gsu" secondAttribute="bottom" constant="8" id="WBn-Hm-1yh"/>
                             <constraint firstItem="9b4-ja-W6m" firstAttribute="leading" secondItem="U7y-Iy-Gsu" secondAttribute="leading" id="Wvc-G2-26K"/>
                             <constraint firstItem="hdW-vN-cp5" firstAttribute="leading" secondItem="ERx-hH-rdd" secondAttribute="leading" priority="750" constant="20" id="YwL-7Q-L3q"/>
                             <constraint firstItem="Rwd-sG-G0B" firstAttribute="trailing" secondItem="1G0-xE-c4n" secondAttribute="trailing" id="ccU-MU-Kws"/>

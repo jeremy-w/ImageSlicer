@@ -53,13 +53,30 @@ extension ViewController {
     @IBAction func deleteCutAction(sender: NSButton) {
         jobView.editingMode = .DeletingCut
     }
+
+    @IBAction func deleteAllCutsAndMarksAction(sender: AnyObject) {
+        guard let job = self.job else {
+            return
+        }
+
+        job.cuts = []
+        job.selections = []
+        jobView.needsDisplay = true
+    }
 }
 
 
 
 // MARK: - Mark Management
 extension ViewController {
+    @IBAction func deleteAllMarksAction(sender: AnyObject) {
+        guard let job = self.job else {
+            return
+        }
 
+        job.selections = []
+        jobView.needsDisplay = true
+    }
 }
 
 
