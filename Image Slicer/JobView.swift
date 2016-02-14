@@ -8,6 +8,8 @@ enum EditingMode {
     case DeletingMark
 }
 
+let MarkSelectionBoundary: CGFloat = 50 /* pt */
+
 class JobView: NSImageView {
     var job = Job(image: nil, cuts: [], selections: [])
 
@@ -75,6 +77,29 @@ class JobView: NSImageView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
+
+    var mouseAt: CGPoint? = nil {
+        didSet {
+            let wasAt = oldValue
+
+            if case .DeletingCut = editingMode {
+                let oldCut = wasAt.flatMap { cutNearest($0)?.0 }
+                let newCut = mouseAt.flatMap { cutNearest($0)?.0 }
+
+                if let oldCut = oldCut {
+                    setNeedsDisplayInRect(rectFor(oldCut))
+                }
+
+                if let newCut = newCut {
+                    setNeedsDisplayInRect(rectFor(newCut))
+                }
+            }
+
+            // TODO: update highlighted marks
+//            let oldMark = wasAt.flatMap { markNearest($0)?.0 }
+//            let newMark = mouseAt.flatMap { markNearest($0)?.0 }
+        }
+    }
 }
 
 
@@ -102,19 +127,69 @@ extension JobView {
 
 
     func markCutPoints() {
+        let victimCut = mouseAt.flatMap { point -> Cut? in
+            guard case .DeletingCut = editingMode else { return nil }
+            return cutNearest(point)?.0
+        }
+
         for cut in job.cuts {
-            let rect = CGRect(origin: cut.at, size: CGSize(width: 2, height: 2))
+            let rect = rectFor(cut)
+            let isVictim = victimCut.map { $0 == cut } ?? false
+            if isVictim {
+                NSGraphicsContext.currentContext()?.saveGraphicsState()
+                NSColor.orangeColor().setFill()
+            }
+
             NSRectFill(CGRectOffset(rect, -1, -1))
+
+            if isVictim {
+                NSGraphicsContext.currentContext()?.restoreGraphicsState()
+            }
+        }
+    }
+
+
+    func rectFor(cut: Cut) -> CGRect {
+        return CGRect(origin: cut.at, size: CGSize(width: 2, height: 2))
+    }
+
+
+    override func mouseMoved(theEvent: NSEvent) {
+        let windowPoint = theEvent.locationInWindow
+        mouseAt = self.convertPoint(windowPoint, fromView: nil)
+    }
+
+
+    var highlightedSelection: ExportSelection? {
+        get {
+            let highlightedSelection = mouseAt.flatMap { markNearest($0)?.0 }
+            return highlightedSelection
         }
     }
 
 
     func labelSelections(textColor: NSColor) {
-        let attributes = [NSForegroundColorAttributeName: textColor]
+        let normalAttributes = [NSForegroundColorAttributeName: textColor]
+        let highlightedAttributes = [NSForegroundColorAttributeName: textColor
+            , NSBackgroundColorAttributeName: NSColor.orangeColor()]
+        let highlighted = highlightedSelection
         for selection in job.selections {
-            let text = selection.name
-            text.drawAtPoint(selection.around, withAttributes: attributes)
+            let shouldHighlight = highlighted.map { $0 == selection } ?? false
+            let attributes = shouldHighlight ? highlightedAttributes : normalAttributes
+            let rect = rectFor(selection, attributes: attributes)
+            selection.name.drawInRect(rect, withAttributes: attributes)
         }
+    }
+
+
+    func rectFor(mark: ExportSelection, attributes: [String: AnyObject]) -> CGRect {
+        let text = mark.name
+        let size = text.sizeWithAttributes(attributes)
+        let pointCenteringTextOnMark = CGPoint(
+            x: mark.around.x - size.width / 2,
+            y: mark.around.y - size.height / 2)
+        let rect = CGRect(origin: pointCenteringTextOnMark, size: size)
+        return rect
     }
 }
 
@@ -137,6 +212,15 @@ extension JobView {
     func performEdit(point: CGPoint) -> EditingMode? {
         switch editingMode {
         case .NotEditing:
+            if let highlight = highlightedSelection {
+                let dx = highlight.around.x - point.x
+                let dy = highlight.around.y - point.y
+                guard dx*dx + dx*dy < MarkSelectionBoundary*MarkSelectionBoundary else {
+                    return nil
+                }
+
+
+            }
             return nil
 
         case let .AddingCut(orientation):
