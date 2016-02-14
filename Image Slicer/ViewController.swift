@@ -69,6 +69,14 @@ extension ViewController {
 
 // MARK: - Mark Management
 extension ViewController {
+    @IBAction func markSliceForExportAction(sender: AnyObject) {
+        jobView.editingMode = .AddingMark
+    }
+
+    @IBAction func deleteMarkAction(sender: AnyObject) {
+        jobView.editingMode = .DeletingMark
+    }
+
     @IBAction func deleteAllMarksAction(sender: AnyObject) {
         guard let job = self.job else {
             return
