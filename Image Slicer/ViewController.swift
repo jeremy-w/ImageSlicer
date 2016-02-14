@@ -91,5 +91,43 @@ extension ViewController {
 
 // MARK: - Export
 extension ViewController {
+    @IBAction func exportMarkedSlicesAction(sender: AnyObject) {
+        guard let window = view.window else {
+            NSLog("\(__FUNCTION__): \(self): we have no window!")
+            NSBeep()
+            return
+        }
 
+        let directoryPicker = self.dynamicType.exportDirectoryPicker()
+
+        window.beginSheet(directoryPicker) { response in
+            guard response == NSModalResponseContinue else {
+                NSLog("user canceled export")
+                return
+            }
+
+            guard let url = directoryPicker.URL else {
+                NSLog("user failed to select directory")
+                return
+            }
+
+            NSLog("exporting to: \(url.lastPathComponent) at \(url.absoluteURL)")
+            self.job?.exportSelectedSubimages(url, dryRun: false)
+        }
+    }
+
+    static func exportDirectoryPicker() -> NSOpenPanel {
+        let directoryPicker = NSOpenPanel()
+        directoryPicker.canChooseDirectories = true
+        directoryPicker.canCreateDirectories = true
+        directoryPicker.canChooseFiles = false
+        directoryPicker.allowsMultipleSelection = false
+
+        directoryPicker.title = NSLocalizedString("Choose Export Directory", comment: "export panel title")
+        directoryPicker.prompt = NSLocalizedString("Choose", comment: "export panel prompt")
+        directoryPicker.nameFieldLabel = NSLocalizedString("Export to:", comment: "export panel name field label")
+        directoryPicker.message = NSLocalizedString("All marked slices will be exported as PNG images in the chosen directory.", comment: "export panel message")
+
+        return directoryPicker
+    }
 }
