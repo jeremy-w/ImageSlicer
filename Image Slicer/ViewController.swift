@@ -14,6 +14,9 @@ class ViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        jobView.editMark = { [weak self] mark in
+            return self?.editName(mark) ?? false
+        }
 
         // Do any additional setup after loading the view.
     }
@@ -129,5 +132,14 @@ extension ViewController {
         directoryPicker.message = NSLocalizedString("All marked slices will be exported as PNG images in the chosen directory.", comment: "export panel message")
 
         return directoryPicker
+    }
+}
+
+
+extension ViewController {
+    func editName(mark: ExportSelection) -> Bool {
+        NSLog("\(__FUNCTION__): \(mark)")
+        // TODO: present popover (to be added to storyboard)
+        return false
     }
 }

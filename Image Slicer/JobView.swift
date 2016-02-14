@@ -32,6 +32,13 @@ class JobView: NSImageView {
         NSLog("\(__FUNCTION__)")
     }
 
+
+    /// - returns: true if mark name changed (invalidates rect), false otherwise
+    var editMark: (ExportSelection) -> Bool = { _ in
+        NSLog("default mark handler does nothing")
+        return false
+    }
+
     override var image: NSImage? {
         get {
             return super.image
@@ -212,14 +219,16 @@ extension JobView {
     func performEdit(point: CGPoint) -> EditingMode? {
         switch editingMode {
         case .NotEditing:
-            if let highlight = highlightedSelection {
-                let dx = highlight.around.x - point.x
-                let dy = highlight.around.y - point.y
+            if let mark = highlightedSelection {
+                let dx = mark.around.x - point.x
+                let dy = mark.around.y - point.y
                 guard dx*dx + dx*dy < MarkSelectionBoundary*MarkSelectionBoundary else {
                     return nil
                 }
 
-
+                if editMark(mark) {
+                    self.needsDisplay = true
+                }
             }
             return nil
 
