@@ -669,12 +669,16 @@
             <objects>
                 <viewController id="5gI-5U-AMq" customClass="ViewController" customModule="Image_Slicer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="ERx-hH-rdd">
-                        <rect key="frame" x="0.0" y="0.0" width="626" height="474"/>
+                        <rect key="frame" x="0.0" y="0.0" width="626" height="193"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hdW-vN-cp5" customClass="JobView" customModule="Image_Slicer" customModuleProvider="target">
-                                <rect key="frame" x="20" y="123" width="586" height="331"/>
-                                <imageCell key="cell" selectable="YES" editable="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="groove" id="9j1-Ju-fWU"/>
+                            <imageView horizontalHuggingPriority="1000" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="hdW-vN-cp5" customClass="JobView" customModule="Image_Slicer" customModuleProvider="target">
+                                <rect key="frame" x="17" y="120" width="592" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="WJL-jp-JP4"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="eDZ-Ao-0bs"/>
+                                </constraints>
+                                <imageCell key="cell" selectable="YES" editable="YES" alignment="left" imageAlignment="bottomLeft" imageScaling="proportionallyDown" imageFrameStyle="groove" id="9j1-Ju-fWU"/>
                             </imageView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="U7y-Iy-Gsu">
                                 <rect key="frame" x="14" y="75" width="158" height="32"/>
@@ -689,6 +693,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="addCutVerticalAction:" target="5gI-5U-AMq" id="3Dv-iP-dqd"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aKa-wE-iPg">
                                 <rect key="frame" x="14" y="13" width="106" height="32"/>
@@ -696,6 +703,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="deleteCutAction:" target="5gI-5U-AMq" id="yO7-zb-bMF"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1G0-xE-c4n">
                                 <rect key="frame" x="442" y="75" width="170" height="32"/>
@@ -723,21 +733,22 @@
                             <constraint firstItem="hdW-vN-cp5" firstAttribute="top" secondItem="ERx-hH-rdd" secondAttribute="top" constant="20" id="2bd-76-IDH"/>
                             <constraint firstItem="1G0-xE-c4n" firstAttribute="top" secondItem="hdW-vN-cp5" secondAttribute="bottom" constant="20" id="5VC-JF-lCp"/>
                             <constraint firstItem="1G0-xE-c4n" firstAttribute="baseline" secondItem="U7y-Iy-Gsu" secondAttribute="baseline" id="5fQ-A4-7gF"/>
-                            <constraint firstItem="hdW-vN-cp5" firstAttribute="leading" secondItem="ERx-hH-rdd" secondAttribute="leading" constant="20" id="8M0-v8-7XI"/>
+                            <constraint firstAttribute="trailing" secondItem="hdW-vN-cp5" secondAttribute="trailing" priority="750" constant="20" id="BFs-IQ-vPx"/>
                             <constraint firstItem="1G0-xE-c4n" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="U7y-Iy-Gsu" secondAttribute="trailing" constant="20" id="BwQ-15-pYm"/>
                             <constraint firstItem="6vF-mZ-gB2" firstAttribute="baseline" secondItem="aKa-wE-iPg" secondAttribute="baseline" id="DO2-el-0yQ"/>
                             <constraint firstItem="aKa-wE-iPg" firstAttribute="top" secondItem="9b4-ja-W6m" secondAttribute="bottom" constant="8" id="HdU-kS-2yF"/>
                             <constraint firstItem="9b4-ja-W6m" firstAttribute="top" secondItem="U7y-Iy-Gsu" secondAttribute="bottom" constant="12" id="WBn-Hm-1yh"/>
                             <constraint firstItem="9b4-ja-W6m" firstAttribute="leading" secondItem="U7y-Iy-Gsu" secondAttribute="leading" id="Wvc-G2-26K"/>
+                            <constraint firstItem="hdW-vN-cp5" firstAttribute="leading" secondItem="ERx-hH-rdd" secondAttribute="leading" priority="750" constant="20" id="YwL-7Q-L3q"/>
                             <constraint firstItem="Rwd-sG-G0B" firstAttribute="trailing" secondItem="1G0-xE-c4n" secondAttribute="trailing" id="ccU-MU-Kws"/>
                             <constraint firstAttribute="trailing" secondItem="6vF-mZ-gB2" secondAttribute="trailing" constant="20" id="dbs-VB-Ytm"/>
                             <constraint firstAttribute="bottom" secondItem="aKa-wE-iPg" secondAttribute="bottom" constant="20" symbolic="YES" id="eji-vP-ROt"/>
+                            <constraint firstItem="hdW-vN-cp5" firstAttribute="centerX" secondItem="ERx-hH-rdd" secondAttribute="centerX" id="j6U-Df-ALS"/>
                             <constraint firstItem="6vF-mZ-gB2" firstAttribute="trailing" secondItem="1G0-xE-c4n" secondAttribute="trailing" id="jfc-j1-0hN"/>
                             <constraint firstItem="6vF-mZ-gB2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aKa-wE-iPg" secondAttribute="trailing" constant="20" id="jmb-Nr-w6T"/>
                             <constraint firstItem="Rwd-sG-G0B" firstAttribute="baseline" secondItem="9b4-ja-W6m" secondAttribute="baseline" id="jvh-kn-JJv"/>
                             <constraint firstItem="Rwd-sG-G0B" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="9b4-ja-W6m" secondAttribute="trailing" constant="20" id="pCv-Ep-joe"/>
                             <constraint firstItem="aKa-wE-iPg" firstAttribute="leading" secondItem="ERx-hH-rdd" secondAttribute="leading" constant="20" symbolic="YES" id="t1T-wD-ygk"/>
-                            <constraint firstAttribute="trailing" secondItem="hdW-vN-cp5" secondAttribute="trailing" constant="20" id="yFd-ZX-ScW"/>
                             <constraint firstItem="aKa-wE-iPg" firstAttribute="leading" secondItem="U7y-Iy-Gsu" secondAttribute="leading" id="zrd-NC-Rud"/>
                         </constraints>
                     </view>
