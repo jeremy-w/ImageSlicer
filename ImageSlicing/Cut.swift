@@ -45,3 +45,9 @@ extension Cut {
         oriented = orientation
     }
 }
+
+
+extension Cut: Equatable {}
+func ==(left: Cut, right: Cut) -> Bool {
+    return left.oriented == right.oriented && CGPointEqualToPoint(left.at, right.at)
+}

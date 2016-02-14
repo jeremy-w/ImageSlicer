@@ -26,3 +26,9 @@ extension ExportSelection {
         self.name = name
     }
 }
+
+
+extension ExportSelection: Equatable {}
+func ==(left: ExportSelection, right: ExportSelection) -> Bool {
+    return CGPointEqualToPoint(left.around, right.around) && left.name == right.name
+}
