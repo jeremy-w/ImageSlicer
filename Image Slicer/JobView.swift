@@ -30,7 +30,22 @@ class JobView: NSImageView {
 
     override var image: NSImage? {
         didSet {
-            self.job.image = image
+            imageDidChange(image)
+        }
+    }
+
+
+    func imageDidChange(image: NSImage?) {
+        NSLog("\(__FUNCTION__): \(image)")
+        self.job.image = image
+        invalidateIntrinsicContentSize()
+        editable = (nil == image)
+    }
+
+
+    override var intrinsicContentSize: NSSize {
+        get {
+            return image.map({ $0.size }) ?? super.intrinsicContentSize
         }
     }
 
