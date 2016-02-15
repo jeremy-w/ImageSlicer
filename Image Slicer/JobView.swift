@@ -9,8 +9,9 @@ enum EditingMode {
 }
 
 let markTextColor = NSColor.blueColor()
+let highlightColor = NSColor.orangeColor().colorWithAlphaComponent(0.4)
 let highlightedMarkAttributes = [NSForegroundColorAttributeName: markTextColor
-    , NSBackgroundColorAttributeName: NSColor.orangeColor()]
+    , NSBackgroundColorAttributeName: highlightColor]
 
 class JobView: NSImageView {
     var job = Job(image: nil, cuts: [], selections: []) {
