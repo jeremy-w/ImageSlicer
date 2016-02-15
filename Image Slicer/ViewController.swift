@@ -106,6 +106,10 @@ extension ViewController {
         }
 
         let directoryPicker = self.dynamicType.exportDirectoryPicker()
+        if let document = view.window?.windowController?.document as? Document,
+            directoryURL = document.fileURL?.URLByDeletingLastPathComponent {
+                directoryPicker.directoryURL = directoryURL
+        }
 
         window.beginSheet(directoryPicker) { response in
             guard response == NSModalResponseContinue else {
