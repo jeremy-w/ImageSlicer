@@ -134,10 +134,12 @@ extension Job {
 
         dictionary[Keys.Cuts] = cuts.map { $0.asDictionary }
         dictionary[Keys.Selections] = selections.map { $0.asDictionary }
+        NSLog("\(__FUNCTION__): pickled \(self): \(dictionary)")
         return dictionary
     }
 
     convenience init?(dictionary: [String: AnyObject]) {
+        NSLog("\(__FUNCTION__): unpickling: \(dictionary)")
         var actualImage: NSImage?
 
         let maybeValue = dictionary[Keys.Image]
