@@ -13,7 +13,11 @@ let highlightedMarkAttributes = [NSForegroundColorAttributeName: markTextColor
     , NSBackgroundColorAttributeName: NSColor.orangeColor()]
 
 class JobView: NSImageView {
-    var job = Job(image: nil, cuts: [], selections: [])
+    var job = Job(image: nil, cuts: [], selections: []) {
+        didSet {
+            image = job.image
+        }
+    }
 
     var editingMode = EditingMode.NotEditing {
         didSet {
