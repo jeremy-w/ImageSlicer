@@ -213,6 +213,7 @@ extension JobView {
     override func mouseDown(theEvent: NSEvent) {
         let windowPoint = theEvent.locationInWindow
         let point = convertPoint(windowPoint, fromView: nil)
+        mouseAt = point
 
         if let mode = performEdit(point) {
             editingMode = mode
