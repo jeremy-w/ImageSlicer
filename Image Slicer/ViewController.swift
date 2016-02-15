@@ -111,8 +111,8 @@ extension ViewController {
                 directoryPicker.directoryURL = directoryURL
         }
 
-        window.beginSheet(directoryPicker) { response in
-            guard response == NSModalResponseContinue else {
+        directoryPicker.beginSheetModalForWindow(window) { response in
+            guard response == NSFileHandlingPanelOKButton else {
                 NSLog("user canceled export")
                 return
             }
