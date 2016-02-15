@@ -51,9 +51,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let type = try! controller.typeForContentsOfURL(URL)
         NSLog("\(file): has type \(type)")
         controller.openDocumentWithContentsOfURL(URL, display: true) {
-        (document, ok, error) -> Void in
-            let result: AnyObject? = ok ? document : error
-            NSLog("opening \(file): \(ok) \(result)")
+        (document, alreadyOpen, error) -> Void in
+            let result: AnyObject? = document ?? error
+            NSLog("opening \(file): already open? \(alreadyOpen) - result \(result)")
 
             if let error = error {
                 NSApp.presentError(error)
