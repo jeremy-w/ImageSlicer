@@ -222,6 +222,15 @@ extension JobView {
     }
 
 
+    func editHighlightedMark(mark: ExportSelection) {
+        let rect = rectFor(mark, attributes: highlightedMarkAttributes)
+        editMark(mark, rect: rect) { didRename in
+            guard didRename else { return }
+            self.needsDisplay = true
+        }
+    }
+
+
     /// - returns: next mode to change to, if any
     func performEdit(point: CGPoint) -> EditingMode? {
         switch editingMode {
@@ -229,10 +238,7 @@ extension JobView {
             if let mark = highlightedSelection {
                 let rect = rectFor(mark, attributes: highlightedMarkAttributes)
                 if CGRectContainsPoint(rect, point) {
-                    editMark(mark, rect: rect) { didRename in
-                        guard didRename else { return }
-                        self.needsDisplay = true
-                    }
+                    editHighlightedMark(mark)
                 }
             }
             return nil
