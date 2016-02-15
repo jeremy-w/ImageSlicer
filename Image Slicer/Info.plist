@@ -9,12 +9,12 @@
 		<dict>
 			<key>CFBundleTypeExtensions</key>
 			<array>
-				<string>slicedImage</string>
+				<string>slicedimage</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string></string>
 			<key>CFBundleTypeName</key>
-			<string>com.jeremywsherman.SlicedImage</string>
+			<string>com.jeremywsherman.slicedimage</string>
 			<key>CFBundleTypeOSTypes</key>
 			<array>
 				<string>????</string>
@@ -23,7 +23,7 @@
 			<string>Editor</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>com.jeremywsherman.SlicedImage</string>
+				<string>com.jeremywsherman.slicedimage</string>
 			</array>
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>
@@ -71,12 +71,16 @@
 			<key>UTTypeDescription</key>
 			<string>Sliced Image</string>
 			<key>UTTypeIdentifier</key>
-			<string>com.jeremywsherman.SlicedImage</string>
+			<string>com.jeremywsherman.slicedimage</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
+				<key>com.apple.nspboard-type</key>
+				<array>
+					<string>com.jeremywsherman.slicedimage</string>
+				</array>
 				<key>public.filename-extension</key>
 				<array>
-					<string>slicedImage</string>
+					<string>slicedimage</string>
 				</array>
 			</dict>
 		</dict>
