@@ -9,6 +9,8 @@
 import Cocoa
 
 class Document: NSDocument {
+    static let nativeType = "com.jeremywsherman.SlicedImage"
+
     var job = Job(image: nil) {
         didSet {
             updateViewControllerJob()
