@@ -23,7 +23,9 @@ class ViewController: NSViewController {
             me.editName(mark, rect: rect, of: me.jobView, completion: completion)
         }
 
-        // Do any additional setup after loading the view.
+        if let job = job {
+            jobView.job = job
+        }
     }
 
     override var representedObject: AnyObject? {
@@ -32,7 +34,6 @@ class ViewController: NSViewController {
         }
     }
 
-
     var job: Job? {
         didSet {
             if let job = job {
@@ -40,8 +41,6 @@ class ViewController: NSViewController {
             }
         }
     }
-
-
 }
 
 
@@ -159,6 +158,7 @@ extension ViewController {
                 return
             }
 
+            NSLog("\(__FUNCTION__): \(self): renaming \(mark) to \"\(name)\"")
             me.job?.rename(mark, to: name)
             completion(true)
         }
