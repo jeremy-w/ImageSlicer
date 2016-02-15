@@ -36,10 +36,11 @@ class JobView: NSImageView {
 
 
     /// - returns: true if mark name changed (invalidates rect), false otherwise
-    var editMark: (ExportSelection) -> Bool = { _ in
-        NSLog("default mark handler does nothing")
-        return false
-    }
+    var editMark: (ExportSelection, rect: CGRect, completion: (Bool) -> Void) -> Void =
+        { _, _, completion in
+            NSLog("default mark handler does nothing")
+            completion(false)
+        }
 
     override var image: NSImage? {
         get {
@@ -223,7 +224,8 @@ extension JobView {
             if let mark = highlightedSelection {
                 let rect = rectFor(mark, attributes: highlightedMarkAttributes)
                 if CGRectContainsPoint(rect, point) {
-                    if editMark(mark) {
+                    editMark(mark, rect: rect) { didRename in
+                        guard didRename else { return }
                         self.needsDisplay = true
                     }
                 }

@@ -677,6 +677,70 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
+        <!--RenameViewController-->
+        <scene sceneID="BIu-ZX-2LV">
+            <objects>
+                <viewController title="RenameViewController" storyboardIdentifier="renamer" id="fIB-hU-PhY" customClass="RenameViewController" customModule="Image_Slicer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="fFW-Ux-XHg">
+                        <rect key="frame" x="0.0" y="0.0" width="202" height="88"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tkZ-8P-gf9">
+                                <rect key="frame" x="20" y="49" width="162" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="KOA-K8-vJI"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Untitled" drawsBackground="YES" id="M2A-LL-YVK">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qih-fy-dkB">
+                                <rect key="frame" x="128" y="13" width="60" height="32"/>
+                                <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="GAR-SC-NE7">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="okAction:" target="fIB-hU-PhY" id="0MC-tz-Pae"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Otn-aw-W5q">
+                                <rect key="frame" x="45" y="13" width="83" height="32"/>
+                                <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Hwu-0i-ivZ">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="cancelAction:" target="fIB-hU-PhY" id="VF5-K9-jHW"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Qih-fy-dkB" firstAttribute="top" secondItem="tkZ-8P-gf9" secondAttribute="bottom" constant="8" id="4M2-AB-Goy"/>
+                            <constraint firstAttribute="bottom" secondItem="Qih-fy-dkB" secondAttribute="bottom" constant="20" id="848-J3-Bwr"/>
+                            <constraint firstItem="tkZ-8P-gf9" firstAttribute="leading" secondItem="fFW-Ux-XHg" secondAttribute="leading" constant="20" id="Hqd-UY-TvN"/>
+                            <constraint firstAttribute="trailing" secondItem="Qih-fy-dkB" secondAttribute="trailing" constant="20" id="HuZ-p8-mbi"/>
+                            <constraint firstAttribute="trailing" secondItem="tkZ-8P-gf9" secondAttribute="trailing" constant="20" id="Mpj-5r-j8h"/>
+                            <constraint firstItem="Otn-aw-W5q" firstAttribute="baseline" secondItem="Qih-fy-dkB" secondAttribute="baseline" id="W8o-wZ-Y4b"/>
+                            <constraint firstItem="Qih-fy-dkB" firstAttribute="leading" secondItem="Otn-aw-W5q" secondAttribute="trailing" constant="12" id="hUx-EQ-UCe"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="nameField" destination="tkZ-8P-gf9" id="TSD-RR-aZh"/>
+                    </connections>
+                </viewController>
+                <customObject id="XhY-78-DnN" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="516" y="393"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>

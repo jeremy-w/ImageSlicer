@@ -14,8 +14,13 @@ class ViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        jobView.editMark = { [weak self] mark in
-            return self?.editName(mark) ?? false
+        jobView.editMark = { [weak self] mark, rect, completion in
+            guard let me = self else {
+                completion(false)
+                return
+            }
+
+            me.editName(mark, rect: rect, of: me.jobView, completion: completion)
         }
 
         // Do any additional setup after loading the view.
@@ -137,9 +142,26 @@ extension ViewController {
 
 
 extension ViewController {
-    func editName(mark: ExportSelection) -> Bool {
+    func editName(
+        mark: ExportSelection,
+        rect: CGRect,
+        of view: NSView,
+        completion: (Bool) -> Void
+    ) {
         NSLog("\(__FUNCTION__): \(mark)")
-        // TODO: present popover (to be added to storyboard)
-        return false
+        guard let renamer = storyboard?.instantiateControllerWithIdentifier("renamer") as?RenameViewController else {
+            fatalError("failed to instantiate renamer")
+        }
+
+        renamer.configure(mark.name) { [weak self] name in
+            guard name != mark.name, let me = self else {
+                completion(false)
+                return
+            }
+
+            me.job?.rename(mark, to: name)
+            completion(true)
+        }
+        presentViewController(renamer, asPopoverRelativeToRect: rect, ofView: view, preferredEdge: .MinY, behavior: .Semitransient)
     }
 }

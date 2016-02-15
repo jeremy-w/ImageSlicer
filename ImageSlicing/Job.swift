@@ -35,6 +35,13 @@ class Job {
         return subimages
     }
 
+    func rename(mark: ExportSelection, to name: String) {
+        guard let index = selections.indexOf(mark) else { return }
+        let oldMark = selections[index]
+        let renamedMark = ExportSelection(around: oldMark.around, name: name)
+        selections.replaceRange(Range(start: index, end: index + 1), with: [renamedMark])
+    }
+
     /// - returns: the file URLs created
     func exportSelectedSubimages(directory: NSURL, dryRun: Bool) -> [NSURL] {
         var created: [NSURL] = []

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F0E89621C716C71007F1568 /* RenameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0E89611C716C71007F1568 /* RenameViewController.swift */; };
 		3F70EAA81C6F9C9500972CEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EAA71C6F9C9500972CEB /* AppDelegate.swift */; };
 		3F70EAAA1C6F9C9500972CEB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EAA91C6F9C9500972CEB /* ViewController.swift */; };
 		3F70EAAC1C6F9C9500972CEB /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EAAB1C6F9C9500972CEB /* Document.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3F0E89611C716C71007F1568 /* RenameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenameViewController.swift; sourceTree = "<group>"; };
 		3F70EAA41C6F9C9500972CEB /* Image Slicer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Image Slicer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F70EAA71C6F9C9500972CEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F70EAA91C6F9C9500972CEB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 			children = (
 				3F70EAA71C6F9C9500972CEB /* AppDelegate.swift */,
 				3F70EAA91C6F9C9500972CEB /* ViewController.swift */,
+				3F0E89611C716C71007F1568 /* RenameViewController.swift */,
 				3F70EAAB1C6F9C9500972CEB /* Document.swift */,
 				3F70EB041C6FB76600972CEB /* JobView.swift */,
 				3F70EAAD1C6F9C9500972CEB /* Assets.xcassets */,
@@ -254,6 +257,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F0E89621C716C71007F1568 /* RenameViewController.swift in Sources */,
 				3F70EB031C6FB74000972CEB /* ExportSelection.swift in Sources */,
 				3F70EAAA1C6F9C9500972CEB /* ViewController.swift in Sources */,
 				3F70EB001C6FB74000972CEB /* Cut.swift in Sources */,
