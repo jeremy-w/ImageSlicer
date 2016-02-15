@@ -48,8 +48,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
 
-        let type = try! controller.typeForContentsOfURL(URL)
-        NSLog("\(file): has type \(type)")
+        if let type = try? controller.typeForContentsOfURL(URL) {
+            NSLog("\(file): has type \(type)")
+        }
+
         controller.openDocumentWithContentsOfURL(URL, display: true) {
         (document, alreadyOpen, error) -> Void in
             let result: AnyObject? = document ?? error
