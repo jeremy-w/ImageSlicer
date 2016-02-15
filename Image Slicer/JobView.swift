@@ -8,7 +8,9 @@ enum EditingMode {
     case DeletingMark
 }
 
-let MarkSelectionBoundary: CGFloat = 50 /* pt */
+let markTextColor = NSColor.blueColor()
+let highlightedMarkAttributes = [NSForegroundColorAttributeName: markTextColor
+    , NSBackgroundColorAttributeName: NSColor.orangeColor()]
 
 class JobView: NSImageView {
     var job = Job(image: nil, cuts: [], selections: [])
@@ -122,7 +124,7 @@ extension JobView {
         NSColor.redColor().set()
         markCutPoints()
 
-        labelSelections(NSColor.blueColor())
+        labelSelections(markTextColor)
     }
 
 
@@ -177,8 +179,7 @@ extension JobView {
 
     func labelSelections(textColor: NSColor) {
         let normalAttributes = [NSForegroundColorAttributeName: textColor]
-        let highlightedAttributes = [NSForegroundColorAttributeName: textColor
-            , NSBackgroundColorAttributeName: NSColor.orangeColor()]
+        let highlightedAttributes = highlightedMarkAttributes
         let highlighted = highlightedSelection
         for selection in job.selections {
             let shouldHighlight = highlighted.map { $0 == selection } ?? false
@@ -220,14 +221,11 @@ extension JobView {
         switch editingMode {
         case .NotEditing:
             if let mark = highlightedSelection {
-                let dx = mark.around.x - point.x
-                let dy = mark.around.y - point.y
-                guard dx*dx + dx*dy < MarkSelectionBoundary*MarkSelectionBoundary else {
-                    return nil
-                }
-
-                if editMark(mark) {
-                    self.needsDisplay = true
+                let rect = rectFor(mark, attributes: highlightedMarkAttributes)
+                if CGRectContainsPoint(rect, point) {
+                    if editMark(mark) {
+                        self.needsDisplay = true
+                    }
                 }
             }
             return nil
