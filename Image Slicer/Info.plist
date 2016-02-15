@@ -68,6 +68,10 @@
 	<key>UTExportedTypeDeclarations</key>
 	<array>
 		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+			</array>
 			<key>UTTypeDescription</key>
 			<string>Sliced Image</string>
 			<key>UTTypeIdentifier</key>
@@ -81,6 +85,10 @@
 				<key>public.filename-extension</key>
 				<array>
 					<string>slicedimage</string>
+				</array>
+				<key>public.mime-type</key>
+				<array>
+					<string>application/data</string>
 				</array>
 			</dict>
 		</dict>
