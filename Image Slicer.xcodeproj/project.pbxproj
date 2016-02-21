@@ -47,6 +47,8 @@
 
 /* Begin PBXFileReference section */
 		3F0E89611C716C71007F1568 /* RenameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenameViewController.swift; sourceTree = "<group>"; };
+		3F0E89631C7A5FE6007F1568 /* LICENSE-MPLv2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "LICENSE-MPLv2.txt"; sourceTree = "<group>"; };
+		3F0E89641C7A5FE6007F1568 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3F70EAA41C6F9C9500972CEB /* Image Slicer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Image Slicer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F70EAA71C6F9C9500972CEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F70EAA91C6F9C9500972CEB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +93,8 @@
 		3F70EA9B1C6F9C9500972CEB = {
 			isa = PBXGroup;
 			children = (
+				3F0E89641C7A5FE6007F1568 /* README.md */,
+				3F0E89631C7A5FE6007F1568 /* LICENSE-MPLv2.txt */,
 				3F70EAC61C6F9D0700972CEB /* Image Slicer.playground */,
 				3F70EAA61C6F9C9500972CEB /* Image Slicer */,
 				3F70EABA1C6F9C9600972CEB /* Image SlicerTests */,
