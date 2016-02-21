@@ -1,5 +1,11 @@
 //: Playground - noun: a place where people can play
 
+//: Copyright (c) 2016 Jeremy W. Sherman. Released with NO WARRANTY.
+//:
+//: This Source Code Form is subject to the terms of the Mozilla Public
+//: License, v. 2.0. If a copy of the MPL was not distributed with this
+//: file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
 import Cocoa
 
 var str = "Hello, playground"
@@ -209,4 +215,5 @@ job.selections.append(ExportSelection(around: CGPoint(x: 80, y: 0), name: "dad")
 
 var display = ImageSliceJobView(job: job)
 
+//: Dry-run of exporting should list an image per mark
 job.exportSelectedSubimages(NSURL(fileURLWithPath: NSHomeDirectory(), isDirectory: true), dryRun: true)
