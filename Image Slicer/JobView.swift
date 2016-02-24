@@ -264,17 +264,15 @@ extension JobView {
         case .DeletingCut:
             if let (_, index) = cutNearest(point) {
                     job.cuts.removeAtIndex(index)
-                    return .NotEditing
             }
+            return .NotEditing
 
         case .DeletingMark:
             if let (_, index) = markNearest(point) {
                     job.selections.removeAtIndex(index)
-                    return .NotEditing
             }
+            return .NotEditing
         }
-
-        fatalError("somehow made it past an exhaustive switch-case with editingMode: \(editingMode)")
     }
 
 
