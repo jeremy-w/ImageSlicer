@@ -26,9 +26,7 @@ class ViewController: NSViewController {
             me.editName(mark, rect: rect, of: me.jobView, completion: completion)
         }
 
-        if let job = job {
-            jobView.job = job
-        }
+        configureJob()
     }
 
     override var representedObject: AnyObject? {
@@ -39,10 +37,15 @@ class ViewController: NSViewController {
 
     var job: Job? {
         didSet {
-            if let job = job {
-                jobView.job = job
-            }
+            configureJob()
         }
+    }
+
+    private func configureJob() {
+        guard let job = self.job else { return }
+
+        job.undoing = jobView.window?.undoManager
+        jobView.job = job
     }
 }
 
