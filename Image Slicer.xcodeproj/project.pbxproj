@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3F0E89621C716C71007F1568 /* RenameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0E89611C716C71007F1568 /* RenameViewController.swift */; };
 		3F0E89661C7A62C7007F1568 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 3F0E89651C7A62C7007F1568 /* Credits.html */; };
+		3F0E89A51C7E7430007F1568 /* Undoing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0E89A41C7E7430007F1568 /* Undoing.swift */; };
 		3F70EAA81C6F9C9500972CEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EAA71C6F9C9500972CEB /* AppDelegate.swift */; };
 		3F70EAAA1C6F9C9500972CEB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EAA91C6F9C9500972CEB /* ViewController.swift */; };
 		3F70EAAC1C6F9C9500972CEB /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EAAB1C6F9C9500972CEB /* Document.swift */; };
@@ -51,6 +52,7 @@
 		3F0E89631C7A5FE6007F1568 /* LICENSE-MPLv2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "LICENSE-MPLv2.txt"; sourceTree = "<group>"; };
 		3F0E89641C7A5FE6007F1568 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3F0E89651C7A62C7007F1568 /* Credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Credits.html; sourceTree = "<group>"; };
+		3F0E89A41C7E7430007F1568 /* Undoing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Undoing.swift; sourceTree = "<group>"; };
 		3F70EAA41C6F9C9500972CEB /* Image Slicer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Image Slicer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F70EAA71C6F9C9500972CEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F70EAA91C6F9C9500972CEB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				3F70EAF91C6FB5F300972CEB /* Orientation.swift */,
 				3F70EAF71C6FB5F300972CEB /* Subimage.swift */,
 				3F70EAF51C6FB5F300972CEB /* ExportSelection.swift */,
+				3F0E89A41C7E7430007F1568 /* Undoing.swift */,
 			);
 			path = ImageSlicing;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				3F70EAAA1C6F9C9500972CEB /* ViewController.swift in Sources */,
 				3F70EB001C6FB74000972CEB /* Cut.swift in Sources */,
 				3F70EAA81C6F9C9500972CEB /* AppDelegate.swift in Sources */,
+				3F0E89A51C7E7430007F1568 /* Undoing.swift in Sources */,
 				3F70EB021C6FB74000972CEB /* Subimage.swift in Sources */,
 				3F70EAAC1C6F9C9500972CEB /* Document.swift in Sources */,
 				3F70EB051C6FB76600972CEB /* JobView.swift in Sources */,
