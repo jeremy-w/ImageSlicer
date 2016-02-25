@@ -257,19 +257,19 @@ extension JobView {
         case .AddingMark:
             let name = "mark \(job.selections.count + 1)"
             let mark = ExportSelection(around: point, name: name)
-            job.selections.append(mark)
+            job.add(mark)
             editHighlightedMark(mark)
             return .NotEditing
 
         case .DeletingCut:
-            if let (_, index) = cutNearest(point) {
-                    job.cuts.removeAtIndex(index)
+            if let (cut, _) = cutNearest(point) {
+                job.remove(cut)
             }
             return .NotEditing
 
         case .DeletingMark:
-            if let (_, index) = markNearest(point) {
-                    job.selections.removeAtIndex(index)
+            if let (mark, _) = markNearest(point) {
+                job.remove(mark)
             }
             return .NotEditing
         }

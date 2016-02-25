@@ -15,7 +15,7 @@
 		3F70EAAC1C6F9C9500972CEB /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EAAB1C6F9C9500972CEB /* Document.swift */; };
 		3F70EAAE1C6F9C9500972CEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F70EAAD1C6F9C9500972CEB /* Assets.xcassets */; };
 		3F70EAB11C6F9C9500972CEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F70EAAF1C6F9C9500972CEB /* Main.storyboard */; };
-		3F70EABC1C6F9C9600972CEB /* Image_SlicerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EABB1C6F9C9600972CEB /* Image_SlicerTests.swift */; };
+		3F70EABC1C6F9C9600972CEB /* UndoingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EABB1C6F9C9600972CEB /* UndoingTests.swift */; };
 		3F70EAFF1C6FB74000972CEB /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EAF81C6FB5F300972CEB /* Job.swift */; };
 		3F70EB001C6FB74000972CEB /* Cut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EAF61C6FB5F300972CEB /* Cut.swift */; };
 		3F70EB011C6FB74000972CEB /* Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EAF91C6FB5F300972CEB /* Orientation.swift */; };
@@ -61,7 +61,7 @@
 		3F70EAB01C6F9C9500972CEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3F70EAB21C6F9C9500972CEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F70EAB71C6F9C9600972CEB /* Image SlicerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Image SlicerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3F70EABB1C6F9C9600972CEB /* Image_SlicerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image_SlicerTests.swift; sourceTree = "<group>"; };
+		3F70EABB1C6F9C9600972CEB /* UndoingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndoingTests.swift; sourceTree = "<group>"; };
 		3F70EABD1C6F9C9600972CEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F70EAC61C6F9D0700972CEB /* Image Slicer.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Image Slicer.playground"; sourceTree = "<group>"; };
 		3F70EAD91C6FB56E00972CEB /* ImageSlicing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageSlicing.h; sourceTree = "<group>"; };
@@ -136,7 +136,7 @@
 		3F70EABA1C6F9C9600972CEB /* Image SlicerTests */ = {
 			isa = PBXGroup;
 			children = (
-				3F70EABB1C6F9C9600972CEB /* Image_SlicerTests.swift */,
+				3F70EABB1C6F9C9600972CEB /* UndoingTests.swift */,
 				3F70EABD1C6F9C9600972CEB /* Info.plist */,
 			);
 			path = "Image SlicerTests";
@@ -286,7 +286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F70EABC1C6F9C9600972CEB /* Image_SlicerTests.swift in Sources */,
+				3F70EABC1C6F9C9600972CEB /* UndoingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

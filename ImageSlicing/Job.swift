@@ -10,6 +10,7 @@ class Job {
     var image: NSImage?
     var cuts: [Cut]
     var selections: [ExportSelection]
+    var undoing: Undoing?
 
     init(image: NSImage?, cuts: [Cut] = [], selections: [ExportSelection] = []) {
         self.image = image
@@ -17,8 +18,52 @@ class Job {
         self.selections = selections
     }
 
-    func add(cut: Cut) {
-        cuts.append(cut)
+    func add(cut: Cut, index: Int? = nil) {
+        let target = index ?? cuts.count
+        cuts.insert(cut, atIndex: target)
+        undo {
+            $0.removeCutAt(target)
+        }
+    }
+
+    func remove(cut: Cut) {
+        guard let index = cuts.indexOf(cut) else {
+            NSLog("\(__FUNCTION__): Ignoring request to remove absent cut \(cut)")
+            return
+        }
+
+        removeCutAt(index)
+    }
+
+    func removeCutAt(index: Int) {
+        let cut = cuts.removeAtIndex(index)
+        undo {
+            $0.add(cut, index: index)
+        }
+    }
+
+    func add(mark: ExportSelection, index: Int? = nil) {
+        let target = index ?? selections.count
+        selections.insert(mark, atIndex: target)
+        undo {
+            $0.removeMarkAt(target)
+        }
+    }
+
+    func remove(mark: ExportSelection) {
+        guard let index = selections.indexOf(mark) else {
+            NSLog("\(__FUNCTION__): Ignoring request to remove absent mark \(mark)")
+            return
+        }
+
+        removeMarkAt(index)
+    }
+
+    func removeMarkAt(index: Int) {
+        let mark = selections.removeAtIndex(index)
+        undo {
+            $0.add(mark, index: index)
+        }
     }
 
     var subimages: [Subimage] {
@@ -45,7 +90,12 @@ class Job {
         guard let index = selections.indexOf(mark) else { return }
         let oldMark = selections[index]
         let renamedMark = ExportSelection(around: oldMark.around, name: name)
-        selections.replaceRange(Range(start: index, end: index + 1), with: [renamedMark])
+        let markRange = Range(start: index, end: index + 1)
+        selections.replaceRange(markRange, with: [renamedMark])
+        undo {
+            $0.selections.replaceRange(markRange, with: [oldMark])
+            $0.undo { $0.selections.replaceRange(markRange, with: [renamedMark]) }
+        }
     }
 
     /// - returns: the file URLs created
@@ -125,6 +175,19 @@ class Job {
 }
 
 
+// MARK: - Undo
+extension Job {
+    func undo(closure: (Job) -> Void) {
+        guard let undoing = undoing else { return }
+        undoing.record { [weak self] in
+            guard let me = self else { return }
+            closure(me)
+        }
+    }
+}
+
+
+// MARK: - De/Serialization
 extension Job {
     class Keys {
         static let Image = "image"
