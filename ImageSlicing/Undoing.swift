@@ -13,14 +13,14 @@ protocol Undoing {
 
 extension NSUndoManager: Undoing {
     func record(undo: () -> Void) {
-        let target = PerformableClosure(undo)
-        self.registerUndoWithTarget(target, selector: Selector("perform"), object: nil)
+        let closure = PerformableClosure(undo)
+        self.registerUndoWithTarget(PerformableClosure.self, selector: Selector("perform:"), object: closure)
     }
 }
 
 
 /// Added to provide undo support.
-class PerformableClosure {
+class PerformableClosure: NSObject {
     let closure: () -> Void
     init(_ closure: () -> Void) {
         self.closure = closure
@@ -29,5 +29,10 @@ class PerformableClosure {
     @objc
     func perform() {
         closure()
+    }
+
+    @objc
+    class func perform(closure: PerformableClosure) {
+        closure.perform()
     }
 }
