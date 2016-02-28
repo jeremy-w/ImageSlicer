@@ -123,25 +123,51 @@ extension ViewController {
                 return
             }
 
-            guard let url = directoryPicker.URL else {
+            guard let directory = directoryPicker.URL else {
                 NSLog("user failed to select directory")
                 return
             }
 
-            NSLog("exporting to: \(url.lastPathComponent) at \(url.absoluteURL)")
-            if let exported = self.job?.exportSelectedSubimages(url, dryRun: false) where !exported.isEmpty {
-                // (jws/2016-02-28)FIXME: This doesn't belong here. Not really on JobView either. We need a new AnkiImport type, I guess.
-                let text = self.job?.ankiImportTextForImagesAt(exported)
-                let title = self.view.window?.windowController?.document?.displayName ?? "sliced-images"
-                let importFileURL = url.URLByAppendingPathComponent("\(title)-for-anki-import.txt")
+            NSLog("exporting to: \(directory.lastPathComponent) at \(directory.absoluteURL)")
+            if let exported = self.job?.exportSelectedSubimages(directory, dryRun: false) {
                 do {
-                    let _ = try text?.writeToURL(importFileURL, atomically: true, encoding: NSUTF8StringEncoding)
+                    try self.exportAnkiTextTo(directory, forImages: exported)
                 } catch {
-                    NSLog("\(__FUNCTION__): export of anki text to \(importFileURL) failed: \(error)")
+                    self.presentErrorPreferringModal(error)
                 }
             }
         }
     }
+
+
+    func presentErrorPreferringModal(error: ErrorType) {
+        let nserror = error as NSError
+        guard viewLoaded, let window = self.view.window else {
+            presentError(nserror)
+            return
+        }
+
+        presentError(nserror, modalForWindow: window, delegate: nil, didPresentSelector: nil, contextInfo: nil)
+    }
+
+
+    func exportAnkiTextTo(directory: NSURL, forImages images: [NSURL]) throws {
+        guard !images.isEmpty else {
+            return
+        }
+
+        // (jws/2016-02-28)FIXME: This doesn't belong here. Not really on JobView either. We need a new AnkiImport type, I guess.
+        let text = self.job?.ankiImportTextForImagesAt(images)
+        let title = self.view.window?.windowController?.document?.displayName ?? "sliced-images"
+        let importFileURL = directory.URLByAppendingPathComponent("\(title)-for-anki-import.txt")
+        do {
+            let _ = try text?.writeToURL(importFileURL, atomically: true, encoding: NSUTF8StringEncoding)
+        } catch {
+            NSLog("\(__FUNCTION__): export of anki text to \(importFileURL) failed: \(error)")
+            throw error
+        }
+    }
+
 
     static func exportDirectoryPicker() -> NSOpenPanel {
         let directoryPicker = NSOpenPanel()
