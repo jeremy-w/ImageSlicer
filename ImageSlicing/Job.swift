@@ -135,6 +135,25 @@ class Job {
     }
 
 
+    /// - returns: Text appropriate for importing into Anki.
+    ///   The tags default to `image-slicer`.
+    ///   The user will have to drop the files into their collections.media folder
+    ///    manually for now, and handle any renaming on filename conflict.
+    func ankiImportTextForImagesAt(urls: [NSURL]) -> NSString {
+        let noteTags = "tags:image-slicer"
+        let imageTags: [String] = urls.flatMap({ (url: NSURL) -> [String] in
+            guard
+                let filename = url.lastPathComponent,
+                title = url.URLByDeletingPathExtension?.lastPathComponent else { return [] }
+            let tag = "<img src=\"\(filename)\">"
+            return ["\(title),\(tag)"]
+        })
+        let imageLines = imageTags.joinWithSeparator("\n")
+        let text = "\(noteTags)\n\(imageLines)\n"
+        return text
+    }
+
+
     func bitmapFor(subregion: Subimage) -> NSBitmapImageRep? {
         guard let image = image else {
             return nil
