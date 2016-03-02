@@ -15,7 +15,9 @@ extension NSUndoManager: Undoing {
     func record(actionName: String, undo: () -> Void) {
         let closure = PerformableClosure(undo)
         self.registerUndoWithTarget(PerformableClosure.self, selector: Selector("perform:"), object: closure)
-        self.setActionName(actionName)
+        if !self.undoing && !self.redoing {
+            self.setActionName(actionName)
+        }
     }
 }
 
