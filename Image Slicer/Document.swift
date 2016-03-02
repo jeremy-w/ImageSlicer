@@ -20,16 +20,6 @@ class Document: NSDocument {
         }
     }
 
-    override init() {
-        super.init()
-        // Add your subclass-specific initialization here.
-    }
-
-    override func windowControllerDidLoadNib(aController: NSWindowController) {
-        super.windowControllerDidLoadNib(aController)
-        // Add any code here that needs to be executed once the windowController has loaded the document's window.
-    }
-
     override class func autosavesInPlace() -> Bool {
         return true
     }
@@ -48,6 +38,10 @@ class Document: NSDocument {
             vc = windowController.contentViewController as? JobViewController {
                 vc.job = self.job
         }
+    }
+
+    override static func canConcurrentlyReadDocumentsOfType(typeName: String) -> Bool {
+        return typeName == nativeType
     }
 
     override func dataOfType(typeName: String) throws -> NSData {
