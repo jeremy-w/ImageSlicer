@@ -45,7 +45,7 @@ class Document: NSDocument {
     func updateViewControllerJob() {
         if let
             windowController = self.windowControllers.first,
-            vc = windowController.contentViewController as? ViewController {
+            vc = windowController.contentViewController as? JobViewController {
                 vc.job = self.job
         }
     }

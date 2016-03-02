@@ -777,10 +777,10 @@ Gw
             </objects>
             <point key="canvasLocation" x="516" y="393"/>
         </scene>
-        <!--View Controller-->
+        <!--Job View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="5gI-5U-AMq" customClass="ViewController" customModule="Image_Slicer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="5gI-5U-AMq" customClass="JobViewController" customModule="Image_Slicer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="ERx-hH-rdd">
                         <rect key="frame" x="0.0" y="0.0" width="626" height="193"/>
                         <autoresizingMask key="autoresizingMask"/>

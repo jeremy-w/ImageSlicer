@@ -11,7 +11,7 @@
 		3F0E89661C7A62C7007F1568 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 3F0E89651C7A62C7007F1568 /* Credits.html */; };
 		3F0E89A51C7E7430007F1568 /* Undoing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0E89A41C7E7430007F1568 /* Undoing.swift */; };
 		3F70EAA81C6F9C9500972CEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EAA71C6F9C9500972CEB /* AppDelegate.swift */; };
-		3F70EAAA1C6F9C9500972CEB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EAA91C6F9C9500972CEB /* ViewController.swift */; };
+		3F70EAAA1C6F9C9500972CEB /* JobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EAA91C6F9C9500972CEB /* JobViewController.swift */; };
 		3F70EAAC1C6F9C9500972CEB /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EAAB1C6F9C9500972CEB /* Document.swift */; };
 		3F70EAAE1C6F9C9500972CEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F70EAAD1C6F9C9500972CEB /* Assets.xcassets */; };
 		3F70EAB11C6F9C9500972CEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F70EAAF1C6F9C9500972CEB /* Main.storyboard */; };
@@ -55,7 +55,7 @@
 		3F0E89A41C7E7430007F1568 /* Undoing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Undoing.swift; sourceTree = "<group>"; };
 		3F70EAA41C6F9C9500972CEB /* Image Slicer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Image Slicer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F70EAA71C6F9C9500972CEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3F70EAA91C6F9C9500972CEB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3F70EAA91C6F9C9500972CEB /* JobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobViewController.swift; sourceTree = "<group>"; };
 		3F70EAAB1C6F9C9500972CEB /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		3F70EAAD1C6F9C9500972CEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F70EAB01C6F9C9500972CEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -121,7 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				3F70EAA71C6F9C9500972CEB /* AppDelegate.swift */,
-				3F70EAA91C6F9C9500972CEB /* ViewController.swift */,
+				3F70EAA91C6F9C9500972CEB /* JobViewController.swift */,
 				3F0E89611C716C71007F1568 /* RenameViewController.swift */,
 				3F70EAAB1C6F9C9500972CEB /* Document.swift */,
 				3F70EB041C6FB76600972CEB /* JobView.swift */,
@@ -270,7 +270,7 @@
 			files = (
 				3F0E89621C716C71007F1568 /* RenameViewController.swift in Sources */,
 				3F70EB031C6FB74000972CEB /* ExportSelection.swift in Sources */,
-				3F70EAAA1C6F9C9500972CEB /* ViewController.swift in Sources */,
+				3F70EAAA1C6F9C9500972CEB /* JobViewController.swift in Sources */,
 				3F70EB001C6FB74000972CEB /* Cut.swift in Sources */,
 				3F70EAA81C6F9C9500972CEB /* AppDelegate.swift in Sources */,
 				3F0E89A51C7E7430007F1568 /* Undoing.swift in Sources */,

@@ -11,7 +11,7 @@
 
 import Cocoa
 
-class ViewController: NSViewController {
+class JobViewController: NSViewController {
 
     @IBOutlet var jobView: JobView!
 
@@ -52,7 +52,7 @@ class ViewController: NSViewController {
 
 
 // MARK: - Cut Management
-extension ViewController {
+extension JobViewController {
     @IBAction func addCutHorizontalAction(sender: NSButton) {
         jobView.editingMode = .AddingCut(.Horizontally)
     }
@@ -81,7 +81,7 @@ extension ViewController {
 
 
 // MARK: - Mark Management
-extension ViewController {
+extension JobViewController {
     @IBAction func markSliceForExportAction(sender: AnyObject) {
         jobView.editingMode = .AddingMark
     }
@@ -103,7 +103,7 @@ extension ViewController {
 
 
 // MARK: - Export
-extension ViewController {
+extension JobViewController {
     @IBAction func exportMarkedSlicesAction(sender: AnyObject) {
         guard let window = view.window else {
             NSLog("\(__FUNCTION__): \(self): we have no window!")
@@ -162,7 +162,7 @@ extension ViewController {
 }
 
 
-extension ViewController {
+extension JobViewController {
     func editName(
         mark: ExportSelection,
         rect: CGRect,
