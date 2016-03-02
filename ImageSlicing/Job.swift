@@ -21,7 +21,7 @@ class Job {
     func add(cut: Cut, index: Int? = nil) {
         let target = index ?? cuts.count
         cuts.insert(cut, atIndex: target)
-        undo {
+        undo(NSLocalizedString("Add Cut", comment: "job action")) {
             $0.removeCutAt(target)
         }
     }
@@ -37,7 +37,7 @@ class Job {
 
     func removeCutAt(index: Int) {
         let cut = cuts.removeAtIndex(index)
-        undo {
+        undo(NSLocalizedString("Delete Cut", comment: "job action")) {
             $0.add(cut, index: index)
         }
     }
@@ -45,7 +45,7 @@ class Job {
     func add(mark: ExportSelection, index: Int? = nil) {
         let target = index ?? selections.count
         selections.insert(mark, atIndex: target)
-        undo {
+        undo(NSLocalizedString("Add Mark", comment: "job action")) {
             $0.removeMarkAt(target)
         }
     }
@@ -61,7 +61,7 @@ class Job {
 
     func removeMarkAt(index: Int) {
         let mark = selections.removeAtIndex(index)
-        undo {
+        undo(NSLocalizedString("Delete Mark", comment: "job action")) {
             $0.add(mark, index: index)
         }
     }
@@ -92,9 +92,13 @@ class Job {
         let renamedMark = ExportSelection(around: oldMark.around, name: name)
         let markRange = Range(start: index, end: index + 1)
         selections.replaceRange(markRange, with: [renamedMark])
-        undo {
+
+        let actionName = NSLocalizedString("Rename Mark", comment: "job action")
+        undo(actionName) {
             $0.selections.replaceRange(markRange, with: [oldMark])
-            $0.undo { $0.selections.replaceRange(markRange, with: [renamedMark]) }
+            $0.undo(actionName) {
+                $0.selections.replaceRange(markRange, with: [renamedMark])
+            }
         }
     }
 
@@ -177,7 +181,7 @@ class Job {
 
 // MARK: - Undo
 extension Job {
-    func undo(actionName: String = "", closure: (Job) -> Void) {
+    func undo(actionName: String, closure: (Job) -> Void) {
         guard let undoing = undoing else { return }
         undoing.record(actionName) { [weak self] in
             guard let me = self else { return }
