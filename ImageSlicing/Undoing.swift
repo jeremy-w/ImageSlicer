@@ -7,14 +7,15 @@
 import Foundation
 
 protocol Undoing {
-    func record(undo: () -> Void)
+    func record(actionName: String, undo: () -> Void)
 }
 
 
 extension NSUndoManager: Undoing {
-    func record(undo: () -> Void) {
+    func record(actionName: String, undo: () -> Void) {
         let closure = PerformableClosure(undo)
         self.registerUndoWithTarget(PerformableClosure.self, selector: Selector("perform:"), object: closure)
+        self.setActionName(actionName)
     }
 }
 

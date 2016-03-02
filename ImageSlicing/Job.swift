@@ -177,9 +177,9 @@ class Job {
 
 // MARK: - Undo
 extension Job {
-    func undo(closure: (Job) -> Void) {
+    func undo(actionName: String = "", closure: (Job) -> Void) {
         guard let undoing = undoing else { return }
-        undoing.record { [weak self] in
+        undoing.record(actionName) { [weak self] in
             guard let me = self else { return }
             closure(me)
         }
