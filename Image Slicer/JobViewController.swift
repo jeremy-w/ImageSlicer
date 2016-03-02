@@ -12,8 +12,8 @@
 import Cocoa
 
 class JobViewController: NSViewController {
-
     @IBOutlet var jobView: JobView!
+    var notificationCenter = NSNotificationCenter.defaultCenter()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,12 +29,6 @@ class JobViewController: NSViewController {
         configureJob()
     }
 
-    override var representedObject: AnyObject? {
-        didSet {
-            // Update the view, if already loaded.
-        }
-    }
-
     var job: Job? {
         didSet {
             configureJob()
@@ -44,8 +38,46 @@ class JobViewController: NSViewController {
     private func configureJob() {
         guard let job = self.job else { return }
 
-        job.undoing = jobView.window?.undoManager
+        let undoManager = jobView.window?.undoManager
+        job.undoing = undoManager
         jobView.job = job
+
+        undoManagerDidChange(undoManager)
+    }
+
+    var document: Document? {
+        guard viewLoaded else { return nil }
+
+        let document = view.window?.windowController?.document as? Document
+        return document
+    }
+}
+
+
+// MARK: - Refresh on Undo/Redo
+extension JobViewController {
+    /// Unsubscribes from undo/redo notifications then,
+    /// if `undoManager` non-nil, subscribes to its notifications.
+    ///
+    /// Notification management is done through `notificationCenter`.
+    func undoManagerDidChange(undoManager: NSUndoManager?) {
+        let names = [NSUndoManagerDidUndoChangeNotification, NSUndoManagerDidRedoChangeNotification]
+        for name in names {
+            notificationCenter.removeObserver(self, name: name, object: nil)
+        }
+
+        guard let undoManager = undoManager else { return }
+        for name in names {
+            notificationCenter.addObserver(self, selector: Selector("markViewDirtyFollowingUndoOrRedo:"), name: name, object: undoManager)
+        }
+    }
+
+
+    /// Called as a result of an undo manager did undo/redo change notification.
+    func markViewDirtyFollowingUndoOrRedo(note: NSNotification) {
+        guard viewLoaded else { return }
+
+        view.needsDisplay = true
     }
 }
 
@@ -112,7 +144,7 @@ extension JobViewController {
         }
 
         let directoryPicker = self.dynamicType.exportDirectoryPicker()
-        if let document = view.window?.windowController?.document as? Document,
+        if let document = self.document,
             directoryURL = document.fileURL?.URLByDeletingLastPathComponent {
                 directoryPicker.directoryURL = directoryURL
         }
