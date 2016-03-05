@@ -22,6 +22,9 @@
 		3F70EB021C6FB74000972CEB /* Subimage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EAF71C6FB5F300972CEB /* Subimage.swift */; };
 		3F70EB031C6FB74000972CEB /* ExportSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EAF51C6FB5F300972CEB /* ExportSelection.swift */; };
 		3F70EB051C6FB76600972CEB /* JobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EB041C6FB76600972CEB /* JobView.swift */; };
+		3F7DB4651C8B97EC00D5DC68 /* GenerateThumbnailForURL.c in Sources */ = {isa = PBXBuildFile; fileRef = 3F7DB4641C8B97EC00D5DC68 /* GenerateThumbnailForURL.c */; };
+		3F7DB4671C8B97EC00D5DC68 /* GeneratePreviewForURL.c in Sources */ = {isa = PBXBuildFile; fileRef = 3F7DB4661C8B97EC00D5DC68 /* GeneratePreviewForURL.c */; };
+		3F7DB4691C8B97EC00D5DC68 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 3F7DB4681C8B97EC00D5DC68 /* main.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +77,11 @@
 		3F70EAF81C6FB5F300972CEB /* Job.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 		3F70EAF91C6FB5F300972CEB /* Orientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Orientation.swift; sourceTree = "<group>"; };
 		3F70EB041C6FB76600972CEB /* JobView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobView.swift; sourceTree = "<group>"; };
+		3F7DB4621C8B97EC00D5DC68 /* QuickLookSlicedImage.qlgenerator */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickLookSlicedImage.qlgenerator; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F7DB4641C8B97EC00D5DC68 /* GenerateThumbnailForURL.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = GenerateThumbnailForURL.c; sourceTree = "<group>"; };
+		3F7DB4661C8B97EC00D5DC68 /* GeneratePreviewForURL.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = GeneratePreviewForURL.c; sourceTree = "<group>"; };
+		3F7DB4681C8B97EC00D5DC68 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		3F7DB46A1C8B97EC00D5DC68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +93,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		3F70EAB41C6F9C9600972CEB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F7DB45E1C8B97EC00D5DC68 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -104,6 +119,7 @@
 				3F70EABA1C6F9C9600972CEB /* Image SlicerTests */,
 				3F70EAD81C6FB56E00972CEB /* ImageSlicing */,
 				3F70EAE61C6FB56E00972CEB /* ImageSlicingTests */,
+				3F7DB4631C8B97EC00D5DC68 /* QuickLookSlicedImage */,
 				3F70EAA51C6F9C9500972CEB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -113,6 +129,7 @@
 			children = (
 				3F70EAA41C6F9C9500972CEB /* Image Slicer.app */,
 				3F70EAB71C6F9C9600972CEB /* Image SlicerTests.xctest */,
+				3F7DB4621C8B97EC00D5DC68 /* QuickLookSlicedImage.qlgenerator */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -166,7 +183,28 @@
 			path = ImageSlicingTests;
 			sourceTree = "<group>";
 		};
+		3F7DB4631C8B97EC00D5DC68 /* QuickLookSlicedImage */ = {
+			isa = PBXGroup;
+			children = (
+				3F7DB4641C8B97EC00D5DC68 /* GenerateThumbnailForURL.c */,
+				3F7DB4661C8B97EC00D5DC68 /* GeneratePreviewForURL.c */,
+				3F7DB4681C8B97EC00D5DC68 /* main.c */,
+				3F7DB46A1C8B97EC00D5DC68 /* Info.plist */,
+			);
+			path = QuickLookSlicedImage;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		3F7DB45F1C8B97EC00D5DC68 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		3F70EAA31C6F9C9500972CEB /* Image Slicer */ = {
@@ -205,6 +243,24 @@
 			productReference = 3F70EAB71C6F9C9600972CEB /* Image SlicerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		3F7DB4611C8B97EC00D5DC68 /* QuickLookSlicedImage */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F7DB46B1C8B97EC00D5DC68 /* Build configuration list for PBXNativeTarget "QuickLookSlicedImage" */;
+			buildPhases = (
+				3F7DB45D1C8B97EC00D5DC68 /* Sources */,
+				3F7DB45E1C8B97EC00D5DC68 /* Frameworks */,
+				3F7DB45F1C8B97EC00D5DC68 /* Headers */,
+				3F7DB4601C8B97EC00D5DC68 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QuickLookSlicedImage;
+			productName = QuickLookSlicedImage;
+			productReference = 3F7DB4621C8B97EC00D5DC68 /* QuickLookSlicedImage.qlgenerator */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -221,6 +277,9 @@
 					3F70EAB61C6F9C9600972CEB = {
 						CreatedOnToolsVersion = 7.2.1;
 						TestTargetID = 3F70EAA31C6F9C9500972CEB;
+					};
+					3F7DB4611C8B97EC00D5DC68 = {
+						CreatedOnToolsVersion = 7.2.1;
 					};
 				};
 			};
@@ -239,6 +298,7 @@
 			targets = (
 				3F70EAA31C6F9C9500972CEB /* Image Slicer */,
 				3F70EAB61C6F9C9600972CEB /* Image SlicerTests */,
+				3F7DB4611C8B97EC00D5DC68 /* QuickLookSlicedImage */,
 			);
 		};
 /* End PBXProject section */
@@ -255,6 +315,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		3F70EAB51C6F9C9600972CEB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F7DB4601C8B97EC00D5DC68 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -287,6 +354,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F70EABC1C6F9C9600972CEB /* UndoingTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F7DB45D1C8B97EC00D5DC68 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F7DB4651C8B97EC00D5DC68 /* GenerateThumbnailForURL.c in Sources */,
+				3F7DB4671C8B97EC00D5DC68 /* GeneratePreviewForURL.c in Sources */,
+				3F7DB4691C8B97EC00D5DC68 /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +521,30 @@
 			};
 			name = Release;
 		};
+		3F7DB46C1C8B97EC00D5DC68 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = QuickLookSlicedImage/Info.plist;
+				INSTALL_PATH = /Library/QuickLook;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jeremywsherman.QuickLookSlicedImage;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = qlgenerator;
+			};
+			name = Debug;
+		};
+		3F7DB46D1C8B97EC00D5DC68 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = QuickLookSlicedImage/Info.plist;
+				INSTALL_PATH = /Library/QuickLook;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jeremywsherman.QuickLookSlicedImage;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = qlgenerator;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -473,6 +574,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		3F7DB46B1C8B97EC00D5DC68 /* Build configuration list for PBXNativeTarget "QuickLookSlicedImage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F7DB46C1C8B97EC00D5DC68 /* Debug */,
+				3F7DB46D1C8B97EC00D5DC68 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
