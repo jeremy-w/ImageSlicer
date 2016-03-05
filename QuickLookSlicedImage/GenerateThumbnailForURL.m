@@ -32,9 +32,11 @@ GenerateThumbnailForURL(
     @autoreleasepool {
         Thumbnail *thumbnail = [[Thumbnail alloc]
                                 initWithURL:CFBridgingRelease(url)
-                                contentType:CFBridgingRelease(contentTypeUTI)
-                                options:CFBridgingRelease(options)];
-        [thumbnail makeThumbnailAtMost:maxSize with:request];
+                                contentType:CFBridgingRelease(contentTypeUTI)];
+        [thumbnail
+         makeThumbnailAtMost:maxSize
+         with:request
+         options:CFBridgingRelease(options)];
     }
     return noErr;
 }

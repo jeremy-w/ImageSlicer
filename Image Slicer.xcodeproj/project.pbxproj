@@ -26,6 +26,16 @@
 		3F7DB4671C8B97EC00D5DC68 /* GeneratePreviewForURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7DB4661C8B97EC00D5DC68 /* GeneratePreviewForURL.m */; };
 		3F7DB4691C8B97EC00D5DC68 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 3F7DB4681C8B97EC00D5DC68 /* main.c */; };
 		3F7DB4701C8B9B7800D5DC68 /* QuickLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7DB46F1C8B9B7800D5DC68 /* QuickLook.swift */; };
+		3F7DB4711C8BA6A400D5DC68 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EAAB1C6F9C9500972CEB /* Document.swift */; };
+		3F7DB4721C8BA6A400D5DC68 /* JobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EB041C6FB76600972CEB /* JobView.swift */; };
+		3F7DB4731C8BA6A400D5DC68 /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EAF81C6FB5F300972CEB /* Job.swift */; };
+		3F7DB4741C8BA6A400D5DC68 /* Cut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EAF61C6FB5F300972CEB /* Cut.swift */; };
+		3F7DB4751C8BA6A400D5DC68 /* Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EAF91C6FB5F300972CEB /* Orientation.swift */; };
+		3F7DB4761C8BA6A400D5DC68 /* Subimage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EAF71C6FB5F300972CEB /* Subimage.swift */; };
+		3F7DB4771C8BA6A400D5DC68 /* ExportSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EAF51C6FB5F300972CEB /* ExportSelection.swift */; };
+		3F7DB4781C8BA6A400D5DC68 /* Undoing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0E89A41C7E7430007F1568 /* Undoing.swift */; };
+		3F7DB4791C8BA80E00D5DC68 /* JobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EAA91C6F9C9500972CEB /* JobViewController.swift */; };
+		3F7DB47A1C8BA81300D5DC68 /* RenameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0E89611C716C71007F1568 /* RenameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -366,10 +376,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F7DB4791C8BA80E00D5DC68 /* JobViewController.swift in Sources */,
+				3F7DB4781C8BA6A400D5DC68 /* Undoing.swift in Sources */,
+				3F7DB4741C8BA6A400D5DC68 /* Cut.swift in Sources */,
+				3F7DB4721C8BA6A400D5DC68 /* JobView.swift in Sources */,
 				3F7DB4701C8B9B7800D5DC68 /* QuickLook.swift in Sources */,
 				3F7DB4651C8B97EC00D5DC68 /* GenerateThumbnailForURL.m in Sources */,
+				3F7DB47A1C8BA81300D5DC68 /* RenameViewController.swift in Sources */,
+				3F7DB4771C8BA6A400D5DC68 /* ExportSelection.swift in Sources */,
+				3F7DB4761C8BA6A400D5DC68 /* Subimage.swift in Sources */,
 				3F7DB4671C8B97EC00D5DC68 /* GeneratePreviewForURL.m in Sources */,
 				3F7DB4691C8B97EC00D5DC68 /* main.c in Sources */,
+				3F7DB4731C8BA6A400D5DC68 /* Job.swift in Sources */,
+				3F7DB4751C8BA6A400D5DC68 /* Orientation.swift in Sources */,
+				3F7DB4711C8BA6A400D5DC68 /* Document.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
