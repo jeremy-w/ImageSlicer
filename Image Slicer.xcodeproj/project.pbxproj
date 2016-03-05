@@ -22,9 +22,10 @@
 		3F70EB021C6FB74000972CEB /* Subimage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EAF71C6FB5F300972CEB /* Subimage.swift */; };
 		3F70EB031C6FB74000972CEB /* ExportSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EAF51C6FB5F300972CEB /* ExportSelection.swift */; };
 		3F70EB051C6FB76600972CEB /* JobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EB041C6FB76600972CEB /* JobView.swift */; };
-		3F7DB4651C8B97EC00D5DC68 /* GenerateThumbnailForURL.c in Sources */ = {isa = PBXBuildFile; fileRef = 3F7DB4641C8B97EC00D5DC68 /* GenerateThumbnailForURL.c */; };
-		3F7DB4671C8B97EC00D5DC68 /* GeneratePreviewForURL.c in Sources */ = {isa = PBXBuildFile; fileRef = 3F7DB4661C8B97EC00D5DC68 /* GeneratePreviewForURL.c */; };
+		3F7DB4651C8B97EC00D5DC68 /* GenerateThumbnailForURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7DB4641C8B97EC00D5DC68 /* GenerateThumbnailForURL.m */; };
+		3F7DB4671C8B97EC00D5DC68 /* GeneratePreviewForURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7DB4661C8B97EC00D5DC68 /* GeneratePreviewForURL.m */; };
 		3F7DB4691C8B97EC00D5DC68 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 3F7DB4681C8B97EC00D5DC68 /* main.c */; };
+		3F7DB4701C8B9B7800D5DC68 /* QuickLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7DB46F1C8B9B7800D5DC68 /* QuickLook.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,10 +79,12 @@
 		3F70EAF91C6FB5F300972CEB /* Orientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Orientation.swift; sourceTree = "<group>"; };
 		3F70EB041C6FB76600972CEB /* JobView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobView.swift; sourceTree = "<group>"; };
 		3F7DB4621C8B97EC00D5DC68 /* QuickLookSlicedImage.qlgenerator */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickLookSlicedImage.qlgenerator; sourceTree = BUILT_PRODUCTS_DIR; };
-		3F7DB4641C8B97EC00D5DC68 /* GenerateThumbnailForURL.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = GenerateThumbnailForURL.c; sourceTree = "<group>"; };
-		3F7DB4661C8B97EC00D5DC68 /* GeneratePreviewForURL.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = GeneratePreviewForURL.c; sourceTree = "<group>"; };
+		3F7DB4641C8B97EC00D5DC68 /* GenerateThumbnailForURL.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GenerateThumbnailForURL.m; sourceTree = "<group>"; };
+		3F7DB4661C8B97EC00D5DC68 /* GeneratePreviewForURL.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GeneratePreviewForURL.m; sourceTree = "<group>"; };
 		3F7DB4681C8B97EC00D5DC68 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		3F7DB46A1C8B97EC00D5DC68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F7DB46E1C8B9B7800D5DC68 /* QuickLookSlicedImage-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QuickLookSlicedImage-Bridging-Header.h"; sourceTree = "<group>"; };
+		3F7DB46F1C8B9B7800D5DC68 /* QuickLook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickLook.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,10 +189,12 @@
 		3F7DB4631C8B97EC00D5DC68 /* QuickLookSlicedImage */ = {
 			isa = PBXGroup;
 			children = (
-				3F7DB4641C8B97EC00D5DC68 /* GenerateThumbnailForURL.c */,
-				3F7DB4661C8B97EC00D5DC68 /* GeneratePreviewForURL.c */,
+				3F7DB46F1C8B9B7800D5DC68 /* QuickLook.swift */,
+				3F7DB4641C8B97EC00D5DC68 /* GenerateThumbnailForURL.m */,
+				3F7DB4661C8B97EC00D5DC68 /* GeneratePreviewForURL.m */,
 				3F7DB4681C8B97EC00D5DC68 /* main.c */,
 				3F7DB46A1C8B97EC00D5DC68 /* Info.plist */,
+				3F7DB46E1C8B9B7800D5DC68 /* QuickLookSlicedImage-Bridging-Header.h */,
 			);
 			path = QuickLookSlicedImage;
 			sourceTree = "<group>";
@@ -361,8 +366,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F7DB4651C8B97EC00D5DC68 /* GenerateThumbnailForURL.c in Sources */,
-				3F7DB4671C8B97EC00D5DC68 /* GeneratePreviewForURL.c in Sources */,
+				3F7DB4701C8B9B7800D5DC68 /* QuickLook.swift in Sources */,
+				3F7DB4651C8B97EC00D5DC68 /* GenerateThumbnailForURL.m in Sources */,
+				3F7DB4671C8B97EC00D5DC68 /* GeneratePreviewForURL.m in Sources */,
 				3F7DB4691C8B97EC00D5DC68 /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -524,11 +530,15 @@
 		3F7DB46C1C8B97EC00D5DC68 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = QuickLookSlicedImage/Info.plist;
 				INSTALL_PATH = /Library/QuickLook;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jeremywsherman.QuickLookSlicedImage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "QuickLookSlicedImage/QuickLookSlicedImage-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = qlgenerator;
 			};
 			name = Debug;
@@ -536,11 +546,14 @@
 		3F7DB46D1C8B97EC00D5DC68 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = QuickLookSlicedImage/Info.plist;
 				INSTALL_PATH = /Library/QuickLook;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jeremywsherman.QuickLookSlicedImage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "QuickLookSlicedImage/QuickLookSlicedImage-Bridging-Header.h";
 				WRAPPER_EXTENSION = qlgenerator;
 			};
 			name = Release;
