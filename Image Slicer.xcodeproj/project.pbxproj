@@ -36,6 +36,7 @@
 		3F7DB4781C8BA6A400D5DC68 /* Undoing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0E89A41C7E7430007F1568 /* Undoing.swift */; };
 		3F7DB4791C8BA80E00D5DC68 /* JobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EAA91C6F9C9500972CEB /* JobViewController.swift */; };
 		3F7DB47A1C8BA81300D5DC68 /* RenameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0E89611C716C71007F1568 /* RenameViewController.swift */; };
+		3F7DB47F1C8BB4E500D5DC68 /* QuickLookSlicedImage.qlgenerator in Copy QuickLook Plugins */ = {isa = PBXBuildFile; fileRef = 3F7DB4621C8B97EC00D5DC68 /* QuickLookSlicedImage.qlgenerator */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 3F70EAA31C6F9C9500972CEB;
 			remoteInfo = "Image Slicer";
+		};
+		3F7DB47D1C8BB4D000D5DC68 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3F70EA9C1C6F9C9500972CEB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3F7DB4611C8B97EC00D5DC68;
+			remoteInfo = QuickLookSlicedImage;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -57,6 +65,17 @@
 			files = (
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F7DB47B1C8BB47100D5DC68 /* Copy QuickLook Plugins */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/QuickLook;
+			dstSubfolderSpec = 1;
+			files = (
+				3F7DB47F1C8BB4E500D5DC68 /* QuickLookSlicedImage.qlgenerator in Copy QuickLook Plugins */,
+			);
+			name = "Copy QuickLook Plugins";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -230,10 +249,12 @@
 				3F70EAA11C6F9C9500972CEB /* Frameworks */,
 				3F70EAA21C6F9C9500972CEB /* Resources */,
 				3F70EAF11C6FB56E00972CEB /* Embed Frameworks */,
+				3F7DB47B1C8BB47100D5DC68 /* Copy QuickLook Plugins */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3F7DB47E1C8BB4D000D5DC68 /* PBXTargetDependency */,
 			);
 			name = "Image Slicer";
 			productName = "Image Slicer";
@@ -400,6 +421,11 @@
 			isa = PBXTargetDependency;
 			target = 3F70EAA31C6F9C9500972CEB /* Image Slicer */;
 			targetProxy = 3F70EAB81C6F9C9600972CEB /* PBXContainerItemProxy */;
+		};
+		3F7DB47E1C8BB4D000D5DC68 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3F7DB4611C8B97EC00D5DC68 /* QuickLookSlicedImage */;
+			targetProxy = 3F7DB47D1C8BB4D000D5DC68 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
