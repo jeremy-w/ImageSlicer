@@ -26,6 +26,12 @@ GeneratePreviewForURL(
     CFStringRef contentTypeUTI,
     CFDictionaryRef options)
 {
+    @autoreleasepool {
+        QuickLook *quicklook = [[QuickLook alloc]
+                                initWithURL:CFBridgingRelease(url)
+                                contentType:CFBridgingRelease(contentTypeUTI)];
+        [quicklook renderPreview:request];
+    }
     return noErr;
 }
 

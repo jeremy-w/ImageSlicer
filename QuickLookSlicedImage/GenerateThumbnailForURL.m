@@ -30,13 +30,10 @@ GenerateThumbnailForURL(
     CGSize maxSize)
 {
     @autoreleasepool {
-        Thumbnail *thumbnail = [[Thumbnail alloc]
+        QuickLook *quicklook = [[QuickLook alloc]
                                 initWithURL:CFBridgingRelease(url)
                                 contentType:CFBridgingRelease(contentTypeUTI)];
-        [thumbnail
-         makeThumbnailAtMost:maxSize
-         with:request
-         options:CFBridgingRelease(options)];
+        [quicklook renderThumbnail:request];
     }
     return noErr;
 }
