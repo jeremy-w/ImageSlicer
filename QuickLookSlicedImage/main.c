@@ -18,7 +18,7 @@
 #include <QuickLook/QuickLook.h>
 
 // -----------------------------------------------------------------------------
-//	constants
+//	MARK: - constants
 // -----------------------------------------------------------------------------
 
 // Don't modify this line
@@ -33,7 +33,7 @@
 
 
 // -----------------------------------------------------------------------------
-//	typedefs
+//	MARK: - typedefs
 // -----------------------------------------------------------------------------
 
 // The thumbnail generation function to be implemented in GenerateThumbnailForURL.c
@@ -53,7 +53,7 @@ typedef struct __QuickLookGeneratorPluginType
 } QuickLookGeneratorPluginType;
 
 // -----------------------------------------------------------------------------
-//	prototypes
+//	MARK: - prototypes
 // -----------------------------------------------------------------------------
 //	Forward declaration for the IUnknown implementation.
 //
@@ -82,6 +82,7 @@ static QLGeneratorInterfaceStruct myInterfaceFtbl = {
 };
 
 
+// MARK: - CFPlugIn De/Allocation
 // -----------------------------------------------------------------------------
 //	AllocQuickLookGeneratorPluginType
 // -----------------------------------------------------------------------------
@@ -133,6 +134,7 @@ void DeallocQuickLookGeneratorPluginType(QuickLookGeneratorPluginType *thisInsta
     }
 }
 
+// MARK: - IUnknown
 // -----------------------------------------------------------------------------
 //	QuickLookGeneratorQueryInterface
 // -----------------------------------------------------------------------------
