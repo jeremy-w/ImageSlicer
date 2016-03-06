@@ -50,7 +50,7 @@
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2016 Jeremy W. Sherman. Released with NO WARRANTY under the Mozilla Public License, v. 2.0.</string>
 	<key>QLNeedsToBeRunInMainThread</key>
-	<false/>
+	<true/>
 	<key>QLPreviewHeight</key>
 	<real>600</real>
 	<key>QLPreviewWidth</key>
