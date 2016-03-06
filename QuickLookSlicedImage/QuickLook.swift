@@ -36,6 +36,10 @@ class QuickLook: NSObject {
 
 
     func render(into contextProvider: GraphicsContextProvider) {
+        guard !contextProvider.isCanceled else {
+            return
+        }
+
         guard let view = JobView(job: document.job) else {
             NSLog("\(self): failed to create job view for job: \(document.job) - document: \(document)")
             return
