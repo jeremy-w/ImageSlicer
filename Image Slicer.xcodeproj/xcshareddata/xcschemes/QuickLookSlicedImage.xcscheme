@@ -58,7 +58,7 @@
       <CommandLineArguments>
          <CommandLineArgument
             argument = "-d 4"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "-c com.jeremywsherman.slicedimage"
@@ -85,7 +85,7 @@
          <EnvironmentVariable
             key = "DYLD_PRINT_RPATHS"
             value = "1"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </EnvironmentVariable>
       </EnvironmentVariables>
       <AdditionalOptions>

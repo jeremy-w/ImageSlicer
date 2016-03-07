@@ -72,3 +72,5 @@ Should have been explicit about the generator in my qlmanage invocation!
 And now that I've added the appropriate -g flag to run the just-built generator
 rather than the old one in the app bundle, it runs! And fails. But now I can
 tone down the qlmanage logging and focus on debugging my plugin.
+
+…and it worked on the first try!
