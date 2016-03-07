@@ -114,6 +114,7 @@
 		3F7DB46A1C8B97EC00D5DC68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F7DB46E1C8B9B7800D5DC68 /* QuickLookSlicedImage-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QuickLookSlicedImage-Bridging-Header.h"; sourceTree = "<group>"; };
 		3F7DB46F1C8B9B7800D5DC68 /* QuickLook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickLook.swift; sourceTree = "<group>"; };
+		3F7DB4801C8D13EB00D5DC68 /* notes */ = {isa = PBXFileReference; lastKnownFileType = folder; path = notes; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +147,7 @@
 			children = (
 				3F0E89641C7A5FE6007F1568 /* README.md */,
 				3F0E89631C7A5FE6007F1568 /* LICENSE-MPLv2.txt */,
+				3F7DB4801C8D13EB00D5DC68 /* notes */,
 				3F70EAC61C6F9D0700972CEB /* Image Slicer.playground */,
 				3F70EAA61C6F9C9500972CEB /* Image Slicer */,
 				3F70EABA1C6F9C9600972CEB /* Image SlicerTests */,
