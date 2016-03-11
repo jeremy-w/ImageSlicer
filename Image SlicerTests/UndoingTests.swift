@@ -78,7 +78,7 @@ class UndoingSpy: Undoing {
     var redoStack: [() -> Void] = []
     var undoing = false
 
-    func record(undo: () -> Void) {
+    func record(actionName: String, undo: () -> Void) {
         if undoing {
             redoStack.append(undo)
         } else {
