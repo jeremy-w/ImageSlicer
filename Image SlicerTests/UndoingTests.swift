@@ -10,7 +10,7 @@ class UndoingTests: XCTestCase {
     let undo = UndoingSpy()
 
     let anyCut = Cut(at: CGPointZero, oriented: .Horizontally)
-    let anyMark = ExportSelection(around: CGPointZero, name: "any mark")
+    let anyMark = Mark(around: CGPointZero, name: "any mark")
 
     override func setUp() {
         job.undoing = undo

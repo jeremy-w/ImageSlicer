@@ -196,7 +196,7 @@ extension JobViewController {
 
 extension JobViewController {
     func editName(
-        mark: ExportSelection,
+        mark: Mark,
         rect: CGRect,
         of view: NSView,
         completion: (Bool) -> Void

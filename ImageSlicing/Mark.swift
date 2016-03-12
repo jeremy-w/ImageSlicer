@@ -6,13 +6,13 @@
 
 import Quartz
 
-struct ExportSelection {
+struct Mark {
     let around: CGPoint
     let name: String
 }
 
 
-extension ExportSelection {
+extension Mark {
     var asDictionary: [String: AnyObject] {
         var dictionary: [String: AnyObject] = [:]
         dictionary["around"] = NSValue(point: around)
@@ -34,7 +34,7 @@ extension ExportSelection {
 }
 
 
-extension ExportSelection: Equatable {}
-func ==(left: ExportSelection, right: ExportSelection) -> Bool {
+extension Mark: Equatable {}
+func ==(left: Mark, right: Mark) -> Bool {
     return CGPointEqualToPoint(left.around, right.around) && left.name == right.name
 }

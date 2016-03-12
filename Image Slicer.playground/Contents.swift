@@ -47,7 +47,7 @@ struct Subimage {
     }
 }
 
-struct ExportSelection {
+struct Mark {
     let around: CGPoint
     let name: String
 }
@@ -55,7 +55,7 @@ struct ExportSelection {
 struct Job {
     let image: NSImage
     var cuts: [Cut]
-    var selections: [ExportSelection]
+    var selections: [Mark]
 
     mutating func add(cut: Cut) {
         cuts.append(cut)
@@ -210,8 +210,8 @@ job.add(
 job.add(Cut(at: CGPoint(x: 75, y: 0), oriented: .Vertically))
 job.add(Cut(at: CGPoint(x: 155, y: 0), oriented: .Vertically))
 job.add(Cut(at: CGPoint(x: 235, y: 0), oriented: .Vertically))
-job.selections.append(ExportSelection(around: CGPointZero, name: "deed"))
-job.selections.append(ExportSelection(around: CGPoint(x: 80, y: 0), name: "dad"))
+job.selections.append(Mark(around: CGPointZero, name: "deed"))
+job.selections.append(Mark(around: CGPoint(x: 80, y: 0), name: "dad"))
 
 var display = ImageSliceJobView(job: job)
 

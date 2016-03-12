@@ -47,7 +47,7 @@ class JobView: NSImageView {
 
 
     /// - returns: true if mark name changed (invalidates rect), false otherwise
-    var editMark: (ExportSelection, rect: CGRect, completion: (Bool) -> Void) -> Void =
+    var editMark: (Mark, rect: CGRect, completion: (Bool) -> Void) -> Void =
         { _, _, completion in
             NSLog("default mark handler does nothing")
             completion(false)
@@ -181,7 +181,7 @@ extension JobView {
     }
 
 
-    var highlightedSelection: ExportSelection? {
+    var highlightedSelection: Mark? {
         get {
             let highlightedSelection = mouseAt.flatMap { markNearest($0)?.0 }
             return highlightedSelection
@@ -202,7 +202,7 @@ extension JobView {
     }
 
 
-    func rectFor(mark: ExportSelection, attributes: [String: AnyObject]) -> CGRect {
+    func rectFor(mark: Mark, attributes: [String: AnyObject]) -> CGRect {
         let text = mark.name
         let size = text.sizeWithAttributes(attributes)
         let pointCenteringTextOnMark = CGPoint(
@@ -229,7 +229,7 @@ extension JobView {
     }
 
 
-    func editHighlightedMark(mark: ExportSelection) {
+    func editHighlightedMark(mark: Mark) {
         let rect = rectFor(mark, attributes: highlightedMarkAttributes)
         editMark(mark, rect: rect) { didRename in
             guard didRename else { return }
@@ -256,7 +256,7 @@ extension JobView {
 
         case .AddingMark:
             let name = "mark \(job.selections.count + 1)"
-            let mark = ExportSelection(around: point, name: name)
+            let mark = Mark(around: point, name: name)
             job.add(mark)
             editHighlightedMark(mark)
             return .NotEditing
@@ -285,7 +285,7 @@ extension JobView {
     }
 
 
-    func markNearest(point: CGPoint) -> (ExportSelection, Int)? {
+    func markNearest(point: CGPoint) -> (Mark, Int)? {
         if let hitPoint = nearest(point, amongst: job.selections.map { $0.around }),
             index = job.selections.indexOf({ $0.around == hitPoint }) {
                 return (job.selections[index], index)

@@ -9,10 +9,10 @@ import Cocoa
 class Job {
     var image: NSImage?
     var cuts: [Cut]
-    var selections: [ExportSelection]
+    var selections: [Mark]
     var undoing: Undoing?
 
-    init(image: NSImage?, cuts: [Cut] = [], selections: [ExportSelection] = []) {
+    init(image: NSImage?, cuts: [Cut] = [], selections: [Mark] = []) {
         self.image = image
         self.cuts = cuts
         self.selections = selections
@@ -42,7 +42,7 @@ class Job {
         }
     }
 
-    func add(mark: ExportSelection, index: Int? = nil) {
+    func add(mark: Mark, index: Int? = nil) {
         let target = index ?? selections.count
         selections.insert(mark, atIndex: target)
         undo(NSLocalizedString("Add Mark", comment: "job action")) {
@@ -50,7 +50,7 @@ class Job {
         }
     }
 
-    func remove(mark: ExportSelection) {
+    func remove(mark: Mark) {
         guard let index = selections.indexOf(mark) else {
             NSLog("\(__FUNCTION__): Ignoring request to remove absent mark \(mark)")
             return
@@ -86,10 +86,10 @@ class Job {
         return subimages
     }
 
-    func rename(mark: ExportSelection, to name: String) {
+    func rename(mark: Mark, to name: String) {
         guard let index = selections.indexOf(mark) else { return }
         let oldMark = selections[index]
-        let renamedMark = ExportSelection(around: oldMark.around, name: name)
+        let renamedMark = Mark(around: oldMark.around, name: name)
         let markRange = Range(start: index, end: index + 1)
         selections.replaceRange(markRange, with: [renamedMark])
 
@@ -236,7 +236,7 @@ extension Job {
         guard let selectionDicts = dictionary[Keys.Selections] as? [[String: AnyObject]] else {
             return nil
         }
-        let selections = selectionDicts.flatMap { ExportSelection(dictionary: $0) }
+        let selections = selectionDicts.flatMap { Mark(dictionary: $0) }
         guard selections.count == selectionDicts.count else {
             return nil
         }

@@ -49,9 +49,6 @@ a newer, modified version of that code.
 
 
 ## Ugly Stuff
-- I switched from ExportSelection to Mark in much of the variable naming,
-  but I still haven't gotten around to actually renaming the type itself.
-  I blame Xcode's fabulous Rename Class refactoring support for Swift.
 - The tests. What tests? Exactly. This is a small enough app that the entire
   core functionality gets exercised each and every time I use it, so I didn't
   worry about automating tests. If anything is broken, I'll know it first
