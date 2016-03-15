@@ -29,12 +29,12 @@ class JobView: NSImageView {
     var editingMode = EditingMode.NotEditing {
         didSet {
             guard self.editable else {
-                NSLog("\(__FUNCTION__): \(self): not editable, so refusing change to mode \(editingMode)")
+                NSLog("%@", "\(__FUNCTION__): \(self): not editable, so refusing change to mode \(editingMode)")
                 editingMode = .NotEditing
                 return
             }
 
-            NSLog("\(__FUNCTION__): \(self): \(editingMode)")
+            NSLog("%@", "\(__FUNCTION__): \(self): \(editingMode)")
             if case .NotEditing = editingMode {
                 didFinishEditing(self)
             }
@@ -42,14 +42,14 @@ class JobView: NSImageView {
     }
 
     var didFinishEditing: (JobView) -> Void = { _ in
-        NSLog("\(__FUNCTION__)")
+        NSLog("%@", "\(__FUNCTION__)")
     }
 
 
     /// - returns: true if mark name changed (invalidates rect), false otherwise
     var editMark: (Mark, rect: CGRect, completion: (Bool) -> Void) -> Void =
         { _, _, completion in
-            NSLog("default mark handler does nothing")
+            NSLog("%@", "default mark handler does nothing")
             completion(false)
         }
 
@@ -70,7 +70,7 @@ class JobView: NSImageView {
 
 
     func imageDidChange(image: NSImage?) {
-        NSLog("\(__FUNCTION__): \(image)")
+        NSLog("%@", "\(__FUNCTION__): \(image)")
         self.job.image = image
         invalidateIntrinsicContentSize()
     }

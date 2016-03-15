@@ -89,16 +89,16 @@ class UndoingSpy: Undoing {
     func undo() {
         let last = undoStack.removeLast()
         undoing = true
-        NSLog("[[[ UNDO ---")
+        NSLog("%@", "[[[ UNDO ---")
         last()
-        NSLog("--- UNDO ]]]")
+        NSLog("%@", "--- UNDO ]]]")
         undoing = false
     }
 
     func redo() {
         let last = redoStack.removeLast()
-        NSLog("[[[ REDO ---")
+        NSLog("%@", "[[[ REDO ---")
         last()
-        NSLog("--- REDO ]]]")
+        NSLog("%@", "--- REDO ]]]")
     }
 }

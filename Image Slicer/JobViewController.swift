@@ -138,7 +138,7 @@ extension JobViewController {
 extension JobViewController {
     @IBAction func exportMarkedSlicesAction(sender: AnyObject) {
         guard let window = view.window else {
-            NSLog("\(__FUNCTION__): \(self): we have no window!")
+            NSLog("%@", "\(__FUNCTION__): \(self): we have no window!")
             NSBeep()
             return
         }
@@ -151,16 +151,16 @@ extension JobViewController {
 
         directoryPicker.beginSheetModalForWindow(window) { response in
             guard response == NSFileHandlingPanelOKButton else {
-                NSLog("user canceled export")
+                NSLog("%@", "user canceled export")
                 return
             }
 
             guard let directory = directoryPicker.URL else {
-                NSLog("user failed to select directory")
+                NSLog("%@", "user failed to select directory")
                 return
             }
 
-            NSLog("exporting to: \(directory.lastPathComponent) at \(directory.absoluteURL)")
+            NSLog("%@", "exporting to: \(directory.lastPathComponent) at \(directory.absoluteURL)")
             let _ = self.job?.exportSelectedSubimages(directory, dryRun: false)
         }
     }
@@ -201,7 +201,7 @@ extension JobViewController {
         of view: NSView,
         completion: (Bool) -> Void
     ) {
-        NSLog("\(__FUNCTION__): \(mark)")
+        NSLog("%@", "\(__FUNCTION__): \(mark)")
         guard let renamer = storyboard?.instantiateControllerWithIdentifier("renamer") as?RenameViewController else {
             fatalError("failed to instantiate renamer")
         }
@@ -212,7 +212,7 @@ extension JobViewController {
                 return
             }
 
-            NSLog("\(__FUNCTION__): \(self): renaming \(mark) to \"\(name)\"")
+            NSLog("%@", "\(__FUNCTION__): \(self): renaming \(mark) to \"\(name)\"")
             me.job?.rename(mark, to: name)
             completion(true)
         }

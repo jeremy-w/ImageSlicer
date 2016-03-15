@@ -41,13 +41,13 @@ class QuickLook: NSObject {
         }
 
         guard let view = JobView(job: document.job) else {
-            NSLog("\(self): failed to create job view for job: \(document.job) - document: \(document)")
+            NSLog("%@", "\(self): failed to create job view for job: \(document.job) - document: \(document)")
             return
         }
 
         let rect = view.bounds
         guard let unmanagedContext = contextProvider.createContext(covering: rect.size, forDrawing: .Bitmap)  else {
-            NSLog("\(self): failed to create drawing context with size \(rect.size) - document: \(document)")
+            NSLog("%@", "\(self): failed to create drawing context with size \(rect.size) - document: \(document)")
             return
         }
 

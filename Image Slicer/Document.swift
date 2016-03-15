@@ -80,7 +80,7 @@ class Document: NSDocument {
 
 
 //    override func restoreDocumentWindowWithIdentifier(identifier: String, state: NSCoder, completionHandler: (NSWindow?, NSError?) -> Void) {
-//        NSLog("DEBUG: state restoration disabled")
+//        NSLog("%@", "DEBUG: state restoration disabled")
 //        completionHandler(nil, nil)
 //    }
 

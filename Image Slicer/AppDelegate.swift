@@ -10,7 +10,7 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     func application(sender: NSApplication, openFiles filenames: [String]) {
-        NSLog("asked to open files: \(filenames.joinWithSeparator("\n- "))")
+        NSLog("%@", "asked to open files: \(filenames.joinWithSeparator("\n- "))")
         for file in filenames {
             guard openFile(file) else {
                 NSApp.replyToOpenOrPrint(.Failure)
@@ -28,7 +28,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             do {
                 let someDocument = try controller.makeUntitledDocumentOfType(Document.nativeType)
                 guard let myDocument = someDocument as? Document else {
-                    NSLog("\(someDocument) has wrong class: opened \(file)")
+                    NSLog("%@", "\(someDocument) has wrong class: opened \(file)")
                     return false
                 }
 
@@ -42,19 +42,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 myDocument.showWindows()
                 return true
             } catch {
-                NSLog("failed creating untitled document: \(error)")
+                NSLog("%@", "failed creating untitled document: \(error)")
                 return false
             }
         }
 
         if let type = try? controller.typeForContentsOfURL(URL) {
-            NSLog("\(file): has type \(type)")
+            NSLog("%@", "\(file): has type \(type)")
         }
 
         controller.openDocumentWithContentsOfURL(URL, display: true) {
         (document, alreadyOpen, error) -> Void in
             let result: AnyObject? = document ?? error
-            NSLog("opening \(file): already open? \(alreadyOpen) - result \(result)")
+            NSLog("%@", "opening \(file): already open? \(alreadyOpen) - result \(result)")
 
             if let error = error {
                 NSApp.presentError(error)
