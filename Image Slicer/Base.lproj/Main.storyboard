@@ -782,25 +782,9 @@ Gw
             <objects>
                 <viewController id="5gI-5U-AMq" customClass="JobViewController" customModule="Image_Slicer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="ERx-hH-rdd">
-                        <rect key="frame" x="0.0" y="0.0" width="626" height="193"/>
+                        <rect key="frame" x="0.0" y="0.0" width="538" height="537"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="54m-Tk-FGj">
-                                <rect key="frame" x="259" y="138" width="109" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Drop Image Here" id="FLw-Io-NBE">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <imageView focusRingType="none" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="hdW-vN-cp5" customClass="JobView" customModule="Image_Slicer" customModuleProvider="target">
-                                <rect key="frame" x="20" y="119" width="586" height="54"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="WJL-jp-JP4"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="eDZ-Ao-0bs"/>
-                                </constraints>
-                                <imageCell key="cell" selectable="YES" editable="YES" focusRingType="none" alignment="left" imageAlignment="bottomLeft" id="9j1-Ju-fWU"/>
-                            </imageView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="U7y-Iy-Gsu">
                                 <rect key="frame" x="14" y="71" width="158" height="32"/>
                                 <buttonCell key="cell" type="push" title="Add Horizontal Cut" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="M3k-9t-gMi">
@@ -838,7 +822,7 @@ Gw
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1G0-xE-c4n">
-                                <rect key="frame" x="442" y="71" width="170" height="32"/>
+                                <rect key="frame" x="354" y="71" width="170" height="32"/>
                                 <buttonCell key="cell" type="push" title="Mark Slice for Export" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7cr-G0-fkn">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -850,7 +834,7 @@ Gw
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rwd-sG-G0B">
-                                <rect key="frame" x="426" y="42" width="186" height="32"/>
+                                <rect key="frame" x="338" y="42" width="186" height="32"/>
                                 <buttonCell key="cell" type="push" title="Export Marked Slices…" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3H4-mu-GW2">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -862,7 +846,7 @@ Gw
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6vF-mZ-gB2">
-                                <rect key="frame" x="497" y="13" width="115" height="32"/>
+                                <rect key="frame" x="409" y="13" width="115" height="32"/>
                                 <buttonCell key="cell" type="push" title="Delete Mark" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AyJ-dl-r7H">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -871,29 +855,58 @@ Gw
                                     <action selector="deleteMarkAction:" target="5gI-5U-AMq" id="q4r-z9-VX6"/>
                                 </connections>
                             </button>
+                            <scrollView horizontalHuggingPriority="750" verticalHuggingPriority="750" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ar-BB-Feu">
+                                <rect key="frame" x="19" y="118" width="500" height="400"/>
+                                <clipView key="contentView" horizontalHuggingPriority="750" drawsBackground="NO" copiesOnScroll="NO" id="xm6-lD-UZt">
+                                    <rect key="frame" x="1" y="1" width="498" height="398"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <imageView focusRingType="none" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="hdW-vN-cp5" customClass="JobView" customModule="Image_Slicer" customModuleProvider="target">
+                                            <rect key="frame" x="-1" y="-1" width="500" height="400"/>
+                                            <imageCell key="cell" selectable="YES" editable="YES" focusRingType="none" alignment="left" imageAlignment="bottomLeft" id="9j1-Ju-fWU"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="hdW-vN-cp5" firstAttribute="centerY" secondItem="xm6-lD-UZt" secondAttribute="centerY" id="MCG-bZ-xws"/>
+                                        <constraint firstItem="hdW-vN-cp5" firstAttribute="centerX" secondItem="xm6-lD-UZt" secondAttribute="centerX" id="fsi-YU-XV6"/>
+                                    </constraints>
+                                </clipView>
+                                <constraints>
+                                    <constraint firstAttribute="width" priority="250" constant="500" id="125-1W-rM3"/>
+                                    <constraint firstAttribute="height" priority="250" constant="400" id="Z4f-G1-R5c"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="hD9-QP-6VO"/>
+                                    <constraint firstItem="hdW-vN-cp5" firstAttribute="width" secondItem="7Ar-BB-Feu" secondAttribute="width" priority="250" id="oYh-C1-fKZ"/>
+                                    <constraint firstItem="hdW-vN-cp5" firstAttribute="height" secondItem="7Ar-BB-Feu" secondAttribute="height" priority="250" id="tDr-G6-xhH"/>
+                                </constraints>
+                                <scroller key="horizontalScroller" verticalHuggingPriority="750" doubleValue="0.91881924662789061" horizontal="YES" id="Tv8-nS-E3N">
+                                    <rect key="frame" x="1" y="383" width="498" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="fK0-bh-zG7">
+                                    <rect key="frame" x="483" y="1" width="16" height="398"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="hdW-vN-cp5" firstAttribute="top" secondItem="ERx-hH-rdd" secondAttribute="top" constant="20" id="2bd-76-IDH"/>
-                            <constraint firstItem="1G0-xE-c4n" firstAttribute="top" secondItem="hdW-vN-cp5" secondAttribute="bottom" constant="20" id="5VC-JF-lCp"/>
+                            <constraint firstAttribute="trailing" secondItem="7Ar-BB-Feu" secondAttribute="trailing" constant="19" id="2ss-fs-FRW"/>
                             <constraint firstItem="1G0-xE-c4n" firstAttribute="baseline" secondItem="U7y-Iy-Gsu" secondAttribute="baseline" id="5fQ-A4-7gF"/>
-                            <constraint firstAttribute="trailing" secondItem="hdW-vN-cp5" secondAttribute="trailing" priority="750" constant="20" id="BFs-IQ-vPx"/>
                             <constraint firstItem="1G0-xE-c4n" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="U7y-Iy-Gsu" secondAttribute="trailing" constant="20" id="BwQ-15-pYm"/>
+                            <constraint firstItem="7Ar-BB-Feu" firstAttribute="leading" secondItem="ERx-hH-rdd" secondAttribute="leading" constant="19" id="DDG-n3-3SK"/>
+                            <constraint firstItem="U7y-Iy-Gsu" firstAttribute="top" secondItem="7Ar-BB-Feu" secondAttribute="bottom" constant="19" id="DKC-SK-3yn"/>
                             <constraint firstItem="6vF-mZ-gB2" firstAttribute="baseline" secondItem="aKa-wE-iPg" secondAttribute="baseline" id="DO2-el-0yQ"/>
                             <constraint firstItem="aKa-wE-iPg" firstAttribute="top" secondItem="9b4-ja-W6m" secondAttribute="bottom" constant="8" id="HdU-kS-2yF"/>
-                            <constraint firstItem="54m-Tk-FGj" firstAttribute="centerX" secondItem="hdW-vN-cp5" secondAttribute="centerX" id="VnL-Pj-iNX"/>
                             <constraint firstItem="9b4-ja-W6m" firstAttribute="top" secondItem="U7y-Iy-Gsu" secondAttribute="bottom" constant="8" id="WBn-Hm-1yh"/>
                             <constraint firstItem="9b4-ja-W6m" firstAttribute="leading" secondItem="U7y-Iy-Gsu" secondAttribute="leading" id="Wvc-G2-26K"/>
-                            <constraint firstItem="hdW-vN-cp5" firstAttribute="leading" secondItem="ERx-hH-rdd" secondAttribute="leading" priority="750" constant="20" id="YwL-7Q-L3q"/>
+                            <constraint firstItem="7Ar-BB-Feu" firstAttribute="top" secondItem="ERx-hH-rdd" secondAttribute="top" constant="19" id="XCL-Ot-sri"/>
                             <constraint firstItem="Rwd-sG-G0B" firstAttribute="trailing" secondItem="1G0-xE-c4n" secondAttribute="trailing" id="ccU-MU-Kws"/>
                             <constraint firstAttribute="trailing" secondItem="6vF-mZ-gB2" secondAttribute="trailing" constant="20" id="dbs-VB-Ytm"/>
                             <constraint firstAttribute="bottom" secondItem="aKa-wE-iPg" secondAttribute="bottom" constant="20" symbolic="YES" id="eji-vP-ROt"/>
-                            <constraint firstItem="hdW-vN-cp5" firstAttribute="centerX" secondItem="ERx-hH-rdd" secondAttribute="centerX" id="j6U-Df-ALS"/>
                             <constraint firstItem="6vF-mZ-gB2" firstAttribute="trailing" secondItem="1G0-xE-c4n" secondAttribute="trailing" id="jfc-j1-0hN"/>
                             <constraint firstItem="6vF-mZ-gB2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aKa-wE-iPg" secondAttribute="trailing" constant="20" id="jmb-Nr-w6T"/>
                             <constraint firstItem="Rwd-sG-G0B" firstAttribute="baseline" secondItem="9b4-ja-W6m" secondAttribute="baseline" id="jvh-kn-JJv"/>
                             <constraint firstItem="Rwd-sG-G0B" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="9b4-ja-W6m" secondAttribute="trailing" constant="20" id="pCv-Ep-joe"/>
                             <constraint firstItem="aKa-wE-iPg" firstAttribute="leading" secondItem="ERx-hH-rdd" secondAttribute="leading" constant="20" symbolic="YES" id="t1T-wD-ygk"/>
-                            <constraint firstItem="54m-Tk-FGj" firstAttribute="centerY" secondItem="hdW-vN-cp5" secondAttribute="centerY" id="tRA-tX-RL7"/>
                             <constraint firstItem="aKa-wE-iPg" firstAttribute="leading" secondItem="U7y-Iy-Gsu" secondAttribute="leading" id="zrd-NC-Rud"/>
                         </constraints>
                     </view>
