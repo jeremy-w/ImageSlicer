@@ -732,8 +732,8 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qih-fy-dkB">
-                                <rect key="frame" x="128" y="13" width="60" height="32"/>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qih-fy-dkB">
+                                <rect key="frame" x="129" y="13" width="59" height="32"/>
                                 <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="GAR-SC-NE7">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -745,8 +745,8 @@ DQ
                                     <action selector="okAction:" target="fIB-hU-PhY" id="0MC-tz-Pae"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Otn-aw-W5q">
-                                <rect key="frame" x="45" y="13" width="83" height="32"/>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Otn-aw-W5q">
+                                <rect key="frame" x="47" y="13" width="82" height="32"/>
                                 <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Hwu-0i-ivZ">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -785,8 +785,8 @@ Gw
                         <rect key="frame" x="0.0" y="0.0" width="538" height="537"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U7y-Iy-Gsu">
-                                <rect key="frame" x="14" y="71" width="158" height="32"/>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="U7y-Iy-Gsu">
+                                <rect key="frame" x="14" y="71" width="155" height="32"/>
                                 <buttonCell key="cell" type="push" title="Add Horizontal Cut" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="M3k-9t-gMi">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -797,8 +797,8 @@ Gw
                                     <action selector="addCutHorizontalAction:" target="5gI-5U-AMq" id="00Z-Er-Aey"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9b4-ja-W6m">
-                                <rect key="frame" x="14" y="42" width="140" height="32"/>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9b4-ja-W6m">
+                                <rect key="frame" x="14" y="42" width="139" height="32"/>
                                 <buttonCell key="cell" type="push" title="Add Vertical Cut" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="THX-cR-QdZ">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -809,8 +809,8 @@ Gw
                                     <action selector="addCutVerticalAction:" target="5gI-5U-AMq" id="3Dv-iP-dqd"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aKa-wE-iPg">
-                                <rect key="frame" x="14" y="13" width="106" height="32"/>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aKa-wE-iPg">
+                                <rect key="frame" x="14" y="13" width="105" height="32"/>
                                 <buttonCell key="cell" type="push" title="Delete Cut" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sCF-rM-o2f">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -821,8 +821,8 @@ Gw
                                     <action selector="deleteCutAction:" target="5gI-5U-AMq" id="yO7-zb-bMF"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1G0-xE-c4n">
-                                <rect key="frame" x="354" y="71" width="170" height="32"/>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1G0-xE-c4n">
+                                <rect key="frame" x="357" y="71" width="167" height="32"/>
                                 <buttonCell key="cell" type="push" title="Mark Slice for Export" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7cr-G0-fkn">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -833,8 +833,8 @@ Gw
                                     <action selector="markSliceForExportAction:" target="5gI-5U-AMq" id="38e-qt-ROz"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rwd-sG-G0B">
-                                <rect key="frame" x="338" y="42" width="186" height="32"/>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rwd-sG-G0B">
+                                <rect key="frame" x="345" y="42" width="179" height="32"/>
                                 <buttonCell key="cell" type="push" title="Export Marked Slices…" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3H4-mu-GW2">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -845,8 +845,8 @@ Gw
                                     <action selector="exportMarkedSlicesAction:" target="5gI-5U-AMq" id="4Mu-HR-rPc"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6vF-mZ-gB2">
-                                <rect key="frame" x="409" y="13" width="115" height="32"/>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6vF-mZ-gB2">
+                                <rect key="frame" x="411" y="13" width="113" height="32"/>
                                 <buttonCell key="cell" type="push" title="Delete Mark" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AyJ-dl-r7H">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -861,8 +861,8 @@ Gw
                                     <rect key="frame" x="1" y="1" width="498" height="373"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <imageView focusRingType="none" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hdW-vN-cp5" customClass="JobView" customModule="Image_Slicer" customModuleProvider="target">
-                                            <rect key="frame" x="-1" y="-7" width="500" height="400"/>
+                                        <imageView focusRingType="none" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="hdW-vN-cp5" customClass="JobView" customModule="Image_Slicer" customModuleProvider="target">
+                                            <rect key="frame" x="-1" y="-1" width="500" height="375"/>
                                             <imageCell key="cell" selectable="YES" editable="YES" focusRingType="none" alignment="left" imageAlignment="bottomLeft" id="9j1-Ju-fWU"/>
                                         </imageView>
                                     </subviews>
@@ -882,7 +882,7 @@ Gw
                                     <rect key="frame" x="1" y="358" width="498" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="0.07407407407407407" horizontal="NO" id="fK0-bh-zG7">
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="fK0-bh-zG7">
                                     <rect key="frame" x="483" y="1" width="16" height="373"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
