@@ -37,6 +37,7 @@
 		3F7DB4791C8BA80E00D5DC68 /* JobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EAA91C6F9C9500972CEB /* JobViewController.swift */; };
 		3F7DB47A1C8BA81300D5DC68 /* RenameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0E89611C716C71007F1568 /* RenameViewController.swift */; };
 		3F7DB47F1C8BB4E500D5DC68 /* QuickLookSlicedImage.qlgenerator in Copy QuickLook Plugins */ = {isa = PBXBuildFile; fileRef = 3F7DB4621C8B97EC00D5DC68 /* QuickLookSlicedImage.qlgenerator */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3FFAC7261CB8A46E005929AA /* EditingModeReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFAC7251CB8A46E005929AA /* EditingModeReporter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +116,7 @@
 		3F7DB46E1C8B9B7800D5DC68 /* QuickLookSlicedImage-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QuickLookSlicedImage-Bridging-Header.h"; sourceTree = "<group>"; };
 		3F7DB46F1C8B9B7800D5DC68 /* QuickLook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickLook.swift; sourceTree = "<group>"; };
 		3F7DB4801C8D13EB00D5DC68 /* notes */ = {isa = PBXFileReference; lastKnownFileType = folder; path = notes; sourceTree = "<group>"; };
+		3FFAC7251CB8A46E005929AA /* EditingModeReporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditingModeReporter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 				3F70EAA71C6F9C9500972CEB /* AppDelegate.swift */,
 				3F70EAA91C6F9C9500972CEB /* JobViewController.swift */,
 				3F0E89611C716C71007F1568 /* RenameViewController.swift */,
+				3FFAC7251CB8A46E005929AA /* EditingModeReporter.swift */,
 				3F70EAAB1C6F9C9500972CEB /* Document.swift */,
 				3F70EB041C6FB76600972CEB /* JobView.swift */,
 				3F70EAAD1C6F9C9500972CEB /* Assets.xcassets */,
@@ -377,6 +380,7 @@
 				3F70EB031C6FB74000972CEB /* Mark.swift in Sources */,
 				3F70EAAA1C6F9C9500972CEB /* JobViewController.swift in Sources */,
 				3F70EB001C6FB74000972CEB /* Cut.swift in Sources */,
+				3FFAC7261CB8A46E005929AA /* EditingModeReporter.swift in Sources */,
 				3F70EAA81C6F9C9500972CEB /* AppDelegate.swift in Sources */,
 				3F0E89A51C7E7430007F1568 /* Undoing.swift in Sources */,
 				3F70EB021C6FB74000972CEB /* Subimage.swift in Sources */,

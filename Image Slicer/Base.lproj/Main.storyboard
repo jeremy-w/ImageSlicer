@@ -923,10 +923,15 @@ Gw
                     </view>
                     <connections>
                         <outlet property="jobView" destination="hdW-vN-cp5" id="cHG-kk-rDv"/>
-                        <outlet property="statusField" destination="fuE-SN-VFP" id="XVn-XE-kIt"/>
                     </connections>
                 </viewController>
                 <customObject id="2Tp-Fl-jBw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="8lH-ci-yVY" customClass="EditingModeReporter" customModule="Image_Slicer" customModuleProvider="target">
+                    <connections>
+                        <outlet property="jobView" destination="hdW-vN-cp5" id="j44-9Q-Ni1"/>
+                        <outlet property="statusField" destination="fuE-SN-VFP" id="BVz-9i-w06"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="148" y="756.5"/>
         </scene>

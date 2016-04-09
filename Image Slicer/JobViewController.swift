@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  Image Slicer
-//
-//  Created by Jeremy on 2016-02-13.
-//  Copyright © 2016 Jeremy W. Sherman. Released with NO WARRANTY.
-//
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
@@ -14,11 +7,6 @@ import Cocoa
 class JobViewController: NSViewController {
     @IBOutlet var jobView: JobView!
     var notificationCenter = NSNotificationCenter.defaultCenter()
-
-    /// Describes the effect a click on `jobView` will have.
-    ///
-    /// Updated on `jobView.editingModeDidChange`.
-    @IBOutlet var statusField: NSTextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,46 +19,7 @@ class JobViewController: NSViewController {
             me.editName(mark, rect: rect, of: me.jobView, completion: completion)
         }
 
-        jobView.editingModeDidChange = { [weak self] jobView in
-            guard let
-                me = self,
-                statusField = me.statusField
-            else {
-                NSLog("%@", "\(__FUNCTION__): statusField outlet (\(self?.statusField)) not connected or self (\(self)) is nil")
-                return
-            }
-
-            statusField.stringValue = me.status(`for`: jobView.editingMode)
-        }
-
         configureJob()
-    }
-
-
-    /// Returns a description of what the next click on a `JobView` in `mode` will do.
-    func status(`for` mode: EditingMode) -> String {
-        switch mode {
-        case .NotEditing:
-            return ""
-
-        case let .AddingCut(orientation):
-            switch (orientation) {
-            case .Horizontally:
-                return NSLocalizedString("Click the image to add a horizontal cut", comment: "status label text")
-
-            case .Vertically:
-                return NSLocalizedString("Click the image to add a vertical cut", comment: "status label text")
-            }
-
-        case .AddingMark:
-            return NSLocalizedString("Click the image to mark a slice for export", comment: "status label text")
-
-        case .DeletingCut:
-            return NSLocalizedString("Click the image to delete the nearest cut", comment: "status label text")
-
-        case .DeletingMark:
-            return NSLocalizedString("Click the image to delete the nearest mark", comment: "status label text")
-        }
     }
 
 
@@ -89,6 +38,7 @@ class JobViewController: NSViewController {
 
         undoManagerDidChange(undoManager)
     }
+
 
     var document: Document? {
         guard viewLoaded else { return nil }
