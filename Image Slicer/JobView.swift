@@ -35,14 +35,12 @@ class JobView: NSImageView {
             }
 
             NSLog("%@", "\(__FUNCTION__): \(self): \(editingMode)")
-            if case .NotEditing = editingMode {
-                didFinishEditing(self)
-            }
+            editingModeDidChange(self)
         }
     }
 
-    var didFinishEditing: (JobView) -> Void = { _ in
-        NSLog("%@", "\(__FUNCTION__)")
+    var editingModeDidChange: (JobView) -> Void = { jobView in
+        NSLog("%@: editingModeDidChange", jobView)
     }
 
 

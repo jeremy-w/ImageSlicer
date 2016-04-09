@@ -15,6 +15,8 @@ class JobViewController: NSViewController {
     @IBOutlet var jobView: JobView!
     var notificationCenter = NSNotificationCenter.defaultCenter()
 
+    @IBOutlet var statusField: NSTextField!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         jobView.editMark = { [weak self] mark, rect, completion in
@@ -26,8 +28,47 @@ class JobViewController: NSViewController {
             me.editName(mark, rect: rect, of: me.jobView, completion: completion)
         }
 
+        jobView.editingModeDidChange = { [weak self] jobView in
+            guard let
+                me = self,
+                statusField = me.statusField
+            else {
+                NSLog("%@", "\(__FUNCTION__): statusField outlet (\(self?.statusField)) not connected or self (\(self)) is nil")
+                return
+            }
+
+            statusField.stringValue = me.status(`for`: jobView.editingMode)
+        }
+
         configureJob()
     }
+
+
+    func status(`for` mode: EditingMode) -> String {
+        switch mode {
+        case .NotEditing:
+            return ""
+
+        case let .AddingCut(orientation):
+            switch (orientation) {
+            case .Horizontally:
+                return NSLocalizedString("Click the image to add a horizontal cut", comment: "status label text")
+
+            case .Vertically:
+                return NSLocalizedString("Click the image to add a vertical cut", comment: "status label text")
+            }
+
+        case .AddingMark:
+            return NSLocalizedString("Click the image to mark a slice for export", comment: "status label text")
+
+        case .DeletingCut:
+            return NSLocalizedString("Click the image to delete the nearest cut", comment: "status label text")
+
+        case .DeletingMark:
+            return NSLocalizedString("Click the image to delete the nearest mark", comment: "status label text")
+        }
+    }
+
 
     var job: Job? {
         didSet {

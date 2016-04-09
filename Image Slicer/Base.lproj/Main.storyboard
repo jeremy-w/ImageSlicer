@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
     </dependencies>
@@ -732,7 +732,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qih-fy-dkB">
+                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qih-fy-dkB">
                                 <rect key="frame" x="128" y="13" width="60" height="32"/>
                                 <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="GAR-SC-NE7">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -745,7 +745,7 @@ DQ
                                     <action selector="okAction:" target="fIB-hU-PhY" id="0MC-tz-Pae"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Otn-aw-W5q">
+                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Otn-aw-W5q">
                                 <rect key="frame" x="45" y="13" width="83" height="32"/>
                                 <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Hwu-0i-ivZ">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -785,7 +785,7 @@ Gw
                         <rect key="frame" x="0.0" y="0.0" width="538" height="537"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="U7y-Iy-Gsu">
+                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U7y-Iy-Gsu">
                                 <rect key="frame" x="14" y="71" width="158" height="32"/>
                                 <buttonCell key="cell" type="push" title="Add Horizontal Cut" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="M3k-9t-gMi">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -797,7 +797,7 @@ Gw
                                     <action selector="addCutHorizontalAction:" target="5gI-5U-AMq" id="00Z-Er-Aey"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9b4-ja-W6m">
+                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9b4-ja-W6m">
                                 <rect key="frame" x="14" y="42" width="140" height="32"/>
                                 <buttonCell key="cell" type="push" title="Add Vertical Cut" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="THX-cR-QdZ">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -809,7 +809,7 @@ Gw
                                     <action selector="addCutVerticalAction:" target="5gI-5U-AMq" id="3Dv-iP-dqd"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aKa-wE-iPg">
+                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aKa-wE-iPg">
                                 <rect key="frame" x="14" y="13" width="106" height="32"/>
                                 <buttonCell key="cell" type="push" title="Delete Cut" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sCF-rM-o2f">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -821,7 +821,7 @@ Gw
                                     <action selector="deleteCutAction:" target="5gI-5U-AMq" id="yO7-zb-bMF"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1G0-xE-c4n">
+                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1G0-xE-c4n">
                                 <rect key="frame" x="354" y="71" width="170" height="32"/>
                                 <buttonCell key="cell" type="push" title="Mark Slice for Export" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7cr-G0-fkn">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -833,7 +833,7 @@ Gw
                                     <action selector="markSliceForExportAction:" target="5gI-5U-AMq" id="38e-qt-ROz"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rwd-sG-G0B">
+                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rwd-sG-G0B">
                                 <rect key="frame" x="338" y="42" width="186" height="32"/>
                                 <buttonCell key="cell" type="push" title="Export Marked Slices…" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3H4-mu-GW2">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -845,7 +845,7 @@ Gw
                                     <action selector="exportMarkedSlicesAction:" target="5gI-5U-AMq" id="4Mu-HR-rPc"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6vF-mZ-gB2">
+                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6vF-mZ-gB2">
                                 <rect key="frame" x="409" y="13" width="115" height="32"/>
                                 <buttonCell key="cell" type="push" title="Delete Mark" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AyJ-dl-r7H">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -856,13 +856,13 @@ Gw
                                 </connections>
                             </button>
                             <scrollView horizontalHuggingPriority="750" verticalHuggingPriority="750" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ar-BB-Feu">
-                                <rect key="frame" x="19" y="118" width="500" height="400"/>
+                                <rect key="frame" x="19" y="143" width="500" height="375"/>
                                 <clipView key="contentView" horizontalHuggingPriority="750" drawsBackground="NO" copiesOnScroll="NO" id="xm6-lD-UZt">
-                                    <rect key="frame" x="1" y="1" width="498" height="398"/>
+                                    <rect key="frame" x="1" y="1" width="498" height="373"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <imageView focusRingType="none" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="hdW-vN-cp5" customClass="JobView" customModule="Image_Slicer" customModuleProvider="target">
-                                            <rect key="frame" x="-1" y="-1" width="500" height="400"/>
+                                        <imageView focusRingType="none" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hdW-vN-cp5" customClass="JobView" customModule="Image_Slicer" customModuleProvider="target">
+                                            <rect key="frame" x="-1" y="-7" width="500" height="400"/>
                                             <imageCell key="cell" selectable="YES" editable="YES" focusRingType="none" alignment="left" imageAlignment="bottomLeft" id="9j1-Ju-fWU"/>
                                         </imageView>
                                     </subviews>
@@ -878,31 +878,42 @@ Gw
                                     <constraint firstItem="hdW-vN-cp5" firstAttribute="width" secondItem="7Ar-BB-Feu" secondAttribute="width" priority="250" id="oYh-C1-fKZ"/>
                                     <constraint firstItem="hdW-vN-cp5" firstAttribute="height" secondItem="7Ar-BB-Feu" secondAttribute="height" priority="250" id="tDr-G6-xhH"/>
                                 </constraints>
-                                <scroller key="horizontalScroller" verticalHuggingPriority="750" doubleValue="0.91881924662789061" horizontal="YES" id="Tv8-nS-E3N">
-                                    <rect key="frame" x="1" y="383" width="498" height="16"/>
+                                <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="Tv8-nS-E3N">
+                                    <rect key="frame" x="1" y="358" width="498" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="fK0-bh-zG7">
-                                    <rect key="frame" x="483" y="1" width="16" height="398"/>
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="0.07407407407407407" horizontal="NO" id="fK0-bh-zG7">
+                                    <rect key="frame" x="483" y="1" width="16" height="373"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fuE-SN-VFP">
+                                <rect key="frame" x="18" y="119" width="502" height="17"/>
+                                <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" id="exm-xZ-sDn">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="7Ar-BB-Feu" secondAttribute="trailing" constant="19" id="2ss-fs-FRW"/>
                             <constraint firstItem="1G0-xE-c4n" firstAttribute="baseline" secondItem="U7y-Iy-Gsu" secondAttribute="baseline" id="5fQ-A4-7gF"/>
                             <constraint firstItem="1G0-xE-c4n" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="U7y-Iy-Gsu" secondAttribute="trailing" constant="20" id="BwQ-15-pYm"/>
                             <constraint firstItem="7Ar-BB-Feu" firstAttribute="leading" secondItem="ERx-hH-rdd" secondAttribute="leading" constant="19" id="DDG-n3-3SK"/>
-                            <constraint firstItem="U7y-Iy-Gsu" firstAttribute="top" secondItem="7Ar-BB-Feu" secondAttribute="bottom" constant="19" id="DKC-SK-3yn"/>
                             <constraint firstItem="6vF-mZ-gB2" firstAttribute="baseline" secondItem="aKa-wE-iPg" secondAttribute="baseline" id="DO2-el-0yQ"/>
                             <constraint firstItem="aKa-wE-iPg" firstAttribute="top" secondItem="9b4-ja-W6m" secondAttribute="bottom" constant="8" id="HdU-kS-2yF"/>
+                            <constraint firstItem="6vF-mZ-gB2" firstAttribute="trailing" secondItem="fuE-SN-VFP" secondAttribute="trailing" id="OQW-aC-OLf"/>
                             <constraint firstItem="9b4-ja-W6m" firstAttribute="top" secondItem="U7y-Iy-Gsu" secondAttribute="bottom" constant="8" id="WBn-Hm-1yh"/>
                             <constraint firstItem="9b4-ja-W6m" firstAttribute="leading" secondItem="U7y-Iy-Gsu" secondAttribute="leading" id="Wvc-G2-26K"/>
                             <constraint firstItem="7Ar-BB-Feu" firstAttribute="top" secondItem="ERx-hH-rdd" secondAttribute="top" constant="19" id="XCL-Ot-sri"/>
                             <constraint firstItem="Rwd-sG-G0B" firstAttribute="trailing" secondItem="1G0-xE-c4n" secondAttribute="trailing" id="ccU-MU-Kws"/>
+                            <constraint firstItem="U7y-Iy-Gsu" firstAttribute="top" secondItem="fuE-SN-VFP" secondAttribute="bottom" constant="20" id="dTl-zz-aOF"/>
                             <constraint firstAttribute="trailing" secondItem="6vF-mZ-gB2" secondAttribute="trailing" constant="20" id="dbs-VB-Ytm"/>
                             <constraint firstAttribute="bottom" secondItem="aKa-wE-iPg" secondAttribute="bottom" constant="20" symbolic="YES" id="eji-vP-ROt"/>
+                            <constraint firstItem="fuE-SN-VFP" firstAttribute="top" secondItem="7Ar-BB-Feu" secondAttribute="bottom" constant="7" id="i8D-f9-vxI"/>
                             <constraint firstItem="6vF-mZ-gB2" firstAttribute="trailing" secondItem="1G0-xE-c4n" secondAttribute="trailing" id="jfc-j1-0hN"/>
+                            <constraint firstItem="aKa-wE-iPg" firstAttribute="leading" secondItem="fuE-SN-VFP" secondAttribute="leading" id="jk3-dB-MBn"/>
                             <constraint firstItem="6vF-mZ-gB2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aKa-wE-iPg" secondAttribute="trailing" constant="20" id="jmb-Nr-w6T"/>
                             <constraint firstItem="Rwd-sG-G0B" firstAttribute="baseline" secondItem="9b4-ja-W6m" secondAttribute="baseline" id="jvh-kn-JJv"/>
                             <constraint firstItem="Rwd-sG-G0B" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="9b4-ja-W6m" secondAttribute="trailing" constant="20" id="pCv-Ep-joe"/>
@@ -912,11 +923,12 @@ Gw
                     </view>
                     <connections>
                         <outlet property="jobView" destination="hdW-vN-cp5" id="cHG-kk-rDv"/>
+                        <outlet property="statusField" destination="fuE-SN-VFP" id="XVn-XE-kIt"/>
                     </connections>
                 </viewController>
                 <customObject id="2Tp-Fl-jBw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="148" y="757"/>
+            <point key="canvasLocation" x="148" y="756.5"/>
         </scene>
     </scenes>
 </document>
