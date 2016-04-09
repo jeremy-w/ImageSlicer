@@ -251,7 +251,12 @@ extension JobView {
             return nil
 
         case let .AddingCut(orientation):
-            job.add(Cut(at: point, oriented: orientation))
+            // Place cuts at integral locations so that the resulting sliced-up image
+            // doesn't end up blurry due to smooshing a pixel across a few neighbors.
+            let integralPoint = CGPoint(
+                x: round(point.x),
+                y: round(point.y))
+            job.add(Cut(at: integralPoint, oriented: orientation))
             return .NotEditing
 
         case .AddingMark:
