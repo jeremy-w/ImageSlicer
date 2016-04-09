@@ -15,6 +15,9 @@ class JobViewController: NSViewController {
     @IBOutlet var jobView: JobView!
     var notificationCenter = NSNotificationCenter.defaultCenter()
 
+    /// Describes the effect a click on `jobView` will have.
+    ///
+    /// Updated on `jobView.editingModeDidChange`.
     @IBOutlet var statusField: NSTextField!
 
     override func viewDidLoad() {
@@ -44,6 +47,7 @@ class JobViewController: NSViewController {
     }
 
 
+    /// Returns a description of what the next click on a `JobView` in `mode` will do.
     func status(`for` mode: EditingMode) -> String {
         switch mode {
         case .NotEditing:
