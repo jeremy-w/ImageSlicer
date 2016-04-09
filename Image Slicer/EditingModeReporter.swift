@@ -22,17 +22,21 @@ class EditingModeReporter: NSObject {
 
 
     func configureJobView() {
-        jobView.editingModeDidChange = { [weak self] jobView in
-            guard let
-                me = self,
-                statusField = me.statusField
-            else {
-                NSLog("%@", "\(__FUNCTION__): statusField outlet (\(self?.statusField)) not connected or self (\(self)) is nil")
-                return
-            }
-
-            statusField.stringValue = me.dynamicType.status(`for`: jobView.editingMode)
+        jobView.editingModeDidChange = { [weak self] _ in
+            self?.updateStatusFieldStringValue()
         }
+    }
+
+
+    func updateStatusFieldStringValue() {
+        guard let
+            statusField = self.statusField
+        else {
+            NSLog("%@", "\(__FUNCTION__): statusField outlet is not connected")
+            return
+        }
+
+        statusField.stringValue = self.dynamicType.status(`for`: jobView.editingMode)
     }
 
 
