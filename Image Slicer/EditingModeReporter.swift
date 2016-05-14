@@ -36,7 +36,7 @@ class EditingModeReporter: NSObject {
             return
         }
 
-        statusField.stringValue = self.dynamicType.status(`for`: jobView.editingMode)
+        statusField.stringValue = self.dynamicType.status(for: jobView.editingMode)
     }
 
 
