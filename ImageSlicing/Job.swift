@@ -80,7 +80,7 @@ class Job {
             let withinSubimage = subimages[index]
 
             let children = cut.slice(withinSubimage)
-            subimages.replaceRange(Range(start: index, end: index + 1), with: children)
+            subimages.replaceRange(index ..< (index + 1), with: children)
         }
 
         return subimages
@@ -90,7 +90,7 @@ class Job {
         guard let index = selections.indexOf(mark) else { return }
         let oldMark = selections[index]
         let renamedMark = Mark(around: oldMark.around, name: name)
-        let markRange = Range(start: index, end: index + 1)
+        let markRange = index ..< (index + 1)
         selections.replaceRange(markRange, with: [renamedMark])
 
         let actionName = NSLocalizedString("Rename Mark", comment: "job action")
