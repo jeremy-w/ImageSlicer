@@ -63,7 +63,7 @@ extension JobViewController {
 
         guard let undoManager = undoManager else { return }
         for name in names {
-            notificationCenter.addObserver(self, selector: Selector("markViewDirtyFollowingUndoOrRedo:"), name: name, object: undoManager)
+            notificationCenter.addObserver(self, selector: #selector(JobViewController.markViewDirtyFollowingUndoOrRedo(_:)), name: name, object: undoManager)
         }
     }
 

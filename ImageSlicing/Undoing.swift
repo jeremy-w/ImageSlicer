@@ -14,7 +14,7 @@ protocol Undoing {
 extension NSUndoManager: Undoing {
     func record(actionName: String, undo: () -> Void) {
         let closure = PerformableClosure(undo)
-        self.registerUndoWithTarget(PerformableClosure.self, selector: Selector("perform:"), object: closure)
+        self.registerUndoWithTarget(PerformableClosure.self, selector: #selector(PerformableClosure.perform(_:)), object: closure)
         if !self.undoing && !self.redoing {
             self.setActionName(actionName)
         }
