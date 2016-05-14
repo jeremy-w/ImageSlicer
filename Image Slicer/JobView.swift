@@ -255,14 +255,14 @@ extension JobView {
                 x: round(point.x),
                 y: round(point.y))
             job.add(Cut(at: integralPoint, oriented: orientation))
-            return .NotEditing
+            return nil
 
         case .AddingMark:
             let name = "mark \(job.selections.count + 1)"
             let mark = Mark(around: point, name: name)
             job.add(mark)
             editHighlightedMark(mark)
-            return .NotEditing
+            return nil
 
         case .DeletingCut:
             if let (cut, _) = cutNearest(point) {
