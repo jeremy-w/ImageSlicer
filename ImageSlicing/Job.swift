@@ -28,7 +28,7 @@ class Job {
 
     func remove(cut: Cut) {
         guard let index = cuts.indexOf(cut) else {
-            NSLog("%@", "\(__FUNCTION__): Ignoring request to remove absent cut \(cut)")
+            NSLog("%@", "\(#function): Ignoring request to remove absent cut \(cut)")
             return
         }
 
@@ -52,7 +52,7 @@ class Job {
 
     func remove(mark: Mark) {
         guard let index = selections.indexOf(mark) else {
-            NSLog("%@", "\(__FUNCTION__): Ignoring request to remove absent mark \(mark)")
+            NSLog("%@", "\(#function): Ignoring request to remove absent mark \(mark)")
             return
         }
 
@@ -109,7 +109,7 @@ class Job {
         let subimages = self.subimages
         selections.forEach { selection in
             guard let index = subimages.indexOf({ $0.contains(selection.around) }) else {
-                NSLog("%@", "\(__FUNCTION__): error: selection \(selection) not contained by any subimage!")
+                NSLog("%@", "\(#function): error: selection \(selection) not contained by any subimage!")
                 return
             }
 
@@ -130,7 +130,7 @@ class Job {
                 try data?.writeToURL(fileURL, options: .DataWritingWithoutOverwriting)
                 created.append(fileURL)
             } catch {
-                NSLog("%@", "\(__FUNCTION__): error: failed writing \(data?.length) bytes to file \(fileURL.absoluteURL.path): \(error)")
+                NSLog("%@", "\(#function): error: failed writing \(data?.length) bytes to file \(fileURL.absoluteURL.path): \(error)")
             }
         }
 
@@ -153,7 +153,7 @@ class Job {
             hasAlpha: true, isPlanar: false,
             colorSpaceName: NSCalibratedRGBColorSpace,
             bytesPerRow: 4*Int(subregion.size.width), bitsPerPixel: 32) else {
-                NSLog("%@", "\(__FUNCTION__): error: failed to create bitmap image rep")
+                NSLog("%@", "\(#function): error: failed to create bitmap image rep")
                 return nil
         }
 
@@ -207,12 +207,12 @@ extension Job {
 
         dictionary[Keys.Cuts] = cuts.map { $0.asDictionary }
         dictionary[Keys.Selections] = selections.map { $0.asDictionary }
-        NSLog("%@", "\(__FUNCTION__): pickled \(self): \(dictionary)")
+        NSLog("%@", "\(#function): pickled \(self): \(dictionary)")
         return dictionary
     }
 
     convenience init?(dictionary: [String: AnyObject]) {
-        NSLog("%@", "\(__FUNCTION__): unpickling: \(dictionary)")
+        NSLog("%@", "\(#function): unpickling: \(dictionary)")
         var actualImage: NSImage?
 
         let maybeValue = dictionary[Keys.Image]

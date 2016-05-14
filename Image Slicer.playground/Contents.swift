@@ -84,7 +84,7 @@ struct Job {
         let subimages = self.subimages
         selections.forEach { selection in
             guard let index = subimages.indexOf({ $0.contains(selection.around) }) else {
-                NSLog("%@", "\(__FUNCTION__): error: selection \(selection) not contained by any subimage!")
+                NSLog("%@", "\(#function): error: selection \(selection) not contained by any subimage!")
                 return
             }
 
@@ -105,7 +105,7 @@ struct Job {
                 try data?.writeToURL(fileURL, options: .DataWritingWithoutOverwriting)
                 created.append(fileURL)
             } catch {
-                NSLog("%@", "\(__FUNCTION__): error: failed writing \(data?.length) bytes to file \(fileURL.absoluteURL.path): \(error)")
+                NSLog("%@", "\(#function): error: failed writing \(data?.length) bytes to file \(fileURL.absoluteURL.path): \(error)")
             }
         }
 
@@ -124,7 +124,7 @@ struct Job {
             hasAlpha: true, isPlanar: false,
             colorSpaceName: NSCalibratedRGBColorSpace,
             bytesPerRow: 4*Int(subregion.size.width), bitsPerPixel: 32) else {
-                NSLog("%@", "\(__FUNCTION__): error: failed to create bitmap image rep")
+                NSLog("%@", "\(#function): error: failed to create bitmap image rep")
                 return nil
         }
 

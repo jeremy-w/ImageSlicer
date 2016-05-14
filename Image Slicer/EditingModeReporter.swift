@@ -32,7 +32,7 @@ class EditingModeReporter: NSObject {
         guard let
             statusField = self.statusField
         else {
-            NSLog("%@", "\(__FUNCTION__): statusField outlet is not connected")
+            NSLog("%@", "\(#function): statusField outlet is not connected")
             return
         }
 

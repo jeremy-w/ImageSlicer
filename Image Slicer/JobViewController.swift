@@ -133,7 +133,7 @@ extension JobViewController {
 extension JobViewController {
     @IBAction func exportMarkedSlicesAction(sender: AnyObject) {
         guard let window = view.window else {
-            NSLog("%@", "\(__FUNCTION__): \(self): we have no window!")
+            NSLog("%@", "\(#function): \(self): we have no window!")
             NSBeep()
             return
         }
@@ -196,7 +196,7 @@ extension JobViewController {
         of view: NSView,
         completion: (Bool) -> Void
     ) {
-        NSLog("%@", "\(__FUNCTION__): \(mark)")
+        NSLog("%@", "\(#function): \(mark)")
         guard let renamer = storyboard?.instantiateControllerWithIdentifier("renamer") as?RenameViewController else {
             fatalError("failed to instantiate renamer")
         }
@@ -207,7 +207,7 @@ extension JobViewController {
                 return
             }
 
-            NSLog("%@", "\(__FUNCTION__): \(self): renaming \(mark) to \"\(name)\"")
+            NSLog("%@", "\(#function): \(self): renaming \(mark) to \"\(name)\"")
             me.job?.rename(mark, to: name)
             completion(true)
         }
