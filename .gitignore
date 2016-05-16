@@ -1,0 +1,2 @@
+# Ignore Racket's compiled output folder.
+compiled/
