@@ -7,6 +7,7 @@
 import Cocoa
 
 class Job {
+    var imageFrom: NSURL?
     var image: NSImage?
     var cuts: [Cut]
     var selections: [Mark]
@@ -194,6 +195,7 @@ extension Job {
 // MARK: - De/Serialization
 extension Job {
     class Keys {
+        static let From = "from"
         static let Image = "image"
         static let Cuts = "cuts"
         static let Selections = "selections"
@@ -201,6 +203,10 @@ extension Job {
 
     var asDictionary: [String: AnyObject] {
         var dictionary: [String: AnyObject] = [:]
+        if let imageFrom = imageFrom {
+            dictionary[Keys.From] = imageFrom
+        }
+
         if let image = image {
             dictionary[Keys.Image] = image
         }
@@ -213,15 +219,15 @@ extension Job {
 
     convenience init?(dictionary: [String: AnyObject]) {
         NSLog("%@", "\(#function): unpickling: \(dictionary)")
-        var actualImage: NSImage?
 
-        let maybeValue = dictionary[Keys.Image]
-        if let value = maybeValue {
-            guard let image = value as? NSImage else {
+        let from = dictionary[Keys.From] as? NSURL
+
+        var image: NSImage? = nil
+        if let mustBeNSImageIfPresent = dictionary[Keys.Image] {
+            guard let validImage = mustBeNSImageIfPresent as? NSImage else {
                 return nil
             }
-
-            actualImage = image
+            image = validImage
         }
 
         guard let cutDicts = dictionary[Keys.Cuts] as? [[String: AnyObject]] else {
@@ -241,6 +247,7 @@ extension Job {
             return nil
         }
 
-        self.init(image: actualImage, cuts: cuts, selections: selections)
+        self.init(image: image, cuts: cuts, selections: selections)
+        self.imageFrom = from
     }
 }
