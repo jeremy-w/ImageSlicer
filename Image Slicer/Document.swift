@@ -84,13 +84,17 @@ class Document: NSDocument {
     /// Originally was an `@IBAction`, but the responder chain didn't
     /// seem to find it, so forget that.
     func renameDraft() {
-        // Per docs, `draft` should be equivalent to `fileURL == nil`,
-        // but it appears that autosave has broken that equivalence,
-        // so that the document never presents as `draft` any more.
-        let notYetSaved = fileURL == nil
         guard notYetSaved else { return }
 
         adoptNameFromImageURL()
+    }
+
+
+    /// Per docs, `draft` should be equivalent to `fileURL == nil`,
+    /// but it appears that autosave has broken that equivalence,
+    /// so that the document never presents as `draft` any more.
+    var notYetSaved: Bool {
+        return fileURL == nil
     }
 
 
@@ -108,10 +112,16 @@ class Document: NSDocument {
     }
 
 
-//    override func restoreDocumentWindowWithIdentifier(identifier: String, state: NSCoder, completionHandler: (NSWindow?, NSError?) -> Void) {
-//        NSLog("%@", "DEBUG: state restoration disabled")
-//        completionHandler(nil, nil)
-//    }
+    override func prepareSavePanel(savePanel: NSSavePanel) -> Bool {
+        aimAtSourceImageURLIfDraft(savePanel)
+        return true
+    }
 
+
+    func aimAtSourceImageURLIfDraft(savePanel: NSSavePanel) {
+        guard notYetSaved else { return }
+        guard let directoryURL = job.imageFrom?.URLByDeletingLastPathComponent else { return }
+        savePanel.directoryURL = directoryURL
+    }
 }
 
