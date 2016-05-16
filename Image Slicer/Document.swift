@@ -79,6 +79,35 @@ class Document: NSDocument {
     }
 
 
+    /// Invoked by `JobView` when a file gets dropped on it.
+    ///
+    /// Originally was an `@IBAction`, but the responder chain didn't
+    /// seem to find it, so forget that.
+    func renameDraft() {
+        // Per docs, `draft` should be equivalent to `fileURL == nil`,
+        // but it appears that autosave has broken that equivalence,
+        // so that the document never presents as `draft` any more.
+        let notYetSaved = fileURL == nil
+        guard notYetSaved else { return }
+
+        adoptNameFromImageURL()
+    }
+
+
+    func adoptNameFromImageURL() {
+        guard
+            let imageURL = job.imageFrom,
+            name = imageURL.URLByDeletingPathExtension?.lastPathComponent
+        else { return }
+
+        setDisplayName(name)
+        // You'd think that would automatically update the name shown by the window, but, nope.
+        windowControllers.forEach {
+            $0.synchronizeWindowTitleWithDocumentName()
+        }
+    }
+
+
 //    override func restoreDocumentWindowWithIdentifier(identifier: String, state: NSCoder, completionHandler: (NSWindow?, NSError?) -> Void) {
 //        NSLog("%@", "DEBUG: state restoration disabled")
 //        completionHandler(nil, nil)

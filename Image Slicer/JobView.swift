@@ -136,6 +136,12 @@ extension JobView {
         NSLog("%@", "dropped file URL was: \(fileURL)")
 
         self.job.imageFrom = fileURL
+
+        // Tried pitching this up the responder chain, but oddly, it wasn't handled.
+        // So let's get handsy.
+        if let document = self.window?.windowController?.document as? Document {
+            document.renameDraft()
+        }
         return didAcceptDrag
     }
 
