@@ -132,11 +132,10 @@ extension JobView {
         }
 
         let pasteboard = sender.draggingPasteboard()
-        guard let fileURL = firstFileURL(from: pasteboard) else {
-            return didAcceptDrag
-        }
-
+        let fileURL = firstFileURL(from: pasteboard)
         NSLog("%@", "dropped file URL was: \(fileURL)")
+
+        self.job.imageFrom = fileURL
         return didAcceptDrag
     }
 
