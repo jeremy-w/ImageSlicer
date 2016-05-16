@@ -123,6 +123,29 @@ class JobView: NSImageView {
 
 
 
+// MARK: - Drag & Drop
+extension JobView {
+    override func performDragOperation(sender: NSDraggingInfo) -> Bool {
+        let didAcceptDrag = super.performDragOperation(sender)
+        guard didAcceptDrag else {
+            return didAcceptDrag
+        }
+
+        let pasteboard = sender.draggingPasteboard()
+        guard let
+            URLs = pasteboard.readObjectsForClasses([NSURL.self], options: [NSPasteboardURLReadingFileURLsOnlyKey: true]) as? [NSURL],
+            likelyFileReferenceURL = URLs.first,
+            fileURL = likelyFileReferenceURL.filePathURL else {
+                return didAcceptDrag
+        }
+
+        NSLog("%@", "dropped file URL was: \(fileURL)")
+        return didAcceptDrag
+    }
+}
+
+
+
 // MARK: - Drawing
 extension JobView {
     override func drawRect(dirtyRect: NSRect) {
