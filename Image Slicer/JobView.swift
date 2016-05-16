@@ -132,15 +132,22 @@ extension JobView {
         }
 
         let pasteboard = sender.draggingPasteboard()
-        guard let
-            URLs = pasteboard.readObjectsForClasses([NSURL.self], options: [NSPasteboardURLReadingFileURLsOnlyKey: true]) as? [NSURL],
-            likelyFileReferenceURL = URLs.first,
-            fileURL = likelyFileReferenceURL.filePathURL else {
-                return didAcceptDrag
+        guard let fileURL = firstFileURL(from: pasteboard) else {
+            return didAcceptDrag
         }
 
         NSLog("%@", "dropped file URL was: \(fileURL)")
         return didAcceptDrag
+    }
+
+
+    func firstFileURL(from pasteboard: NSPasteboard) -> NSURL? {
+        guard let URLs = pasteboard.readObjectsForClasses([NSURL.self], options: [NSPasteboardURLReadingFileURLsOnlyKey: true]) as? [NSURL] else {
+                return nil
+        }
+
+        let fileURL = URLs.first?.filePathURL
+        return fileURL
     }
 }
 
