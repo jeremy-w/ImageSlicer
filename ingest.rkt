@@ -21,12 +21,28 @@
   ;; url -> xexp. Snarfs the page and returns its xexp.
   (call/input-url section-url get-pure-port html->xexp))
 
-(define (image-hierachy-from unit-table-xexp)
-  ;; xexp -> hash<heading-string -> vector<image-url> >
-  ;; TODO: grab out images and their headings
+(define headings-query
+  (sxpath "//strong"))
+
+(define paragraph-numbers-query
+  (sxpath "//a[starts-with(@id, \"p\")]"))
+
+(define images-query
+  (sxpath "//img"))
+
+(define (image-hierarchy-from unit-table-xexp)
+  ;; xexp -> hash<heading-string -> list<image-url> >
+  ;; TODO: grab out headings (strong text), paragraph numbers (anchor like p89), and image src strings
+  ;; note that a heading can precede a paragraph, in which case it should go with it
   ;; smoosh into nested structure
+  ;;
   ;; eventually, splorsh out onto disk with heading as folder title and downloaded images within the folders
-  'wip)
+  ;;
+  ;; FIXME: This query just concatenates the result, which loses the ordering info we need.
+  ;; We probably need to tree walk the xexp and filter in the bits we want by running the query predicate.
+  (let* ([waypoint-query (node-or headings-query paragraph-numbers-query images-query)]
+         [waypoints (waypoint-query unit-table-xexp)])
+    waypoints))
 
 (define (unit-table page-xexp)
   ;; xexp -> xexp. Digs out the table representing the unit content.
@@ -147,10 +163,22 @@
 (module+ test
   (require rackunit)
 
- (check-equal? (url->string (url-for "09")) "http://gregg.angelfishy.net/anunit09.shtml" "happy path")
+  (check-equal? (url->string (url-for "09")) "http://gregg.angelfishy.net/anunit09.shtml" "happy path")
 
   (let* ([raw-table-title ((txpath "/tr[1]/td[1]/p[1]/strong[1]/text()") (unit-table any-unit-xexp))]
-        [title-words (string-split (string-join raw-table-title))]
-        [table-title (string-join title-words)])
-   (check-equal? table-title "Unit 9" "unit-table finds the table containing the unit title"))
+         [title-words (string-split (string-join raw-table-title))]
+         [table-title (string-join title-words)])
+    (check-equal? table-title "Unit 9" "unit-table finds the table containing the unit title"))
+
+  (check-equal?
+   (image-hierarchy-from (unit-table any-unit-xexp))
+   #hash(
+         ("78 The Th Joinings" . ("some-url"))
+         ("80 Frequent Prefixes and Suffixes" . ("images/gregg093.gif"))
+         ("81 Frequent Prefixes and Suffixes" . ("images/gregg094.gif"))
+         ("87 Frequent Phrases" . ("images/gregg101.gif"))
+         ("88 Brief forms" . ("images/gregg102.gif"))
+         ("89 Reading and Dictation Practice" . ("images/gregg103.gif"))
+         ("90 Writing Practice" . ()))
+   "should find all images")
   )
