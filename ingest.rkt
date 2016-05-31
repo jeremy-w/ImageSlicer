@@ -146,5 +146,11 @@
 
 (module+ test
   (require rackunit)
-  (check-equal? (url->string (url-for "09")) "http://gregg.angelfishy.net/anunit09.shtml" "happy path")
+
+ (check-equal? (url->string (url-for "09")) "http://gregg.angelfishy.net/anunit09.shtml" "happy path")
+
+  (let* ([raw-table-title ((txpath "/tr[1]/td[1]/p[1]/strong[1]/text()") (unit-table any-unit-xexp))]
+        [title-words (string-split (string-join raw-table-title))]
+        [table-title (string-join title-words)])
+   (check-equal? table-title "Unit 9" "unit-table finds the table containing the unit title"))
   )
