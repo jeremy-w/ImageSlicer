@@ -20,13 +20,13 @@ class Document: NSDocument {
         }
     }
 
-    override class func autosavesInPlace() -> Bool {
+    override class var autosavesInPlace: Bool {
         return true
     }
 
     override func makeWindowControllers() {
-        let storyboard = NSStoryboard(name: "Main", bundle: nil)
-        let windowController = storyboard.instantiateControllerWithIdentifier("Document Window Controller") as! NSWindowController
+        let storyboard = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil)
+        let windowController = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "Document Window Controller")) as! NSWindowController
         self.addWindowController(windowController)
 
         updateViewControllerJob()
@@ -35,23 +35,23 @@ class Document: NSDocument {
     func updateViewControllerJob() {
         if let
             windowController = self.windowControllers.first,
-            vc = windowController.contentViewController as? JobViewController {
+            let vc = windowController.contentViewController as? JobViewController {
                 vc.job = self.job
         }
     }
 
-    override static func canConcurrentlyReadDocumentsOfType(typeName: String) -> Bool {
+    override static func canConcurrentlyReadDocuments(ofType typeName: String) -> Bool {
         return typeName == nativeType
     }
 
-    override func dataOfType(typeName: String) throws -> NSData {
+    override func data(ofType typeName: String) throws -> Data {
         let dict = job.asDictionary
-        let data = NSKeyedArchiver.archivedDataWithRootObject(dict)
+        let data = NSKeyedArchiver.archivedData(withRootObject: dict)
         return data
     }
 
-    override func readFromData(data: NSData, ofType typeName: String) throws {
-        guard let something = NSKeyedUnarchiver.unarchiveObjectWithData(data) else {
+    override func read(from data: Data, ofType typeName: String) throws {
+        guard let something = NSKeyedUnarchiver.unarchiveObject(with: data) else {
             throw NSError(domain: "blargh", code: 1, userInfo:  [
                 NSLocalizedDescriptionKey: "Failed to unarchive data",
                 ])
@@ -99,12 +99,9 @@ class Document: NSDocument {
 
 
     func adoptNameFromImageURL() {
-        guard
-            let imageURL = job.imageFrom,
-            name = imageURL.URLByDeletingPathExtension?.lastPathComponent
-        else { return }
+        guard let imageURL = job.imageFrom else { return }
 
-        setDisplayName(name)
+        displayName = imageURL.deletingPathExtension().lastPathComponent
         // You'd think that would automatically update the name shown by the window, but, nope.
         windowControllers.forEach {
             $0.synchronizeWindowTitleWithDocumentName()
@@ -112,15 +109,15 @@ class Document: NSDocument {
     }
 
 
-    override func prepareSavePanel(savePanel: NSSavePanel) -> Bool {
-        aimAtSourceImageURLIfDraft(savePanel)
+    override func prepareSavePanel(_ savePanel: NSSavePanel) -> Bool {
+        aimAtSourceImageURLIfDraft(savePanel: savePanel)
         return true
     }
 
 
     func aimAtSourceImageURLIfDraft(savePanel: NSSavePanel) {
         guard notYetSaved else { return }
-        guard let directoryURL = job.imageFrom?.URLByDeletingLastPathComponent else { return }
+        guard let directoryURL = job.imageFrom?.deletingLastPathComponent() else { return }
         savePanel.directoryURL = directoryURL
     }
 }

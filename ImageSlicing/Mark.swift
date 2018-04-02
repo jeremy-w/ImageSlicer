@@ -16,7 +16,7 @@ extension Mark {
     var asDictionary: [String: AnyObject] {
         var dictionary: [String: AnyObject] = [:]
         dictionary["around"] = NSValue(point: around)
-        dictionary["name"] = name
+        dictionary["name"] = name as AnyObject
         return dictionary
     }
 
@@ -36,5 +36,5 @@ extension Mark {
 
 extension Mark: Equatable {}
 func ==(left: Mark, right: Mark) -> Bool {
-    return CGPointEqualToPoint(left.around, right.around) && left.name == right.name
+    return left.around.equalTo(right.around) && left.name == right.name
 }

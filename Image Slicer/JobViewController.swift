@@ -6,7 +6,7 @@ import Cocoa
 
 class JobViewController: NSViewController {
     @IBOutlet var jobView: JobView!
-    var notificationCenter = NSNotificationCenter.defaultCenter()
+    var notificationCenter = NotificationCenter.default
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,7 +16,7 @@ class JobViewController: NSViewController {
                 return
             }
 
-            me.editName(mark, rect: rect, of: me.jobView, completion: completion)
+            me.editName(mark: mark, rect: rect, of: me.jobView, completion: completion)
         }
 
         configureJob()
@@ -36,12 +36,12 @@ class JobViewController: NSViewController {
         job.undoing = undoManager
         jobView.job = job
 
-        undoManagerDidChange(undoManager)
+        undoManagerDidChange(undoManager: undoManager)
     }
 
 
     var document: Document? {
-        guard viewLoaded else { return nil }
+        guard isViewLoaded else { return nil }
 
         let document = view.window?.windowController?.document as? Document
         return document
@@ -55,22 +55,25 @@ extension JobViewController {
     /// if `undoManager` non-nil, subscribes to its notifications.
     ///
     /// Notification management is done through `notificationCenter`.
-    func undoManagerDidChange(undoManager: NSUndoManager?) {
-        let names = [NSUndoManagerDidUndoChangeNotification, NSUndoManagerDidRedoChangeNotification]
+    func undoManagerDidChange(undoManager: UndoManager?) {
+        let names: [NSNotification.Name] = [
+            .NSUndoManagerDidUndoChange,
+            .NSUndoManagerDidRedoChange
+        ]
         for name in names {
             notificationCenter.removeObserver(self, name: name, object: nil)
         }
 
         guard let undoManager = undoManager else { return }
         for name in names {
-            notificationCenter.addObserver(self, selector: #selector(JobViewController.markViewDirtyFollowingUndoOrRedo(_:)), name: name, object: undoManager)
+            notificationCenter.addObserver(self, selector: #selector(JobViewController.markViewDirtyFollowingUndoOrRedo(note:)), name: name, object: undoManager)
         }
     }
 
 
     /// Called as a result of an undo manager did undo/redo change notification.
-    func markViewDirtyFollowingUndoOrRedo(note: NSNotification) {
-        guard viewLoaded else { return }
+    @objc func markViewDirtyFollowingUndoOrRedo(note: NSNotification) {
+        guard isViewLoaded else { return }
 
         view.needsDisplay = true
     }
@@ -80,20 +83,24 @@ extension JobViewController {
 
 // MARK: - Cut Management
 extension JobViewController {
+    @objc(addCutHorizontalAction:)
     @IBAction func addCutHorizontalAction(sender: NSButton) {
         jobView.editingMode = .AddingCut(.Horizontally)
     }
 
 
+    @objc(addCutVerticalAction:)
     @IBAction func addCutVerticalAction(sender: NSButton) {
         jobView.editingMode = .AddingCut(.Vertically)
     }
 
 
+    @objc(deleteCutAction:)
     @IBAction func deleteCutAction(sender: NSButton) {
         jobView.editingMode = .DeletingCut
     }
 
+    @objc(deleteAllCutsAndMarksAction:)
     @IBAction func deleteAllCutsAndMarksAction(sender: AnyObject) {
         guard let job = self.job else {
             return
@@ -109,14 +116,17 @@ extension JobViewController {
 
 // MARK: - Mark Management
 extension JobViewController {
+    @objc(markSliceForExportAction:)
     @IBAction func markSliceForExportAction(sender: AnyObject) {
         jobView.editingMode = .AddingMark
     }
 
+    @objc(deleteMarkAction:)
     @IBAction func deleteMarkAction(sender: AnyObject) {
         jobView.editingMode = .DeletingMark
     }
 
+    @objc(deleteAllMarksAction:)
     @IBAction func deleteAllMarksAction(sender: AnyObject) {
         guard let job = self.job else {
             return
@@ -131,44 +141,45 @@ extension JobViewController {
 
 // MARK: - Export
 extension JobViewController {
+    @objc(exportMarkedSlicesAction:)
     @IBAction func exportMarkedSlicesAction(sender: AnyObject) {
         guard let window = view.window else {
             NSLog("%@", "\(#function): \(self): we have no window!")
-            NSBeep()
+            NSSound.beep()
             return
         }
 
-        let directoryPicker = self.dynamicType.exportDirectoryPicker()
+        let directoryPicker = type(of: self).exportDirectoryPicker()
         if let document = self.document,
-            directoryURL = document.fileURL?.URLByDeletingLastPathComponent {
+            let directoryURL = document.fileURL?.deletingLastPathComponent() {
                 directoryPicker.directoryURL = directoryURL
         }
 
-        directoryPicker.beginSheetModalForWindow(window) { response in
-            guard response == NSFileHandlingPanelOKButton else {
+        directoryPicker.beginSheetModal(for: window) { response in
+            guard response == .OK else {
                 NSLog("%@", "user canceled export")
                 return
             }
 
-            guard let directory = directoryPicker.URL else {
+            guard let directory = directoryPicker.url else {
                 NSLog("%@", "user failed to select directory")
                 return
             }
 
             NSLog("%@", "exporting to: \(directory.lastPathComponent) at \(directory.absoluteURL)")
-            let _ = self.job?.exportSelectedSubimages(directory, dryRun: false)
+            let _ = self.job?.exportSelectedSubimages(directory: directory, dryRun: false)
         }
     }
 
 
-    func presentErrorPreferringModal(error: ErrorType) {
+    func presentErrorPreferringModal(error: Error) {
         let nserror = error as NSError
-        guard viewLoaded, let window = self.view.window else {
+        guard isViewLoaded, let window = self.view.window else {
             presentError(nserror)
             return
         }
 
-        presentError(nserror, modalForWindow: window, delegate: nil, didPresentSelector: nil, contextInfo: nil)
+        presentError(nserror, modalFor: window, delegate: nil, didPresent: nil, contextInfo: nil)
     }
 
 
@@ -194,23 +205,23 @@ extension JobViewController {
         mark: Mark,
         rect: CGRect,
         of view: NSView,
-        completion: (Bool) -> Void
+        completion: @escaping (Bool) -> Void
     ) {
         NSLog("%@", "\(#function): \(mark)")
-        guard let renamer = storyboard?.instantiateControllerWithIdentifier("renamer") as?RenameViewController else {
+        guard let renamer = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "renamer")) as? RenameViewController else {
             fatalError("failed to instantiate renamer")
         }
 
-        renamer.configure(mark.name) { [weak self] name in
+        renamer.configure(name: mark.name) { [weak self] name in
             guard name != mark.name, let me = self else {
                 completion(false)
                 return
             }
 
-            NSLog("%@", "\(#function): \(self): renaming \(mark) to \"\(name)\"")
-            me.job?.rename(mark, to: name)
+            NSLog("%@", "\(#function): \(me): renaming \(mark) to \"\(name)\"")
+            me.job?.rename(mark: mark, to: name)
             completion(true)
         }
-        presentViewController(renamer, asPopoverRelativeToRect: rect, ofView: view, preferredEdge: .MinY, behavior: .Semitransient)
+        presentViewController(renamer, asPopoverRelativeTo: rect, of: view, preferredEdge: .minY, behavior: .semitransient)
     }
 }

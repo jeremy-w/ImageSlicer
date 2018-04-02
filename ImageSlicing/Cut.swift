@@ -16,16 +16,15 @@ struct Cut {
 
         switch oriented {
         case .Horizontally:
-            edge = .MinYEdge
-            amount = at.y - CGRectGetMinY(subimage.rect)
+            edge = .minYEdge
+            amount = at.y - subimage.rect.minY
+
         case .Vertically:
-            edge = .MinXEdge
-            amount = at.x - CGRectGetMinX(subimage.rect)
+            edge = .minXEdge
+            amount = at.x - subimage.rect.minX
         }
 
-        var subrect = CGRectZero
-        var otherSubrect = CGRectZero
-        CGRectDivide(subimage.rect, &subrect, &otherSubrect, amount, edge)
+        let (subrect, otherSubrect) = subimage.rect.divided(atDistance: amount, from: edge)
         return [subrect, otherSubrect].map(Subimage.init)
     }
 }
@@ -34,7 +33,7 @@ extension Cut {
     var asDictionary: [String: AnyObject] {
         var dictionary: [String: AnyObject] = [:]
         dictionary["at"] = NSValue(point: at)
-        dictionary["oriented"] = oriented.rawValue
+        dictionary["oriented"] = oriented.rawValue as AnyObject
         return dictionary
     }
 
@@ -44,8 +43,9 @@ extension Cut {
         }
         at = value.pointValue
 
-        guard let rawValue = dictionary["oriented"] as? String,
-            orientation = Orientation(rawValue: rawValue) else {
+        guard
+            let rawValue = dictionary["oriented"] as? String,
+            let orientation = Orientation(rawValue: rawValue) else {
                 return nil
         }
         oriented = orientation
@@ -55,5 +55,5 @@ extension Cut {
 
 extension Cut: Equatable {}
 func ==(left: Cut, right: Cut) -> Bool {
-    return left.oriented == right.oriented && CGPointEqualToPoint(left.at, right.at)
+    return left.oriented == right.oriented && left.at.equalTo(right.at)
 }

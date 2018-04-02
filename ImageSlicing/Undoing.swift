@@ -7,15 +7,15 @@
 import Foundation
 
 protocol Undoing {
-    func record(actionName: String, undo: () -> Void)
+    func record(actionName: String, undo: @escaping () -> Void)
 }
 
 
-extension NSUndoManager: Undoing {
-    func record(actionName: String, undo: () -> Void) {
+extension UndoManager: Undoing {
+    func record(actionName: String, undo: @escaping () -> Void) {
         let closure = PerformableClosure(undo)
-        self.registerUndoWithTarget(PerformableClosure.self, selector: #selector(PerformableClosure.perform(_:)), object: closure)
-        if !self.undoing && !self.redoing {
+        self.registerUndo(withTarget: PerformableClosure.self, selector: #selector(PerformableClosure.perform(_:)), object: closure)
+        if !self.isUndoing && !self.isRedoing {
             self.setActionName(actionName)
         }
     }
@@ -25,7 +25,7 @@ extension NSUndoManager: Undoing {
 /// Added to provide undo support.
 class PerformableClosure: NSObject {
     let closure: () -> Void
-    init(_ closure: () -> Void) {
+    init(_ closure: @escaping () -> Void) {
         self.closure = closure
     }
 

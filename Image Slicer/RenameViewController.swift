@@ -14,17 +14,20 @@ class RenameViewController: NSViewController {
         }
     }
 
-    func configure(name: String, completion: (String) -> Void) {
+    func configure(name: String, completion: @escaping (String) -> Void) {
         originalName = name
         self.completion = completion
     }
 
     @IBOutlet var nameField: NSTextField!
+
+    @objc(okAction:)
     @IBAction func okAction(sender: AnyObject) {
         dismissViewController(self)
         completion(nameField.stringValue)
     }
 
+    @objc(cancelAction:)
     @IBAction func cancelAction(sender: AnyObject) {
         dismissViewController(self)
         completion(originalName)

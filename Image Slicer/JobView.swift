@@ -14,10 +14,12 @@ enum EditingMode {
     case DeletingMark
 }
 
-let markTextColor = NSColor.blueColor()
-let highlightColor = NSColor.orangeColor().colorWithAlphaComponent(0.4)
-let highlightedMarkAttributes = [NSForegroundColorAttributeName: markTextColor
-    , NSBackgroundColorAttributeName: highlightColor]
+let markTextColor = NSColor.blue
+let highlightColor = NSColor.orange.withAlphaComponent(0.4)
+let highlightedMarkAttributes: [NSAttributedStringKey: Any] = [
+    .foregroundColor: markTextColor,
+    .backgroundColor: highlightColor,
+]
 
 class JobView: NSImageView {
     var job = Job(image: nil, cuts: [], selections: []) {
@@ -28,7 +30,7 @@ class JobView: NSImageView {
 
     var editingMode = EditingMode.NotEditing {
         didSet {
-            guard self.editable else {
+            guard self.isEditable else {
                 NSLog("%@", "\(#function): \(self): not editable, so refusing change to mode \(editingMode)")
                 editingMode = .NotEditing
                 return
@@ -45,7 +47,7 @@ class JobView: NSImageView {
 
 
     /// - returns: true if mark name changed (invalidates rect), false otherwise
-    var editMark: (Mark, rect: CGRect, completion: (Bool) -> Void) -> Void =
+    var editMark: (Mark, _ rect: CGRect, _ completion: @escaping (Bool) -> Void) -> Void =
         { _, _, completion in
             NSLog("%@", "default mark handler does nothing")
             completion(false)
@@ -62,13 +64,13 @@ class JobView: NSImageView {
             }
 
             super.image = newValue
-            imageDidChange(image)
+            imageDidChange(image: image)
         }
     }
 
 
     func imageDidChange(image: NSImage?) {
-        NSLog("%@", "\(#function): \(image)")
+        NSLog("%@", "\(#function): \(String(describing: image))")
         self.job.image = image
         invalidateIntrinsicContentSize()
     }
@@ -84,11 +86,11 @@ class JobView: NSImageView {
         self.job = job
 
         guard let image = job.image else {
-            super.init(frame: CGRectZero)
+            super.init(frame: .zero)
             return nil
         }
 
-        let frame = CGRect(origin: CGPointZero, size: image.size)
+        let frame = CGRect(origin: .zero, size: image.size)
         super.init(frame: frame)
         self.image = image
     }
@@ -102,15 +104,15 @@ class JobView: NSImageView {
             let wasAt = oldValue
 
             if case .DeletingCut = editingMode {
-                let oldCut = wasAt.flatMap { cutNearest($0)?.0 }
-                let newCut = mouseAt.flatMap { cutNearest($0)?.0 }
+                let oldCut = wasAt.flatMap { cutNearest(point: $0)?.0 }
+                let newCut = mouseAt.flatMap { cutNearest(point: $0)?.0 }
 
                 if let oldCut = oldCut {
-                    setNeedsDisplayInRect(rectFor(oldCut))
+                    setNeedsDisplay(rectFor(cut: oldCut))
                 }
 
                 if let newCut = newCut {
-                    setNeedsDisplayInRect(rectFor(newCut))
+                    setNeedsDisplay(rectFor(cut: newCut))
                 }
             }
 
@@ -125,7 +127,7 @@ class JobView: NSImageView {
 
 // MARK: - Drag & Drop
 extension JobView {
-    override func performDragOperation(sender: NSDraggingInfo) -> Bool {
+    override func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
         let didAcceptDrag = super.performDragOperation(sender)
         guard didAcceptDrag else {
             return didAcceptDrag
@@ -133,7 +135,7 @@ extension JobView {
 
         let pasteboard = sender.draggingPasteboard()
         let fileURL = firstFileURL(from: pasteboard)
-        NSLog("%@", "dropped file URL was: \(fileURL)")
+        NSLog("%@", "dropped file URL was: \(String(describing: fileURL))")
 
         self.job.imageFrom = fileURL
 
@@ -146,8 +148,8 @@ extension JobView {
     }
 
 
-    func firstFileURL(from pasteboard: NSPasteboard) -> NSURL? {
-        guard let URLs = pasteboard.readObjectsForClasses([NSURL.self], options: [NSPasteboardURLReadingFileURLsOnlyKey: true]) as? [NSURL] else {
+    func firstFileURL(from pasteboard: NSPasteboard) -> URL? {
+        guard let URLs = pasteboard.readObjects(forClasses: [NSURL.self], options: [.urlReadingFileURLsOnly: true]) as? [NSURL] else {
                 return nil
         }
 
@@ -160,22 +162,22 @@ extension JobView {
 
 // MARK: - Drawing
 extension JobView {
-    override func drawRect(dirtyRect: NSRect) {
-        super.drawRect(dirtyRect)
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
 
-        NSColor.greenColor().set()
+        NSColor.green.set()
         outlineSubimages()
 
-        NSColor.redColor().set()
+        NSColor.red.set()
         markCutPoints()
 
-        labelSelections(markTextColor)
+        labelSelections(textColor: markTextColor)
     }
 
 
     func outlineSubimages() {
         for sub in job.subimages {
-            NSFrameRect(sub.rect)
+            sub.rect.frame(withWidth: 1.0, using: .copy)
         }
     }
 
@@ -183,21 +185,21 @@ extension JobView {
     func markCutPoints() {
         let victimCut = mouseAt.flatMap { point -> Cut? in
             guard case .DeletingCut = editingMode else { return nil }
-            return cutNearest(point)?.0
+            return cutNearest(point: point)?.0
         }
 
         for cut in job.cuts {
-            let rect = rectFor(cut)
+            let rect = rectFor(cut: cut)
             let isVictim = victimCut.map { $0 == cut } ?? false
             if isVictim {
-                NSGraphicsContext.currentContext()?.saveGraphicsState()
-                NSColor.orangeColor().setFill()
+                NSGraphicsContext.current?.saveGraphicsState()
+                NSColor.orange.setFill()
             }
 
-            NSRectFill(CGRectOffset(rect, -1, -1))
+            rect.offsetBy(dx: -1, dy:-1).fill()
 
             if isVictim {
-                NSGraphicsContext.currentContext()?.restoreGraphicsState()
+                NSGraphicsContext.current?.restoreGraphicsState()
             }
         }
     }
@@ -208,36 +210,36 @@ extension JobView {
     }
 
 
-    override func mouseMoved(theEvent: NSEvent) {
+    override func mouseMoved(with theEvent: NSEvent) {
         let windowPoint = theEvent.locationInWindow
-        mouseAt = self.convertPoint(windowPoint, fromView: nil)
+        mouseAt = self.convert(windowPoint, from: nil)
     }
 
 
     var highlightedSelection: Mark? {
         get {
-            let highlightedSelection = mouseAt.flatMap { markNearest($0)?.0 }
+            let highlightedSelection = mouseAt.flatMap { markNearest(point: $0)?.0 }
             return highlightedSelection
         }
     }
 
 
     func labelSelections(textColor: NSColor) {
-        let normalAttributes = [NSForegroundColorAttributeName: textColor]
+        let normalAttributes = [NSAttributedStringKey.foregroundColor: textColor]
         let highlightedAttributes = highlightedMarkAttributes
         let highlighted = highlightedSelection
         for selection in job.selections {
             let shouldHighlight = highlighted.map { $0 == selection } ?? false
             let attributes = shouldHighlight ? highlightedAttributes : normalAttributes
-            let rect = rectFor(selection, attributes: attributes)
-            selection.name.drawInRect(rect, withAttributes: attributes)
+            let rect = rectFor(mark: selection, attributes: attributes)
+            selection.name.draw(in: rect, withAttributes: attributes)
         }
     }
 
 
-    func rectFor(mark: Mark, attributes: [String: AnyObject]) -> CGRect {
+    func rectFor(mark: Mark, attributes: [NSAttributedStringKey: Any]) -> CGRect {
         let text = mark.name
-        let size = text.sizeWithAttributes(attributes)
+        let size = text.size(withAttributes: attributes)
         let pointCenteringTextOnMark = CGPoint(
             x: mark.around.x - size.width / 2,
             y: mark.around.y - size.height / 2)
@@ -250,12 +252,12 @@ extension JobView {
 
 // MARK: - Editing
 extension JobView {
-    override func mouseDown(theEvent: NSEvent) {
+    override func mouseDown(with theEvent: NSEvent) {
         let windowPoint = theEvent.locationInWindow
-        let point = convertPoint(windowPoint, fromView: nil)
+        let point = convert(windowPoint, from: nil)
         mouseAt = point
 
-        if let mode = performEdit(point) {
+        if let mode = performEdit(point: point) {
             editingMode = mode
             needsDisplay = true
         }
@@ -263,8 +265,8 @@ extension JobView {
 
 
     func editHighlightedMark(mark: Mark) {
-        let rect = rectFor(mark, attributes: highlightedMarkAttributes)
-        editMark(mark, rect: rect) { didRename in
+        let rect = rectFor(mark: mark, attributes: highlightedMarkAttributes)
+        editMark(mark, rect) { didRename in
             guard didRename else { return }
             self.needsDisplay = true
         }
@@ -276,9 +278,9 @@ extension JobView {
         switch editingMode {
         case .NotEditing:
             if let mark = highlightedSelection {
-                let rect = rectFor(mark, attributes: highlightedMarkAttributes)
-                if CGRectContainsPoint(rect, point) {
-                    editHighlightedMark(mark)
+                let rect = rectFor(mark: mark, attributes: highlightedMarkAttributes)
+                if rect.contains(point) {
+                    editHighlightedMark(mark: mark)
                 }
             }
             return nil
@@ -289,25 +291,25 @@ extension JobView {
             let integralPoint = CGPoint(
                 x: round(point.x),
                 y: round(point.y))
-            job.add(Cut(at: integralPoint, oriented: orientation))
+            job.add(cut: Cut(at: integralPoint, oriented: orientation))
             return nil
 
         case .AddingMark:
             let name = "mark \(job.selections.count + 1)"
             let mark = Mark(around: point, name: name)
-            job.add(mark)
-            editHighlightedMark(mark)
+            job.add(mark: mark)
+            editHighlightedMark(mark: mark)
             return nil
 
         case .DeletingCut:
-            if let (cut, _) = cutNearest(point) {
-                job.remove(cut)
+            if let (cut, _) = cutNearest(point: point) {
+                job.remove(cut: cut)
             }
             return .NotEditing
 
         case .DeletingMark:
-            if let (mark, _) = markNearest(point) {
-                job.remove(mark)
+            if let (mark, _) = markNearest(point: point) {
+                job.remove(mark: mark)
             }
             return .NotEditing
         }
@@ -315,8 +317,8 @@ extension JobView {
 
 
     func cutNearest(point: CGPoint) -> (Cut, Int)? {
-        if let hitPoint = nearest(point, amongst: job.cuts.map { $0.at }),
-            index = job.cuts.indexOf({ $0.at == hitPoint }) {
+        if let hitPoint = nearest(target: point, amongst: job.cuts.map { $0.at }),
+            let index = job.cuts.index(where: { $0.at == hitPoint }) {
                 return (job.cuts[index], index)
         }
         return nil
@@ -324,8 +326,8 @@ extension JobView {
 
 
     func markNearest(point: CGPoint) -> (Mark, Int)? {
-        if let hitPoint = nearest(point, amongst: job.selections.map { $0.around }),
-            index = job.selections.indexOf({ $0.around == hitPoint }) {
+        if let hitPoint = nearest(target: point, amongst: job.selections.map { $0.around }),
+            let index = job.selections.index(where: { $0.around == hitPoint }) {
                 return (job.selections[index], index)
         }
         return nil
@@ -339,7 +341,7 @@ extension JobView {
             let dy = point.y - target.y
             return (point, dx*dx + dy*dy)
         }
-        let pointAndMinDistance = pointsAndDistances.minElement { (left, right) -> Bool in
+        let pointAndMinDistance = pointsAndDistances.min { (left, right) -> Bool in
             return left.1 < right.1
         }
         return pointAndMinDistance?.0

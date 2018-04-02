@@ -12,8 +12,8 @@ class QuickLook: NSObject {
     let document: Document
 
     @objc
-    init?(withURL url: NSURL, contentType UTI: String) {
-        guard let document = try? Document(contentsOfURL: url, ofType: UTI) else {
+    init?(withURL url: URL, contentType UTI: String) {
+        guard let document = try? Document(contentsOf: url, ofType: UTI) else {
             self.document = Document()
             super.init()
             return nil
@@ -23,14 +23,14 @@ class QuickLook: NSObject {
     }
 
 
-    @objc
-    func renderThumbnail(thumbnail: QLThumbnailRequestRef) {
+    @objc(renderThumbnail:)
+    func render(thumbnail: QLThumbnailRequest) {
         render(into: thumbnail)
     }
 
 
-    @objc
-    func renderPreview(preview: QLPreviewRequestRef) {
+    @objc(renderPreview:)
+    func render(preview: QLPreviewRequest) {
         render(into: preview)
     }
 
@@ -52,9 +52,9 @@ class QuickLook: NSObject {
         }
 
         let rawContext = unmanagedContext.takeRetainedValue()
-        let context = NSGraphicsContext(CGContext: rawContext, flipped: true)
-        view.displayRectIgnoringOpacity(rect, inContext: context)
-        contextProvider.flush(rawContext)
+        let context = NSGraphicsContext(cgContext: rawContext, flipped: true)
+        view.displayIgnoringOpacity(rect, in: context)
+        contextProvider.flush(context: rawContext)
     }
 }
 
@@ -85,7 +85,7 @@ protocol GraphicsContextProvider {
 
 
 
-extension QLThumbnailRequestRef: GraphicsContextProvider {
+extension QLThumbnailRequest: GraphicsContextProvider {
     func createContext(covering size: CGSize, forDrawing intent: RenderingIntent) -> Unmanaged<CGContext>? {
         let properties = NSDictionary()
         let unmanagedContext = QLThumbnailRequestCreateContext(self, size, intent.rawValue, properties)
@@ -105,7 +105,7 @@ extension QLThumbnailRequestRef: GraphicsContextProvider {
 
 
 
-extension QLPreviewRequestRef: GraphicsContextProvider {
+extension QLPreviewRequest: GraphicsContextProvider {
     func createContext(covering size: CGSize, forDrawing intent: RenderingIntent) -> Unmanaged<CGContext>? {
         let properties = NSDictionary()
         let unmanagedContext = QLPreviewRequestCreateContext(self, size, intent.rawValue, properties)

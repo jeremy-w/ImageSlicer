@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -704,6 +706,9 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <connections>
+                            <outlet property="delegate" destination="jGA-0Y-lOj" id="5yd-Ly-h5p"/>
+                        </connections>
                     </window>
                     <connections>
                         <segue destination="5gI-5U-AMq" kind="relationship" relationship="window.shadowedContentViewController" id="nsd-lR-9xd"/>
@@ -858,11 +863,11 @@ Gw
                             <scrollView horizontalHuggingPriority="750" verticalHuggingPriority="750" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ar-BB-Feu">
                                 <rect key="frame" x="19" y="143" width="500" height="375"/>
                                 <clipView key="contentView" horizontalHuggingPriority="750" drawsBackground="NO" copiesOnScroll="NO" id="xm6-lD-UZt">
-                                    <rect key="frame" x="1" y="1" width="498" height="373"/>
+                                    <rect key="frame" x="1" y="1" width="483" height="358"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <imageView focusRingType="none" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="hdW-vN-cp5" customClass="JobView" customModule="Image_Slicer" customModuleProvider="target">
-                                            <rect key="frame" x="-1" y="-1" width="500" height="375"/>
+                                            <rect key="frame" x="-8" y="-8" width="500" height="375"/>
                                             <imageCell key="cell" selectable="YES" editable="YES" focusRingType="none" alignment="left" imageAlignment="bottomLeft" id="9j1-Ju-fWU"/>
                                         </imageView>
                                     </subviews>
@@ -878,12 +883,12 @@ Gw
                                     <constraint firstItem="hdW-vN-cp5" firstAttribute="width" secondItem="7Ar-BB-Feu" secondAttribute="width" priority="250" id="oYh-C1-fKZ"/>
                                     <constraint firstItem="hdW-vN-cp5" firstAttribute="height" secondItem="7Ar-BB-Feu" secondAttribute="height" priority="250" id="tDr-G6-xhH"/>
                                 </constraints>
-                                <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="Tv8-nS-E3N">
-                                    <rect key="frame" x="1" y="358" width="498" height="16"/>
+                                <scroller key="horizontalScroller" verticalHuggingPriority="750" doubleValue="0.41176470588235292" horizontal="YES" id="Tv8-nS-E3N">
+                                    <rect key="frame" x="1" y="359" width="483" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="fK0-bh-zG7">
-                                    <rect key="frame" x="483" y="1" width="16" height="373"/>
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="0.47058823529411764" horizontal="NO" id="fK0-bh-zG7">
+                                    <rect key="frame" x="484" y="1" width="15" height="358"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
