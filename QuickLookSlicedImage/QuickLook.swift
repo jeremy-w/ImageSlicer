@@ -52,7 +52,7 @@ class QuickLook: NSObject {
         }
 
         let rawContext = unmanagedContext.takeRetainedValue()
-        let context = NSGraphicsContext(cgContext: rawContext, flipped: true)
+        let context = NSGraphicsContext(cgContext: rawContext, flipped: false)
         view.displayIgnoringOpacity(rect, in: context)
         contextProvider.flush(context: rawContext)
     }
