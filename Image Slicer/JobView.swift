@@ -257,10 +257,14 @@ extension JobView {
         let point = convert(windowPoint, from: nil)
         mouseAt = point
 
+        // Previously, we relied on job.didSet triggering whenever job was mutated.
+        // Newer Swift does not behave that way, though.
+        let willNeedDisplay = editingMode.needsDisplayAfterAction
         if let mode = performEdit(point: point) {
             editingMode = mode
             needsDisplay = true
         }
+        needsDisplay = needsDisplay || willNeedDisplay
     }
 
 
@@ -345,5 +349,29 @@ extension JobView {
             return left.1 < right.1
         }
         return pointAndMinDistance?.0
+    }
+}
+
+private extension EditingMode {
+    /**
+     Helps `mouseDown(with:)` decide whether to redisplay after processing the action.
+     */
+    var needsDisplayAfterAction: Bool {
+        switch self {
+        case .NotEditing:
+            return false
+
+        case .AddingCut(_):
+            return true
+
+        case .AddingMark:
+            return true
+
+        case .DeletingCut:
+            return true
+
+        case .DeletingMark:
+            return true
+        }
     }
 }
