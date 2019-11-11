@@ -321,6 +321,7 @@
 					};
 					3F7DB4611C8B97EC00D5DC68 = {
 						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 1120;
 					};
 				};
 			};
@@ -619,6 +620,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "QuickLookSlicedImage/QuickLookSlicedImage-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = qlgenerator;
 			};
 			name = Debug;
@@ -635,6 +637,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jeremywsherman.QuickLookSlicedImage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "QuickLookSlicedImage/QuickLookSlicedImage-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = qlgenerator;
 			};
 			name = Release;

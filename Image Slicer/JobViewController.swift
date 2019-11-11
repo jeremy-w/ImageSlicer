@@ -208,7 +208,7 @@ extension JobViewController {
         completion: @escaping (Bool) -> Void
     ) {
         NSLog("%@", "\(#function): \(mark)")
-        guard let renamer = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "renamer")) as? RenameViewController else {
+        guard let renamer = storyboard?.instantiateController(withIdentifier: "renamer") as? RenameViewController else {
             fatalError("failed to instantiate renamer")
         }
 
@@ -222,6 +222,6 @@ extension JobViewController {
             me.job?.rename(mark: mark, to: name)
             completion(true)
         }
-        presentViewController(renamer, asPopoverRelativeTo: rect, of: view, preferredEdge: .minY, behavior: .semitransient)
+        present(renamer, asPopoverRelativeTo: rect, of: view, preferredEdge: .minY, behavior: .semitransient)
     }
 }

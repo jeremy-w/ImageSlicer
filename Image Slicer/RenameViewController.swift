@@ -23,13 +23,13 @@ class RenameViewController: NSViewController {
 
     @objc(okAction:)
     @IBAction func okAction(sender: AnyObject) {
-        dismissViewController(self)
+        dismiss(self)
         completion(nameField.stringValue)
     }
 
     @objc(cancelAction:)
     @IBAction func cancelAction(sender: AnyObject) {
-        dismissViewController(self)
+        dismiss(self)
         completion(originalName)
     }
 

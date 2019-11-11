@@ -28,7 +28,7 @@ class Job {
     }
 
     func remove(cut: Cut) {
-        guard let index = cuts.index(of: cut) else {
+        guard let index = cuts.firstIndex(of: cut) else {
             NSLog("%@", "\(#function): Ignoring request to remove absent cut \(cut)")
             return
         }
@@ -52,7 +52,7 @@ class Job {
     }
 
     func remove(mark: Mark) {
-        guard let index = selections.index(of: mark) else {
+        guard let index = selections.firstIndex(of: mark) else {
             NSLog("%@", "\(#function): Ignoring request to remove absent mark \(mark)")
             return
         }
@@ -77,7 +77,7 @@ class Job {
 
         for cut in cuts {
             let at = cut.at
-            let index = subimages.index(where: { $0.contains(point: at) })!
+            let index = subimages.firstIndex(where: { $0.contains(point: at) })!
             let withinSubimage = subimages[index]
 
             let children = cut.slice(subimage: withinSubimage)
@@ -88,7 +88,7 @@ class Job {
     }
 
     func rename(mark: Mark, to name: String) {
-        guard let index = selections.index(of: mark) else { return }
+        guard let index = selections.firstIndex(of: mark) else { return }
         let oldMark = selections[index]
         let renamedMark = Mark(around: oldMark.around, name: name)
         let markRange = index ..< (index + 1)
@@ -109,7 +109,7 @@ class Job {
 
         let subimages = self.subimages
         selections.forEach { selection in
-            guard let index = subimages.index(where: { $0.contains(point: selection.around) }) else {
+            guard let index = subimages.firstIndex(where: { $0.contains(point: selection.around) }) else {
                 NSLog("%@", "\(#function): error: selection \(selection) not contained by any subimage!")
                 return
             }

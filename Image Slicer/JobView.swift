@@ -16,7 +16,7 @@ enum EditingMode {
 
 let markTextColor = NSColor.blue
 let highlightColor = NSColor.orange.withAlphaComponent(0.4)
-let highlightedMarkAttributes: [NSAttributedStringKey: Any] = [
+let highlightedMarkAttributes: [NSAttributedString.Key: Any] = [
     .foregroundColor: markTextColor,
     .backgroundColor: highlightColor,
 ]
@@ -133,7 +133,7 @@ extension JobView {
             return didAcceptDrag
         }
 
-        let pasteboard = sender.draggingPasteboard()
+        let pasteboard = sender.draggingPasteboard
         let fileURL = firstFileURL(from: pasteboard)
         NSLog("%@", "dropped file URL was: \(String(describing: fileURL))")
 
@@ -225,7 +225,7 @@ extension JobView {
 
 
     func labelSelections(textColor: NSColor) {
-        let normalAttributes = [NSAttributedStringKey.foregroundColor: textColor]
+        let normalAttributes = [NSAttributedString.Key.foregroundColor: textColor]
         let highlightedAttributes = highlightedMarkAttributes
         let highlighted = highlightedSelection
         for selection in job.selections {
@@ -237,7 +237,7 @@ extension JobView {
     }
 
 
-    func rectFor(mark: Mark, attributes: [NSAttributedStringKey: Any]) -> CGRect {
+    func rectFor(mark: Mark, attributes: [NSAttributedString.Key: Any]) -> CGRect {
         let text = mark.name
         let size = text.size(withAttributes: attributes)
         let pointCenteringTextOnMark = CGPoint(
@@ -322,7 +322,7 @@ extension JobView {
 
     func cutNearest(point: CGPoint) -> (Cut, Int)? {
         if let hitPoint = nearest(target: point, amongst: job.cuts.map { $0.at }),
-            let index = job.cuts.index(where: { $0.at == hitPoint }) {
+            let index = job.cuts.firstIndex(where: { $0.at == hitPoint }) {
                 return (job.cuts[index], index)
         }
         return nil
@@ -331,7 +331,7 @@ extension JobView {
 
     func markNearest(point: CGPoint) -> (Mark, Int)? {
         if let hitPoint = nearest(target: point, amongst: job.selections.map { $0.around }),
-            let index = job.selections.index(where: { $0.around == hitPoint }) {
+            let index = job.selections.firstIndex(where: { $0.around == hitPoint }) {
                 return (job.selections[index], index)
         }
         return nil
