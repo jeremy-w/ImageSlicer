@@ -326,10 +326,9 @@
 			};
 			buildConfigurationList = 3F70EA9F1C6F9C9500972CEB /* Build configuration list for PBXProject "Image Slicer" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
