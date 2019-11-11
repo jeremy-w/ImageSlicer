@@ -9,46 +9,46 @@ class UndoingTests: XCTestCase {
     var job = Job(image: nil)
     let undo = UndoingSpy()
 
-    let anyCut = Cut(at: CGPointZero, oriented: .Horizontally)
-    let anyMark = Mark(around: CGPointZero, name: "any mark")
+    let anyCut = Cut(at: .zero, oriented: .Horizontally)
+    let anyMark = Mark(around: .zero, name: "any mark")
 
     override func setUp() {
         job.undoing = undo
     }
 
     func testAddingCutCanBeUndone() {
-        job.add(anyCut)
+        job.add(cut: anyCut)
         undo.undo()
         XCTAssertEqual(job.cuts, [])
     }
 
     func testAddingMarkCanBeUndone() {
-        job.add(anyMark)
+        job.add(mark: anyMark)
         undo.undo()
         XCTAssertEqual(job.selections, [])
     }
 
     func testUndoingAddCutCanBeRedone() {
-        job.add(anyCut)
+        job.add(cut: anyCut)
         undo.undo()
         undo.redo()
         XCTAssertEqual(job.cuts, [anyCut])
     }
 
     func testRemovingCutFromMiddleOfCutsListCanBeUndone() {
-        job.add(anyCut)
+        job.add(cut: anyCut)
         let secondCut = Cut(at: CGPoint(x: 1, y: 1), oriented: .Vertically)
-        job.add(secondCut)
+        job.add(cut: secondCut)
         let thirdCut = Cut(at: CGPoint(x: 2, y: 2), oriented: .Horizontally)
-        job.add(thirdCut)
+        job.add(cut: thirdCut)
 
-        job.remove(secondCut)
+        job.remove(cut: secondCut)
         undo.undo()
         XCTAssertEqual(job.cuts, [anyCut, secondCut, thirdCut])
     }
 
     func testRepeatedUndoRedoAddMarkHasNoEffect() {
-        job.add(anyMark)
+        job.add(mark: anyMark)
         let before = job.selections
         (0..<10).forEach { _ in
             undo.undo()
@@ -59,8 +59,8 @@ class UndoingTests: XCTestCase {
     }
 
     func testRenamingMarkCanBeUndoneAndRedone() {
-        job.add(anyMark)
-        job.rename(anyMark, to: "renamed mark")
+        job.add(mark: anyMark)
+        job.rename(mark: anyMark, to: "renamed mark")
         let renamedMark = job.selections.last!
         XCTAssertEqual(job.selections, [renamedMark])
 
@@ -78,7 +78,7 @@ class UndoingSpy: Undoing {
     var redoStack: [() -> Void] = []
     var undoing = false
 
-    func record(actionName: String, undo: () -> Void) {
+    func record(actionName: String, undo: @escaping () -> Void) {
         if undoing {
             redoStack.append(undo)
         } else {
